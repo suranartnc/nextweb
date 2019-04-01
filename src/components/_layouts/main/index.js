@@ -1,5 +1,11 @@
 import React from 'react'
+import Navigation from './Navigation'
 
 export default function MainLayout({ children }) {
-  return <div>{children}</div>
+  return (
+    <div>
+      <Navigation />
+      <main>{children}</main>
+    </div>
+  )
 }
