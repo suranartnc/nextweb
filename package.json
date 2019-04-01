@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/suranartnc/nextweb#readme",
   "dependencies": {
+    "babel-plugin-module-resolver": "^3.2.0",
     "express": "^4.16.4",
     "next": "^8.0.3",
     "next-routes": "^1.4.2",
