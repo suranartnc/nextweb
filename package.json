@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/suranartnc/nextweb/issues"
   },
-  "homepage": "https://github.com/suranartnc/nextweb#readme"
+  "homepage": "https://github.com/suranartnc/nextweb#readme",
+  "dependencies": {
+    "next": "^8.0.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
 }
