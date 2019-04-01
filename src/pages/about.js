@@ -1,8 +1,7 @@
 import React from 'react'
-import MainLayout from '@components/_layouts/main'
 
 function AboutPage() {
-  return <MainLayout>About Page</MainLayout>
+  return <div>About Page</div>
 }
 
 export default AboutPage

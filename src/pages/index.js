@@ -1,8 +1,7 @@
 import React from 'react'
-import MainLayout from '@components/_layouts/main'
 
 function Home() {
-  return <MainLayout>Welcome to Next.js!</MainLayout>
+  return <div>Welcome to Next.js!</div>
 }
 
 export default Home
