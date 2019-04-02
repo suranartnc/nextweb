@@ -3,6 +3,7 @@ require('dotenv').config()
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
+const CircularDependencyPlugin = require('circular-dependency-plugin')
 
 const nextConfig = {
   assetPrefix: process.env.ASSET_PREFIX,
@@ -22,6 +23,13 @@ const nextConfig = {
       new Dotenv({
         path: path.join(__dirname, '.env'),
         systemvars: true,
+      }),
+
+      new CircularDependencyPlugin({
+        exclude: /a\.js|node_modules/,
+        failOnError: true,
+        allowAsyncCycles: false,
+        cwd: process.cwd(),
       }),
     ]
 
