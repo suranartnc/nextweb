@@ -17,7 +17,7 @@ export default function Navigation() {
     <div>
       {mainMenus.map(menu => (
         <Link key={menu.name} to={menu.route}>
-          {menu.name}
+          <a>{menu.name}</a>
         </Link>
       ))}
     </div>
