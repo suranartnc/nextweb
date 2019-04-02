@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node src/server.js",
     "build": "next build src",
-    "start": "NODE_ENV=production node src/server.js"
+    "start": "NODE_ENV=production node src/server.js",
+    "analyze": "BUNDLE_ANALYZE=browser npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/suranartnc/nextweb#readme",
   "dependencies": {
+    "@zeit/next-bundle-analyzer": "^0.1.2",
     "babel-plugin-module-resolver": "^3.2.0",
     "express": "^4.16.4",
     "next": "^8.0.3",
