@@ -3,6 +3,7 @@
     ["next/babel"]
   ],
   "plugins": [
+    "lodash",
     [
       "module-resolver", {
         "alias": {
