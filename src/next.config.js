@@ -14,7 +14,7 @@ const nextConfig = {
       reportFilename: './bundles/client.html',
     },
   },
-  webpack: config => {
+  webpack: (config, { dev, isServer }) => {
     config.plugins = config.plugins || []
 
     config.plugins = [
@@ -24,14 +24,27 @@ const nextConfig = {
         path: path.join(__dirname, '.env'),
         systemvars: true,
       }),
-
-      new CircularDependencyPlugin({
-        exclude: /a\.js|node_modules/,
-        failOnError: true,
-        allowAsyncCycles: false,
-        cwd: process.cwd(),
-      }),
     ]
+
+    if (dev && !isServer) {
+      config.plugins.push(
+        new CircularDependencyPlugin({
+          exclude: /a\.js|node_modules/,
+          failOnError: true,
+          allowAsyncCycles: false,
+          cwd: process.cwd(),
+        }),
+      )
+    }
+
+    if (!dev && !isServer) {
+      const originalEntry = config.entry
+      config.entry = async () => {
+        const entries = await originalEntry()
+        entries['main.js'].unshift('@babel/polyfill')
+        return entries
+      }
+    }
 
     return config
   },
