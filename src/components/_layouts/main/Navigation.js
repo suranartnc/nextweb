@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from '@router'
-import { get } from 'lodash'
 
 const mainMenus = [
   {
@@ -14,11 +13,9 @@ const mainMenus = [
 ]
 
 export default function Navigation() {
-  const menus = get(mainMenus, '', [])
-
   return (
     <div>
-      {menus.map(menu => (
+      {mainMenus.map(menu => (
         <Link key={menu.name} to={menu.route}>
           {menu.name}
         </Link>
