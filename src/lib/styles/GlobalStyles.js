@@ -7,7 +7,7 @@ export default function GlobalStyles() {
     <React.Fragment>
       <style jsx="true" global="true">{`
         body {
-          color: blue;
+          font-family: sans-serif;
         }
       `}</style>
     </React.Fragment>
