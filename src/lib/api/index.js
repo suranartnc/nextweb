@@ -10,5 +10,5 @@ export function fetchAPI({
     baseURL: `${apiUrl}${path}`,
     timeout,
     ...options,
-  })
+  }).then(({ data }) => data)
 }

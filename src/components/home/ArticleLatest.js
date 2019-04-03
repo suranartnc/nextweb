@@ -1,31 +1,8 @@
 import React from 'react'
 import { get } from 'lodash'
 import { useAsync } from 'react-async'
-import { fetchAPI } from '@lib/api'
 
-// Mock Data
-ArticleLatest.defaultProps = {
-  data: [
-    {
-      id: 1,
-      title: 'Article 1',
-      excerpt: 'Excerpt 1',
-    },
-    {
-      id: 2,
-      title: 'Article 2',
-      excerpt: 'Excerpt 2',
-    },
-    {
-      id: 3,
-      title: 'Article 3',
-      excerpt: 'Excerpt 3',
-    },
-  ],
-}
-
-const loadArticles = () =>
-  fetchAPI({ path: '/articles' }).then(({ data }) => data)
+import { loadArticles } from '@features/article/model'
 
 export default function ArticleLatest({ initialValue }) {
   const { data, error, isLoading } = useAsync({

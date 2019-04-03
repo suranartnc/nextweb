@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import { fetchAPI } from '@lib/api'
+import { loadArticles } from '@features/article/model'
 import ArticleLatest from './ArticleLatest'
 
 export default function HomePage({ articleLatest }) {
@@ -18,8 +18,9 @@ HomePage.getInitialProps = async () => {
     return {}
   }
 
-  const articleLatestResult = await fetchAPI({ path: '/articles' })
+  const articleLatest = await loadArticles()
+
   return {
-    articleLatest: articleLatestResult.data,
+    articleLatest,
   }
 }
