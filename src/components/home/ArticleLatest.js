@@ -1,5 +1,7 @@
 import React from 'react'
 import { get } from 'lodash'
+import { useAsync } from 'react-async'
+import { fetchAPI } from '@lib/api'
 
 // Mock Data
 ArticleLatest.defaultProps = {
@@ -22,15 +24,21 @@ ArticleLatest.defaultProps = {
   ],
 }
 
-export default function ArticleLatest({ data }) {
-  if (get(data, 'length', 0) === 0) {
+const loadArticles = () => fetchAPI({ path: '/articles' })
+
+export default function ArticleLatest({ data: initialValue }) {
+  const { data, error, isLoading } = useAsync({ promiseFn: loadArticles })
+  if (isLoading) return 'Loading...'
+  if (error) return `Something went wrong: ${error.message}`
+
+  if (get(data, 'data.length', 0) === 0) {
     return null
   }
 
   return (
     <section>
       <h2>Latest Articles</h2>
-      <ArticleList data={data} />
+      <ArticleList data={data.data} />
     </section>
   )
 }
