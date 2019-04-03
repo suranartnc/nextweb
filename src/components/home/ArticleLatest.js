@@ -4,25 +4,46 @@ import { get } from 'lodash'
 
 import { getLatestArticles } from '@features/article/data/model'
 
-export default function ArticleLatest({ initialValue }) {
+function Fetch({
+  children,
+  api,
+  initialValue,
+  onError,
+  preloader = 'Loading...',
+}) {
   return (
-    <Async promiseFn={getLatestArticles} initialValue={initialValue}>
+    <Async promiseFn={api} initialValue={initialValue}>
       {({ data, error, isLoading }) => {
-        if (isLoading) return 'Loading...'
-        if (error) return `Something went wrong: ${error.message}`
+        if (isLoading) {
+          return typeof preloader === 'function'
+            ? React.createElement(preloader)
+            : preloader
+        }
+
+        if (error) {
+          return typeof onError === 'function' ? onError(error) : null
+        }
 
         if (get(data, 'length', 0) === 0) {
           return null
         }
 
-        return (
-          <section>
-            <h2>Latest Articles</h2>
-            <ArticleList data={data} />
-          </section>
-        )
+        return children({ data })
       }}
     </Async>
+  )
+}
+
+export default function ArticleLatest({ initialValue }) {
+  return (
+    <Fetch api={getLatestArticles} initialValue={initialValue}>
+      {({ data }) => (
+        <section>
+          <h2>Latest Articles</h2>
+          <ArticleList data={data} />
+        </section>
+      )}
+    </Fetch>
   )
 }
 
