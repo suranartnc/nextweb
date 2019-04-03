@@ -12,3 +12,9 @@ export function fetchAPI({
     ...options,
   }).then(({ data }) => data)
 }
+
+export function throwError(status = 500) {
+  const err = new Error()
+  err.response = { status }
+  throw err
+}
