@@ -1,0 +1,18 @@
+{
+  "presets": [
+    ["next/babel"]
+  ],
+  "plugins": [
+    "lodash",
+    [
+      "module-resolver", {
+        "alias": {
+          "@components": "./src/components",
+          "@features": "./src/features",
+          "@lib": "./src/lib",
+          "@router": "./src/router",
+        }
+      }
+    ]
+  ]
+}
