@@ -54,10 +54,6 @@ function generateArticles(limit) {
   return articles
 }
 
-function generateData() {
-  return {
-    articles: generateArticles(20),
-  }
+module.exports = {
+  articles: generateArticles(20),
 }
-
-module.exports = generateData
