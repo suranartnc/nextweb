@@ -14,10 +14,6 @@ export default function HomePage({ articleLatest }) {
 }
 
 HomePage.getInitialProps = async () => {
-  if (process.browser) {
-    return {}
-  }
-
   const articleLatest = await getLatestArticles()
 
   return {

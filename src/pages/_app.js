@@ -1,8 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import App, { Container } from 'next/app'
+import { flowRight as compose } from 'lodash'
 
-import GlobalStyles from '../lib/styles/GlobalStyles'
+import withData from '@lib/app/withData'
+import GlobalStyles from '@lib/styles/GlobalStyles'
 import MainLayout from '@components/_layouts/main'
 
 class MyApp extends App {
@@ -21,4 +23,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp
+export default compose(withData)(MyApp)
