@@ -1,2 +1,2 @@
 export { default as Fetch } from './Fetch'
-export { fetchAPI } from './helpers'
+export { fetchAPI, throwError } from './helpers'
