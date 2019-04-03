@@ -1,26 +1,28 @@
 import React from 'react'
+import Async from 'react-async'
 import { get } from 'lodash'
-import { useAsync } from 'react-async'
 
 import { getLatestArticles } from '@features/article/data/model'
 
 export default function ArticleLatest({ initialValue }) {
-  const { data, error, isLoading } = useAsync({
-    promiseFn: getLatestArticles,
-    initialValue,
-  })
-  if (isLoading) return 'Loading...'
-  if (error) return `Something went wrong: ${error.message}`
-
-  if (get(data, 'length', 0) === 0) {
-    return null
-  }
-
   return (
-    <section>
-      <h2>Latest Articles</h2>
-      <ArticleList data={data} />
-    </section>
+    <Async promiseFn={getLatestArticles} initialValue={initialValue}>
+      {({ data, error, isLoading }) => {
+        if (isLoading) return 'Loading...'
+        if (error) return `Something went wrong: ${error.message}`
+
+        if (get(data, 'length', 0) === 0) {
+          return null
+        }
+
+        return (
+          <section>
+            <h2>Latest Articles</h2>
+            <ArticleList data={data} />
+          </section>
+        )
+      }}
+    </Async>
   )
 }
 
