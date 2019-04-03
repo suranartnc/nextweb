@@ -24,21 +24,25 @@ ArticleLatest.defaultProps = {
   ],
 }
 
-const loadArticles = () => fetchAPI({ path: '/articles' })
+const loadArticles = () =>
+  fetchAPI({ path: '/articles' }).then(({ data }) => data)
 
-export default function ArticleLatest({ data: initialValue }) {
-  const { data, error, isLoading } = useAsync({ promiseFn: loadArticles })
+export default function ArticleLatest({ initialValue }) {
+  const { data, error, isLoading } = useAsync({
+    promiseFn: loadArticles,
+    initialValue,
+  })
   if (isLoading) return 'Loading...'
   if (error) return `Something went wrong: ${error.message}`
 
-  if (get(data, 'data.length', 0) === 0) {
+  if (get(data, 'length', 0) === 0) {
     return null
   }
 
   return (
     <section>
       <h2>Latest Articles</h2>
-      <ArticleList data={data.data} />
+      <ArticleList data={data} />
     </section>
   )
 }
