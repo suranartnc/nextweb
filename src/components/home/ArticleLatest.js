@@ -2,11 +2,11 @@ import React from 'react'
 import { get } from 'lodash'
 import { useAsync } from 'react-async'
 
-import { loadArticles } from '@features/article/model'
+import { getLatestArticles } from '@features/article/data/model'
 
 export default function ArticleLatest({ initialValue }) {
   const { data, error, isLoading } = useAsync({
-    promiseFn: loadArticles,
+    promiseFn: getLatestArticles,
     initialValue,
   })
   if (isLoading) return 'Loading...'

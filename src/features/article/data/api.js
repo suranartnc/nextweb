@@ -1,5 +1,5 @@
 import { fetchAPI } from '@lib/api'
 
-export function loadArticles() {
+export function getArticles() {
   return fetchAPI({ path: '/articles' })
 }
