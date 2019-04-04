@@ -15,7 +15,6 @@ import ArticleLatest from '../home/ArticleLatest'
 function ArticleDetailPage({ articleDetail }) {
   return (
     <div>
-      <Helmet title={articleDetail.title} />
       <ArticleDetail data={articleDetail} />
 
       <Fetch api={getLatestArticles}>
@@ -25,10 +24,17 @@ function ArticleDetailPage({ articleDetail }) {
   )
 }
 
-ArticleDetailPage.getInitialProps = async ({ query }) => {
+ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
   const articleDetail = await getArticleDetail({ id: query.id })
 
   return {
+    title: articleDetail.title,
+    meta: {
+      description: articleDetail.excerpt,
+      keywords: articleDetail.tags.join(', '),
+      'og:title': articleDetail.title,
+      'og:description': articleDetail.excerpt,
+    },
     articleDetail,
   }
 }
