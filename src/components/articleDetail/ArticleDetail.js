@@ -3,9 +3,11 @@ import { withRouter } from 'next/router'
 import { Fetch } from '@lib/api'
 import { getArticleDetail } from '@features/article/data/model'
 
-function ArticleDetail({ router }) {
+function ArticleDetail({ router, initialValue }) {
   return (
-    <Fetch api={() => getArticleDetail({ id: router.query.id })}>
+    <Fetch
+      initialValue={initialValue}
+      api={() => getArticleDetail({ id: router.query.id })}>
       {({ data }) => (
         <article>
           <h1>{data.title}</h1>

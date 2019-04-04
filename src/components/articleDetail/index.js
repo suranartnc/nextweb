@@ -1,23 +1,24 @@
 import React from 'react'
 // import Helmet from 'react-helmet'
 
+import { getArticleDetail } from '@features/article/data/model'
 import withPage from '@lib/page/withPage'
 import ArticleDetail from './ArticleDetail'
 
-function ArticleDetailPage() {
+function ArticleDetailPage({ articleDetail }) {
   return (
     <div>
       {/* <Helmet title="Home" /> */}
-      <ArticleDetail />
+      <ArticleDetail initialValue={articleDetail} />
     </div>
   )
 }
 
-ArticleDetailPage.getInitialProps = async () => {
-  // const articleLatest = await getLatestArticles()
+ArticleDetailPage.getInitialProps = async ({ query }) => {
+  const articleDetail = await getArticleDetail({ id: query.id })
 
   return {
-    // articleLatest,
+    articleDetail,
   }
 }
 

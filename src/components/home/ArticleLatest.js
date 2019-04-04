@@ -37,7 +37,7 @@ function ArticleItem({ data }) {
     <article>
       <h3>
         <Link to="articleDetail" params={{ id: data.id }}>
-          {data.title}
+          <a>{data.title}</a>
         </Link>
       </h3>
       <div dangerouslySetInnerHTML={{ __html: data.excerpt }} />
