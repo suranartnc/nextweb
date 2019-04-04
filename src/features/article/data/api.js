@@ -6,3 +6,9 @@ export function getArticles({ q, start, limit }) {
     params: { q, _start: start, _limit: limit },
   })
 }
+
+export function getArticle({ id }) {
+  return fetchAPI({
+    path: `/articles/${id}`,
+  })
+}

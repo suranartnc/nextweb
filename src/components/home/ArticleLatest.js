@@ -5,7 +5,12 @@ import { getLatestArticles } from '@features/article/data/model'
 
 export default function ArticleLatest({ initialValue }) {
   return (
-    <Fetch api={getLatestArticles} initialValue={initialValue}>
+    <Fetch
+      api={getLatestArticles}
+      initialValue={initialValue}
+      onResolve={data => {
+        console.log('xxx', data)
+      }}>
       {({ data }) => (
         <section>
           <h2>Latest Articles</h2>
