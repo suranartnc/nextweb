@@ -1,18 +1,15 @@
 import React from 'react'
 import Async from 'react-async'
-import { get, isEmpty } from 'lodash'
-import { throwError } from './helpers'
+import { isEmpty } from 'lodash'
 
 export default function Fetch({
   children,
   api,
-  initialValue,
   onError,
-  priority = 'low',
   preloader = 'Loading...',
 }) {
   return (
-    <Async promiseFn={api} initialValue={initialValue}>
+    <Async promiseFn={api}>
       {({ data, error, isLoading }) => {
         if (isLoading) {
           return typeof preloader === 'function'
@@ -23,11 +20,6 @@ export default function Fetch({
         if (error) {
           if (typeof onError === 'function') {
             return onError(error)
-          }
-
-          if (priority === 'high') {
-            const statusCode = get(error, 'response.status')
-            throwError(statusCode)
           }
 
           return null
