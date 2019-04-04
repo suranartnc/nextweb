@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 
 import withPage from '@lib/page/withPage'
 import { Fetch } from '@lib/api'
