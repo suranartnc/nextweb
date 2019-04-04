@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Link } from '@router'
 import { Fetch } from '@lib/api'
 import { getLatestArticles } from '@features/article/data/model'
 
@@ -34,7 +35,11 @@ function ArticleList({ data }) {
 function ArticleItem({ data }) {
   return (
     <article>
-      <h3>{data.title}</h3>
+      <h3>
+        <Link to="articleDetail" params={{ id: data.id }}>
+          {data.title}
+        </Link>
+      </h3>
       <div dangerouslySetInnerHTML={{ __html: data.excerpt }} />
     </article>
   )

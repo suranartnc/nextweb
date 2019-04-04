@@ -6,7 +6,7 @@ const router = jsonServer.router(db)
 const middlewares = jsonServer.defaults()
 
 const port = 3001
-const delay = 1000
+const delay = 500
 
 server.use(middlewares)
 server.use((req, res, next) => {
