@@ -1,15 +1,26 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import { getArticleDetail } from '@features/article/data/model'
 import withPage from '@lib/page/withPage'
+import { Fetch } from '@lib/api'
+
+import {
+  getArticleDetail,
+  getLatestArticles,
+} from '@features/article/data/model'
+
 import ArticleDetail from './ArticleDetail'
+import ArticleLatest from '../home/ArticleLatest'
 
 function ArticleDetailPage({ articleDetail }) {
   return (
     <div>
       <Helmet title={articleDetail.title} />
       <ArticleDetail data={articleDetail} />
+
+      <Fetch api={getLatestArticles}>
+        {({ data }) => <ArticleLatest data={data} />}
+      </Fetch>
     </div>
   )
 }

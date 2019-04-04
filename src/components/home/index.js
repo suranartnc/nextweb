@@ -9,7 +9,7 @@ function HomePage({ articleLatest }) {
   return (
     <div>
       <Helmet title="Home" />
-      <ArticleLatest initialValue={articleLatest} />
+      <ArticleLatest data={articleLatest} />
     </div>
   )
 }

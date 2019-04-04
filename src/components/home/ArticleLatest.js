@@ -1,19 +1,13 @@
 import React from 'react'
 
 import { Link } from '@router'
-import { Fetch } from '@lib/api'
-import { getLatestArticles } from '@features/article/data/model'
 
-export default function ArticleLatest({ initialValue }) {
+export default function ArticleLatest({ data }) {
   return (
-    <Fetch api={getLatestArticles} initialValue={initialValue}>
-      {({ data }) => (
-        <section>
-          <h2>Latest Articles</h2>
-          <ArticleList data={data} />
-        </section>
-      )}
-    </Fetch>
+    <section>
+      <h2>Latest Articles</h2>
+      <ArticleList data={data} />
+    </section>
   )
 }
 
