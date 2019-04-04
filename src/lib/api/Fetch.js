@@ -7,13 +7,12 @@ export default function Fetch({
   children,
   api,
   initialValue,
-  priority = 'low',
   onError,
+  priority = 'low',
   preloader = 'Loading...',
-  onResolve,
 }) {
   return (
-    <Async promiseFn={api} initialValue={initialValue} onResolve={onResolve}>
+    <Async promiseFn={api} initialValue={initialValue}>
       {({ data, error, isLoading }) => {
         if (isLoading) {
           return typeof preloader === 'function'
