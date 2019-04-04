@@ -1,18 +1,13 @@
 import React from 'react'
 
-import { Fetch } from '@lib/api'
-import { getLatestArticles } from '@features/article/data/model'
+import { Link } from '@router'
 
-export default function ArticleLatest({ initialValue }) {
+export default function ArticleLatest({ data }) {
   return (
-    <Fetch api={getLatestArticles} initialValue={initialValue}>
-      {({ data }) => (
-        <section>
-          <h2>Latest Articles</h2>
-          <ArticleList data={data} />
-        </section>
-      )}
-    </Fetch>
+    <section>
+      <h2>Latest Articles</h2>
+      <ArticleList data={data} />
+    </section>
   )
 }
 
@@ -29,7 +24,11 @@ function ArticleList({ data }) {
 function ArticleItem({ data }) {
   return (
     <article>
-      <h3>{data.title}</h3>
+      <h3>
+        <Link to="articleDetail" params={{ id: data.id }}>
+          <a>{data.title}</a>
+        </Link>
+      </h3>
       <div dangerouslySetInnerHTML={{ __html: data.excerpt }} />
     </article>
   )

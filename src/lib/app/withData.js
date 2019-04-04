@@ -8,7 +8,7 @@ export default function withData(Page) {
   PageWithData.getInitialProps = async function(appContext) {
     let appProps = {}
 
-    if (process.browser) return appProps
+    // if (process.browser) return appProps
 
     if (typeof Page.getInitialProps === 'function') {
       appProps = await Page.getInitialProps(appContext)

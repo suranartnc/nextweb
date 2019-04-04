@@ -1,6 +1,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import withPage from '@lib/page/withPage'
+
 function AboutPage() {
   return (
     <div>
@@ -10,4 +12,4 @@ function AboutPage() {
   )
 }
 
-export default AboutPage
+export default withPage()(AboutPage)
