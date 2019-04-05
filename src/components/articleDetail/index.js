@@ -42,6 +42,17 @@ ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
         },
       },
     },
+    breadcrumb: [
+      {
+        label: articleDetail.title,
+        route: {
+          name: 'articleDetail',
+          params: {
+            id: articleDetail.id,
+          },
+        },
+      },
+    ],
     articleDetail,
   }
 }

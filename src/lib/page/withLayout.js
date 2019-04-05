@@ -8,7 +8,7 @@ export default (hasLayout = true) => PageComponent => {
     }
 
     return (
-      <MainLayout>
+      <MainLayout breadcrumb={props.breadcrumb}>
         <PageComponent {...props} />
       </MainLayout>
     )

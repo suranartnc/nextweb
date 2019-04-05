@@ -1,34 +1,17 @@
 import React, { Fragment } from 'react'
 import { Link } from '@router'
 
-Breadcrumb.defaultProps = {
-  navs: [
-    {
-      label: 'Articles',
-      route: {
-        name: 'home',
-      },
-    },
-    {
-      label: 'Article Detail',
-      route: {
-        name: 'home',
-      },
-    },
-  ],
-}
-
-export default function Breadcrumb({ navs }) {
+export default function Breadcrumb({ data = [] }) {
   return (
     <nav>
       <Link key="Home" to="home">
         <a>Home</a>
       </Link>
 
-      {navs.map(({ label, route }) => (
+      {data.map(({ label, route }) => (
         <Fragment key={label}>
           <span>&gt;</span>
-          <Link to={route.name}>
+          <Link to={route.name} params={route.params}>
             <a>{label}</a>
           </Link>
         </Fragment>
