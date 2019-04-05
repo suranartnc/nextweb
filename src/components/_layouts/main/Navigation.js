@@ -25,12 +25,23 @@ export default function Navigation() {
   }
 
   return (
-    <div>
+    <nav>
       {mainMenus.map(menu => (
         <Link key={menu.name} to={menu.route}>
           <a onClick={trackEvent(menu)}>{menu.name}</a>
         </Link>
       ))}
-    </div>
+      <style jsx>{`
+        nav {
+          margin-bottom: 30px;
+          border-bottom: 1px solid #aaa;
+        }
+        a {
+          display: inline-box;
+          padding: 5px 15px 5px 0px;
+          margin-right: 10px;
+        }
+      `}</style>
+    </nav>
   )
 }
