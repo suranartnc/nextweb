@@ -34,6 +34,13 @@ ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
       'og:title': articleDetail.title,
       'og:description': articleDetail.excerpt,
     },
+    stats: {
+      gtm: {
+        customDimensions: {
+          customDM1: articleDetail.author.name,
+        },
+      },
+    },
     articleDetail,
   }
 }
