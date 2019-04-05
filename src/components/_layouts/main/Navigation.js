@@ -33,12 +33,12 @@ export default function Navigation() {
       ))}
       <style jsx>{`
         nav {
-          margin-bottom: 30px;
+          margin-bottom: 10px;
           border-bottom: 1px solid #aaa;
         }
         a {
           display: inline-box;
-          padding: 5px 15px 5px 0px;
+          padding: 5px 15px 10px 0px;
           margin-right: 10px;
         }
       `}</style>
