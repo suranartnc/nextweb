@@ -38,6 +38,7 @@ ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
       gtm: {
         customDimensions: {
           customDM1: articleDetail.author.name,
+          customDM2: articleDetail.pubDate,
         },
       },
     },

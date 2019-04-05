@@ -1,16 +1,15 @@
-import get from 'lodash/get'
+import { get } from 'lodash'
 
-const cleanedOldGtmData = {
+const initialPageViewData = {
   customDM1: undefined,
   customDM2: undefined,
 }
 
-const cleanedOldGtmEventData = {
+const initialEventData = {
   eventCategory: undefined,
   eventAction: undefined,
   eventLabel: undefined,
   eventValue: undefined,
-  customDM1: undefined,
 }
 
 function isDataInvalid(data) {
@@ -26,26 +25,26 @@ function gtmPush(data) {
 }
 
 export function logPageview(gtmData) {
-  const dataGTM = {
-    ...cleanedOldGtmData,
+  const dataPageViewGTM = {
+    ...initialPageViewData,
     customPage: `${window.location.pathname}${window.location.search}`,
     ...(gtmData || {}),
   }
 
   gtmPush({
-  'event': 'trackPageview', // eslint-disable-line
-  ...dataGTM, // eslint-disable-line
+    event: 'trackPageview',
+    ...dataPageViewGTM,
   })
 }
 
 export function logEvent(gtmEventData) {
   const dataEventGTM = {
-    ...cleanedOldGtmEventData,
+    ...initialEventData,
     ...(gtmEventData || {}),
   }
 
   gtmPush({
-    'event': 'trackEvent', // eslint-disable-line
-    ...dataEventGTM, // eslint-disable-line
+    event: 'trackEvent',
+    ...dataEventGTM,
   })
 }
