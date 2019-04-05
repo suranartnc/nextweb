@@ -14,7 +14,7 @@ const mainMenus = [
 ]
 
 export default function Navigation() {
-  const trackEvent = menu => () =>
+  const trackEvent = menu => () => {
     GTM.logEvent({
       category: 'Navigation',
       action: 'Clicked',
@@ -22,6 +22,7 @@ export default function Navigation() {
       dimension1: 'dimension1',
       dimension2: 'dimension2',
     })
+  }
 
   return (
     <div>
