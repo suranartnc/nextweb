@@ -1,16 +1,22 @@
-import get from 'lodash/get'
+import { get } from 'lodash'
 
-const cleanedOldGtmData = {
+const initialCustomDimensions = {
   customDM1: undefined,
   customDM2: undefined,
+  dimension1: undefined,
+  dimension2: undefined,
 }
 
-const cleanedOldGtmEventData = {
-  eventCategory: undefined,
-  eventAction: undefined,
-  eventLabel: undefined,
-  eventValue: undefined,
-  customDM1: undefined,
+const variableNames = {
+  pageView: {
+    page: 'customPage',
+  },
+  event: {
+    category: 'eventCategory',
+    action: 'eventAction',
+    label: 'eventLabel',
+    value: 'eventValue',
+  },
 }
 
 function isDataInvalid(data) {
@@ -25,27 +31,41 @@ function gtmPush(data) {
   }
 }
 
-export function logPageview(gtmData) {
-  const dataGTM = {
-    ...cleanedOldGtmData,
-    customPage: `${window.location.pathname}${window.location.search}`,
-    ...(gtmData || {}),
+export function logPageview(customDimensions = {}) {
+  const { pageView } = variableNames
+
+  const customData = {
+    ...initialCustomDimensions,
+    [pageView.page]: `${window.location.pathname}${window.location.search}`,
+    ...customDimensions,
   }
 
   gtmPush({
-  'event': 'trackPageview', // eslint-disable-line
-  ...dataGTM, // eslint-disable-line
+    event: 'trackPageview',
+    ...customData,
   })
 }
 
-export function logEvent(gtmEventData) {
-  const dataEventGTM = {
-    ...cleanedOldGtmEventData,
-    ...(gtmEventData || {}),
+export function logEvent({
+  category,
+  action,
+  label,
+  value,
+  ...customDimensions
+}) {
+  const { event } = variableNames
+
+  const customData = {
+    ...initialCustomDimensions,
+    [event.category]: category,
+    [event.action]: action,
+    [event.label]: label,
+    [event.value]: value,
+    ...(customDimensions || {}),
   }
 
   gtmPush({
-    'event': 'trackEvent', // eslint-disable-line
-    ...dataEventGTM, // eslint-disable-line
+    event: 'trackEvent',
+    ...customData,
   })
 }

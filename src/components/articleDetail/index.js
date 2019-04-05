@@ -34,6 +34,25 @@ ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
       'og:title': articleDetail.title,
       'og:description': articleDetail.excerpt,
     },
+    stats: {
+      gtm: {
+        customDimensions: {
+          customDM1: articleDetail.author.name,
+          customDM2: articleDetail.pubDate,
+        },
+      },
+    },
+    breadcrumb: [
+      {
+        label: articleDetail.title,
+        route: {
+          name: 'articleDetail',
+          params: {
+            id: articleDetail.id,
+          },
+        },
+      },
+    ],
     articleDetail,
   }
 }

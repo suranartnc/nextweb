@@ -12,4 +12,4 @@ function AboutPage() {
   )
 }
 
-export default withPage()(AboutPage)
+export default withPage({ layout: false })(AboutPage)

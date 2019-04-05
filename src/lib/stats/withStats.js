@@ -5,7 +5,7 @@ import * as GTM from './gtm'
 export default function withStats(PageComponent) {
   function EnhancedPageComponent(props) {
     const asPath = get(props, 'router.asPath')
-    const customDimensions = get(props, 'customDimensions', {})
+    const customDimensions = get(props, 'stats.gtm.customDimensions', {})
 
     useEffect(
       function() {
