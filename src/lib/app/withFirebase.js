@@ -14,10 +14,12 @@ const firebaseConfig = {
 export const userContext = React.createContext(null)
 
 const useFirebaseAuth = config => {
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState(undefined)
 
   useEffect(() => {
     const app = firebase.initializeApp(config)
+    setUserData(firebase.auth().currentUser)
+
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       setUserData(user)
     })
