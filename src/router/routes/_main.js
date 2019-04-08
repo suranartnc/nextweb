@@ -14,6 +14,11 @@ const routes = [
     name: 'about',
     page: 'about',
   },
+  {
+    pattern: '/login',
+    name: 'login',
+    page: 'login',
+  },
 ]
 
 module.exports = routes

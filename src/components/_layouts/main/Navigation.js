@@ -11,6 +11,10 @@ const mainMenus = [
     name: 'About',
     route: 'about',
   },
+  {
+    name: 'Login',
+    route: 'login',
+  },
 ]
 
 export default function Navigation() {
