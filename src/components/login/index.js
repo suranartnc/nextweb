@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 // import Helmet from 'react-helmet'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import { useAuthState } from 'react-firebase-hooks/auth'
 
 import withPage from '@lib/page/withPage'
+import { userContext } from '@lib/app/withFirebase'
 
 function LoginPage() {
-  const { initialising, user } = useAuthState(firebase.auth())
-
+  const userData = useContext(userContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -20,18 +19,10 @@ function LoginPage() {
     firebase.auth().signOut()
   }
 
-  if (initialising) {
+  if (userData) {
     return (
       <div>
-        <p>Initialising User...</p>
-      </div>
-    )
-  }
-
-  if (user) {
-    return (
-      <div>
-        <p>Current User: {user.email}</p>
+        <p>Current User: {userData.email}</p>
         <button onClick={logout}>Log out</button>
       </div>
     )

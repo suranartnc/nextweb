@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import firebase from 'firebase/app'
+import 'firebase/auth'
 
-const config = {
+const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.FIREBASE_DATABASE_URL,
@@ -10,14 +11,35 @@ const config = {
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
 }
 
+export const userContext = React.createContext(null)
+
+const useFirebaseAuth = config => {
+  const [userData, setUserData] = useState(null)
+
+  useEffect(() => {
+    const app = firebase.initializeApp(config)
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      setUserData(user)
+    })
+
+    return () => {
+      app.delete()
+      unsubscribe()
+    }
+  }, [])
+
+  return userData
+}
+
 export default function withFirebase(Page) {
   function PageWithFirebase(props) {
-    useEffect(() => {
-      const app = firebase.initializeApp(config)
-      return () => app.delete()
-    }, [config])
+    const userData = useFirebaseAuth(firebaseConfig)
 
-    return <Page {...props} />
+    return (
+      <userContext.Provider value={userData}>
+        <Page {...props} />
+      </userContext.Provider>
+    )
   }
 
   PageWithFirebase.getInitialProps = async function(appContext) {
