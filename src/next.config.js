@@ -22,7 +22,7 @@ const nextConfig = {
       ...config.plugins,
 
       new Dotenv({
-        path: path.join(__dirname, '.env'),
+        path: path.join(process.cwd(), '.env'),
         systemvars: true,
       }),
     ]
