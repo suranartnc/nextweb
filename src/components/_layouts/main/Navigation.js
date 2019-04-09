@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from '@router'
 import * as GTM from '@lib/stats/gtm'
 import { userContext } from '@lib/firebase/auth'
+import { css } from '@emotion/core'
 
 const mainMenus = [
   {
@@ -13,6 +14,16 @@ const mainMenus = [
     route: 'about',
   },
 ]
+
+const style = css`
+  margin-bottom: 10px;
+  border-bottom: 1px solid #aaa;
+  a {
+    display: inline-box;
+    padding: 5px 15px 10px 0px;
+    margin-right: 10px;
+  }
+`
 
 export default function Navigation() {
   const userData = useContext(userContext)
@@ -28,7 +39,7 @@ export default function Navigation() {
   }
 
   return (
-    <nav>
+    <nav css={style}>
       {mainMenus.map(menu => (
         <Link key={menu.name} to={menu.route}>
           <a onClick={trackEvent(menu)}>{menu.name}</a>
@@ -44,18 +55,6 @@ export default function Navigation() {
           <a onClick={trackEvent({ name: 'Login' })}>Login</a>
         </Link>
       )}
-
-      <style jsx>{`
-        nav {
-          margin-bottom: 10px;
-          border-bottom: 1px solid #aaa;
-        }
-        a {
-          display: inline-box;
-          padding: 5px 15px 10px 0px;
-          margin-right: 10px;
-        }
-      `}</style>
     </nav>
   )
 }

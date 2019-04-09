@@ -1,9 +1,19 @@
 import React, { Fragment } from 'react'
 import { Link } from '@router'
+import { css } from '@emotion/core'
+
+const style = css`
+  font-size: 0.8em;
+  margin-bottom: 30px;
+  a {
+    display: inline-box;
+    padding: 5px;
+  }
+`
 
 export default function Breadcrumb({ data = [] }) {
   return (
-    <nav>
+    <nav css={style}>
       <Link key="Home" to="home">
         <a>Home</a>
       </Link>
@@ -16,17 +26,6 @@ export default function Breadcrumb({ data = [] }) {
           </Link>
         </Fragment>
       ))}
-
-      <style jsx>{`
-        nav {
-          font-size: 0.8em;
-          margin-bottom: 30px;
-        }
-        a {
-          display: inline-box;
-          padding: 5px;
-        }
-      `}</style>
     </nav>
   )
 }
