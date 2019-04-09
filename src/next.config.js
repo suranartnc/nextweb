@@ -8,6 +8,11 @@ const CircularDependencyPlugin = require('circular-dependency-plugin')
 
 const nextConfig = {
   assetPrefix: process.env.ASSET_PREFIX,
+  useFileSystemPublicRoutes: false,
+  sassLoaderOptions: {
+    outputStyle:
+      process.env.NODE_ENV !== 'production' ? 'expanded' : 'compressed',
+  },
   analyzeBrowser: process.env.BUNDLE_ANALYZE === 'browser',
   bundleAnalyzerConfig: {
     browser: {
