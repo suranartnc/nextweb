@@ -25,4 +25,4 @@ AboutPage.getInitialProps = async function() {
   }
 }
 
-export default withPage({ restricted: true })(AboutPage)
+export default withPage()(AboutPage)

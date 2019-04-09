@@ -1,13 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
+import { Router } from '@router'
 import { userContext } from './withAuth'
 
 export default (restricted = false) => PageComponent => {
   function EnhancedPageComponent(props) {
     const userData = useContext(userContext)
 
-    if (restricted && userData === null) {
-      return <div>Forbidden</div>
-    }
+    useEffect(() => {
+      if (restricted && !userData) {
+        Router.pushRoute('login', {
+          redirect: props.router.asPath,
+        })
+      }
+    }, [restricted, userData])
 
     return <PageComponent {...props} />
   }

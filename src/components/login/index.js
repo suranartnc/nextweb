@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react'
-// import Helmet from 'react-helmet'
+import React, { useState, useEffect, useContext } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
+import { Router } from '@router'
 import withPage from '@lib/page/withPage'
 import { userContext } from '@lib/firebase/auth'
 
@@ -15,18 +15,19 @@ function LoginPage() {
     e.preventDefault()
     firebase.auth().signInWithEmailAndPassword(email, password)
   }
-  const logout = () => {
-    firebase.auth().signOut()
-  }
 
-  if (userData) {
-    return (
-      <div>
-        <p>Current User: {userData.email}</p>
-        <button onClick={logout}>Log out</button>
-      </div>
-    )
-  }
+  useEffect(() => {
+    if (userData) {
+      const { redirect } = Router.router.query
+
+      if (redirect) {
+        Router.push(redirect)
+        return
+      }
+
+      Router.pushRoute('account')
+    }
+  }, [userData])
 
   return (
     <form onSubmit={login}>
