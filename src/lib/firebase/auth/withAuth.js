@@ -4,7 +4,7 @@ import 'firebase/auth'
 
 export const userContext = React.createContext(null)
 
-const useFirebaseAuth = () => {
+const useAuth = () => {
   const [userData, setUserData] = useState(undefined)
 
   useEffect(() => {
@@ -22,9 +22,9 @@ const useFirebaseAuth = () => {
   return userData
 }
 
-export default function withFirebaseAuth(Page) {
-  function PageWithFirebaseAuth(props) {
-    const userData = useFirebaseAuth()
+export function withAuth(Page) {
+  function PageWithAuth(props) {
+    const userData = useAuth()
 
     return (
       <userContext.Provider value={userData}>
@@ -33,7 +33,7 @@ export default function withFirebaseAuth(Page) {
     )
   }
 
-  PageWithFirebaseAuth.getInitialProps = async function(appContext) {
+  PageWithAuth.getInitialProps = async function(appContext) {
     let appProps = {}
     if (typeof Page.getInitialProps === 'function') {
       appProps = await Page.getInitialProps(appContext)
@@ -41,5 +41,5 @@ export default function withFirebaseAuth(Page) {
     return appProps
   }
 
-  return PageWithFirebaseAuth
+  return PageWithAuth
 }

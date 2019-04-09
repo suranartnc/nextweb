@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { userContext } from '@lib/app/withFirebaseAuth'
+import { userContext } from './withAuth'
 
 export default (restricted = false) => PageComponent => {
   function EnhancedPageComponent(props) {
