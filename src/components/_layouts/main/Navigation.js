@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from '@router'
 import * as GTM from '@lib/stats/gtm'
 import { userContext } from '@lib/firebase/auth'
-import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 
 const mainMenus = [
   {
@@ -15,15 +15,14 @@ const mainMenus = [
   },
 ]
 
-const Nav = styled.nav`
+const style = css`
   margin-bottom: 10px;
   border-bottom: 1px solid #aaa;
-`
-
-const NavLink = styled.a`
-  display: inline-box;
-  padding: 5px 15px 10px 0px;
-  margin-right: 10px;
+  a {
+    display: inline-box;
+    padding: 5px 15px 10px 0px;
+    margin-right: 10px;
+  }
 `
 
 export default function Navigation() {
@@ -40,22 +39,22 @@ export default function Navigation() {
   }
 
   return (
-    <Nav>
+    <nav css={style}>
       {mainMenus.map(menu => (
         <Link key={menu.name} to={menu.route}>
-          <NavLink onClick={trackEvent(menu)}>{menu.name}</NavLink>
+          <a onClick={trackEvent(menu)}>{menu.name}</a>
         </Link>
       ))}
 
       {userData ? (
         <Link key="Account" to="account">
-          <NavLink onClick={trackEvent({ name: 'Account' })}>Account</NavLink>
+          <a onClick={trackEvent({ name: 'Account' })}>Account</a>
         </Link>
       ) : (
         <Link key="Login" to="login">
-          <NavLink onClick={trackEvent({ name: 'Login' })}>Login</NavLink>
+          <a onClick={trackEvent({ name: 'Login' })}>Login</a>
         </Link>
       )}
-    </Nav>
+    </nav>
   )
 }

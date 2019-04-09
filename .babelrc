@@ -1,10 +1,10 @@
 {
   "presets": [
-    ["next/babel"]
+    "next/babel",
+    "@emotion/babel-preset-css-prop"
   ],
   "plugins": [
     "lodash",
-    "emotion",
     [
       "module-resolver", {
         "alias": {
