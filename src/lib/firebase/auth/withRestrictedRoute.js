@@ -7,7 +7,7 @@ export default (restricted = false) => PageComponent => {
     const userData = useContext(userContext)
 
     useEffect(() => {
-      if (restricted && !userData) {
+      if (restricted && userData === null) {
         Router.pushRoute('login', {
           redirect: props.router.asPath,
         })

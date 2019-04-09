@@ -8,8 +8,6 @@ const useAuth = () => {
   const [userData, setUserData] = useState(undefined)
 
   useEffect(() => {
-    setUserData(firebase.auth().currentUser)
-
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       setUserData(user)
     })
