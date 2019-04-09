@@ -12,6 +12,10 @@ function AccountPage() {
     firebase.auth().signOut()
   }
 
+  if (!userData) {
+    return null
+  }
+
   return (
     <div>
       <p>Current User: {userData.email}</p>
