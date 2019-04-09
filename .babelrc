@@ -4,6 +4,7 @@
   ],
   "plugins": [
     "lodash",
+    "emotion",
     [
       "module-resolver", {
         "alias": {

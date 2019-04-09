@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from '@router'
 import * as GTM from '@lib/stats/gtm'
 import { userContext } from '@lib/firebase/auth'
+import styled from '@emotion/styled'
 
 const mainMenus = [
   {
@@ -13,6 +14,17 @@ const mainMenus = [
     route: 'about',
   },
 ]
+
+const Nav = styled.nav`
+  margin-bottom: 10px;
+  border-bottom: 1px solid #aaa;
+`
+
+const NavLink = styled.a`
+  display: inline-box;
+  padding: 5px 15px 10px 0px;
+  margin-right: 10px;
+`
 
 export default function Navigation() {
   const userData = useContext(userContext)
@@ -28,34 +40,22 @@ export default function Navigation() {
   }
 
   return (
-    <nav>
+    <Nav>
       {mainMenus.map(menu => (
         <Link key={menu.name} to={menu.route}>
-          <a onClick={trackEvent(menu)}>{menu.name}</a>
+          <NavLink onClick={trackEvent(menu)}>{menu.name}</NavLink>
         </Link>
       ))}
 
       {userData ? (
         <Link key="Account" to="account">
-          <a onClick={trackEvent({ name: 'Account' })}>Account</a>
+          <NavLink onClick={trackEvent({ name: 'Account' })}>Account</NavLink>
         </Link>
       ) : (
         <Link key="Login" to="login">
-          <a onClick={trackEvent({ name: 'Login' })}>Login</a>
+          <NavLink onClick={trackEvent({ name: 'Login' })}>Login</NavLink>
         </Link>
       )}
-
-      <style jsx>{`
-        nav {
-          margin-bottom: 10px;
-          border-bottom: 1px solid #aaa;
-        }
-        a {
-          display: inline-box;
-          padding: 5px 15px 10px 0px;
-          margin-right: 10px;
-        }
-      `}</style>
-    </nav>
+    </Nav>
   )
 }
