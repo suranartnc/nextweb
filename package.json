@@ -36,6 +36,7 @@
     "dotenv-webpack": "^1.7.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
+    "firebase": "^5.9.3",
     "json-server": "^0.14.2",
     "lodash": "^4.17.11",
     "next": "^8.0.3",
@@ -44,6 +45,7 @@
     "react": "^16.8.6",
     "react-async": "^6.0.1",
     "react-dom": "^16.8.6",
+    "react-firebase-hooks": "^1.1.0",
     "react-helmet": "^5.2.0",
     "serve-favicon": "^2.5.0"
   },

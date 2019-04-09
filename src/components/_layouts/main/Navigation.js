@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from '@router'
 import * as GTM from '@lib/stats/gtm'
+import { userContext } from '@lib/firebase/auth'
 
 const mainMenus = [
   {
@@ -14,6 +15,8 @@ const mainMenus = [
 ]
 
 export default function Navigation() {
+  const userData = useContext(userContext)
+
   const trackEvent = menu => () => {
     GTM.logEvent({
       category: 'Navigation',
@@ -31,6 +34,17 @@ export default function Navigation() {
           <a onClick={trackEvent(menu)}>{menu.name}</a>
         </Link>
       ))}
+
+      {userData ? (
+        <Link key="Account" to="account">
+          <a onClick={trackEvent({ name: 'Account' })}>Account</a>
+        </Link>
+      ) : (
+        <Link key="Login" to="login">
+          <a onClick={trackEvent({ name: 'Login' })}>Login</a>
+        </Link>
+      )}
+
       <style jsx>{`
         nav {
           margin-bottom: 10px;

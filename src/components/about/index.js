@@ -12,4 +12,17 @@ function AboutPage() {
   )
 }
 
-export default withPage({ layout: false })(AboutPage)
+AboutPage.getInitialProps = async function() {
+  return {
+    breadcrumb: [
+      {
+        label: 'About',
+        route: {
+          name: 'about',
+        },
+      },
+    ],
+  }
+}
+
+export default withPage()(AboutPage)
