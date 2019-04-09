@@ -4,6 +4,7 @@ import App, { Container } from 'next/app'
 import { flowRight as compose } from 'lodash'
 
 import withFirebase from '@lib/app/withFirebase'
+import withFirebaseAuth from '@lib/app/withFirebaseAuth'
 import withData from '@lib/app/withData'
 import GlobalStyles from '@lib/styles/GlobalStyles'
 
@@ -24,4 +25,5 @@ class MyApp extends App {
 export default compose(
   withData,
   withFirebase,
+  withFirebaseAuth,
 )(MyApp)

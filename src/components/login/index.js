@@ -4,7 +4,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 
 import withPage from '@lib/page/withPage'
-import { userContext } from '@lib/app/withFirebase'
+import { userContext } from '@lib/app/withFirebaseAuth'
 
 function LoginPage() {
   const userData = useContext(userContext)
