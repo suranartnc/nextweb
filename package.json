@@ -45,6 +45,7 @@
     "next": "^8.0.3",
     "next-routes": "^1.4.2",
     "node-sass": "^4.11.0",
+    "normalize.css": "^8.0.1",
     "react": "^16.8.6",
     "react-async": "^6.0.1",
     "react-dom": "^16.8.6",
