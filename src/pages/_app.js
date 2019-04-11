@@ -6,7 +6,7 @@ import { flowRight as compose } from 'lodash'
 import { withFirebase } from '@lib/firebase'
 import { withAuth } from '@lib/firebase/auth'
 
-import GlobalStyles from '@lib/styles/GlobalStyles'
+import { GlobalStyles } from '@lib/styles'
 
 class MyApp extends App {
   render() {
