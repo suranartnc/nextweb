@@ -11,7 +11,7 @@ const baseStyles = css`
     margin: 0;
     background: papayawhip;
     min-height: 100%;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 24px;
   }
 `

@@ -54,7 +54,8 @@
     "react-dom": "^16.8.6",
     "react-firebase-hooks": "^1.1.0",
     "react-helmet": "^5.2.0",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@zeit/next-bundle-analyzer": "^0.1.2",

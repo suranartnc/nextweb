@@ -8,7 +8,18 @@ import { withAuth } from '@lib/firebase/auth'
 
 import { GlobalStyles } from '@lib/styles'
 
+let WebFont
+
 class MyApp extends App {
+  componentDidMount() {
+    WebFont = require('webfontloader')
+
+    WebFont.load({
+      google: {
+        families: ['Open Sans:300,700'],
+      },
+    })
+  }
   render() {
     const { Component, router } = this.props
 
