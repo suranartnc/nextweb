@@ -1,4 +1,5 @@
 import './sass/app.scss'
+import './fontAwesome'
 
 import React from 'react'
 import { css, Global } from '@emotion/core'
