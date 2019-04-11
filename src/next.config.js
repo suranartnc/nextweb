@@ -2,7 +2,6 @@ require('dotenv').config()
 
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
-const withSass = require('@zeit/next-sass')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
 
@@ -56,4 +55,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withSass(withBundleAnalyzer(nextConfig))
+module.exports = withBundleAnalyzer(nextConfig)
