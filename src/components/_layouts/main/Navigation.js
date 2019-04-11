@@ -4,14 +4,18 @@ import * as GTM from '@lib/stats/gtm'
 import { userContext } from '@lib/firebase/auth'
 import { css } from '@emotion/core'
 
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+
 const mainMenus = [
   {
     name: 'Home',
     route: 'home',
+    icon: 'home',
   },
   {
     name: 'About',
     route: 'about',
+    icon: 'users',
   },
 ]
 
@@ -42,17 +46,26 @@ export default function Navigation() {
     <nav css={style}>
       {mainMenus.map(menu => (
         <Link key={menu.name} to={menu.route}>
-          <a onClick={trackEvent(menu)}>{menu.name}</a>
+          <a onClick={trackEvent(menu)}>
+            <Icon icon={menu.icon} />
+            {menu.name}
+          </a>
         </Link>
       ))}
 
       {userData ? (
         <Link key="Account" to="account">
-          <a onClick={trackEvent({ name: 'Account' })}>Account</a>
+          <a onClick={trackEvent({ name: 'Account' })}>
+            <Icon icon="user" />
+            Account
+          </a>
         </Link>
       ) : (
         <Link key="Login" to="login">
-          <a onClick={trackEvent({ name: 'Login' })}>Login</a>
+          <a onClick={trackEvent({ name: 'Login' })}>
+            <Icon icon="sign-in-alt" />
+            Login
+          </a>
         </Link>
       )}
     </nav>
