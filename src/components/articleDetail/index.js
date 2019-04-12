@@ -1,4 +1,5 @@
 import React from 'react'
+import { Flex, Box } from '@rebass/grid/emotion'
 
 import withPage from '@lib/page/withPage'
 import { Fetch } from '@lib/api'
@@ -13,13 +14,17 @@ import ArticleLatest from '../home/ArticleLatest'
 
 function ArticleDetailPage({ articleDetail }) {
   return (
-    <div>
-      <ArticleDetail data={articleDetail} />
+    <Flex flexWrap="wrap">
+      <Box width={[1, 2 / 3]} pr={[0, 20]}>
+        <ArticleDetail data={articleDetail} />
+      </Box>
 
-      <Fetch api={getLatestArticles}>
-        {({ data }) => <ArticleLatest data={data} />}
-      </Fetch>
-    </div>
+      <Box width={[1, 1 / 3]} pl={[0, 20]}>
+        <Fetch api={getLatestArticles}>
+          {({ data }) => <ArticleLatest data={data} />}
+        </Fetch>
+      </Box>
+    </Flex>
   )
 }
 
