@@ -1,19 +1,30 @@
-import { useState, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 
-const DESKTOP_MIN_WIDTH = 960
-
-export function media(minWidth) {
-  return `@media (min-width: ${minWidth}px)`
+export const breakpoints = {
+  md: '48em', // 768px
+  lg: '60em', // 960px
+  xl: '80em', // 1280px
 }
 
-export function Responsive({
-  breakpoint = DESKTOP_MIN_WIDTH,
+export function media(bp = 'lg') {
+  return `@media (min-width: ${breakpoints[bp]})`
+}
+
+export function Responsive(options) {
+  if (!process.browser) return null
+
+  return <UISwitcher {...options} />
+}
+
+function UISwitcher({
+  breakpoint = 'lg',
   wide = null,
   narrow = null,
   prerender = null,
 }) {
   const width = useWindowWidth()
-  return width === null ? prerender : width >= breakpoint ? wide : narrow
+  const breakpointInPx = breakpoints[breakpoint].replace('em', '') * 16
+  return width === null ? prerender : width >= breakpointInPx ? wide : narrow
 }
 
 function useWindowWidth() {
