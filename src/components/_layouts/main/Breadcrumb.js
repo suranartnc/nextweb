@@ -1,28 +1,22 @@
 import React, { Fragment } from 'react'
 import { Link } from '@router'
-import { css } from '@emotion/core'
 
-const style = css`
-  font-size: 0.8em;
-  margin-bottom: 30px;
-  a {
-    display: inline-box;
-    padding: 5px;
-  }
-`
+function LinkItem({ children }) {
+  return <a css={{ display: 'inline-box', padding: 5 }}>{children}</a>
+}
 
 export default function Breadcrumb({ data = [] }) {
   return (
-    <nav css={style}>
+    <nav css={{ fontSize: '0.8em', marginBottom: 30 }}>
       <Link key="Home" to="home">
-        <a>Home</a>
+        <LinkItem>Home</LinkItem>
       </Link>
 
       {data.map(({ label, route }) => (
         <Fragment key={label}>
           <span>&gt;</span>
           <Link to={route.name} params={route.params}>
-            <a>{label}</a>
+            <LinkItem>{label}</LinkItem>
           </Link>
         </Fragment>
       ))}

@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { Link } from '@router'
 import * as GTM from '@lib/stats/gtm'
 import { userContext } from '@lib/firebase/auth'
-import { css } from '@emotion/core'
 
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 
@@ -19,53 +18,49 @@ const mainMenus = [
   },
 ]
 
-const style = css`
-  margin-bottom: 10px;
-  border-bottom: 1px solid #aaa;
-  a {
-    display: inline-box;
-    padding: 5px 15px 10px 0px;
-    margin-right: 10px;
-  }
-`
+const trackEvent = menu => () => {
+  GTM.logEvent({
+    category: 'Navigation',
+    action: 'Clicked',
+    label: menu.name,
+    dimension1: 'dimension1',
+    dimension2: 'dimension2',
+  })
+}
+
+function LinkItem({ menu }) {
+  return (
+    <a
+      onClick={trackEvent(menu)}
+      css={{
+        display: 'inline-box',
+        padding: '5px 15px 10px 0px',
+        marginRight: 10,
+      }}>
+      <Icon icon={menu.icon} />
+      {menu.name}
+    </a>
+  )
+}
 
 export default function Navigation() {
   const userData = useContext(userContext)
 
-  const trackEvent = menu => () => {
-    GTM.logEvent({
-      category: 'Navigation',
-      action: 'Clicked',
-      label: menu.name,
-      dimension1: 'dimension1',
-      dimension2: 'dimension2',
-    })
-  }
-
   return (
-    <nav css={style}>
+    <nav css={{ marginBottom: 10, borderBottom: '1px solid #aaa' }}>
       {mainMenus.map(menu => (
         <Link key={menu.name} to={menu.route}>
-          <a onClick={trackEvent(menu)}>
-            <Icon icon={menu.icon} />
-            {menu.name}
-          </a>
+          <LinkItem menu={menu} />
         </Link>
       ))}
 
       {userData ? (
         <Link key="Account" to="account">
-          <a onClick={trackEvent({ name: 'Account' })}>
-            <Icon icon="user" />
-            Account
-          </a>
+          <LinkItem menu={{ name: 'Account', icon: 'user' }} />
         </Link>
       ) : (
         <Link key="Login" to="login">
-          <a onClick={trackEvent({ name: 'Login' })}>
-            <Icon icon="sign-in-alt" />
-            Login
-          </a>
+          <LinkItem menu={{ name: 'Login', icon: 'sign-in-alt' }} />
         </Link>
       )}
     </nav>
