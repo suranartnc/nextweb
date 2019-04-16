@@ -6,8 +6,10 @@ export default class UIStore {
     height: '',
   })
 
-  constructor() {
+  constructor(rootStore) {
     if (!process.browser) return
+
+    this.rootStore = rootStore
 
     const listener = () => {
       this.setDimensions(window.innerWidth, window.innerHeight)

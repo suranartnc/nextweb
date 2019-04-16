@@ -1,16 +1,13 @@
 import React from 'react'
 import { flowRight as compose } from 'lodash'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 import withPage from '@lib/page/withPage'
 import { getLatestArticles } from '@features/article/data/model'
 import ArticleLatest from './ArticleLatest'
-import UIStore from '@lib/store/ui'
 
-const uiStore = new UIStore()
-
-function HomePage({ articleLatest }) {
+function HomePage({ articleLatest, RootStore: { uiStore } }) {
   return (
     <Flex flexWrap="wrap">
       <Box width={1}>
@@ -41,5 +38,6 @@ HomePage.getInitialProps = async () => {
 
 export default compose(
   withPage(),
+  inject('RootStore'),
   observer,
 )(HomePage)

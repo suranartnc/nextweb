@@ -9,8 +9,8 @@ import { withUA } from '@lib/userAgent'
 
 import { GlobalStyles } from '@lib/styles'
 
-// import RootStore from '@lib/store'
-// import { Provider } from 'mobx-react'
+import RootStore from '@lib/store'
+import { Provider } from 'mobx-react'
 
 let WebFont
 
@@ -32,7 +32,9 @@ class MyApp extends App {
       <Container>
         <GlobalStyles />
         <Helmet titleTemplate={`%s - nextweb.js`} />
-        <Component {...this.props.pageProps} router={router} />
+        <Provider RootStore={new RootStore()}>
+          <Component {...this.props.pageProps} router={router} />
+        </Provider>
       </Container>
     )
   }
