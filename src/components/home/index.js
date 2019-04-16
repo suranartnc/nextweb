@@ -14,6 +14,7 @@ function HomePage({ articleLatest, RootStore: { uiStore } }) {
         <p>Window Dimension</p>
         <p>width: {uiStore.dimensions.width}</p>
         <p>height: {uiStore.dimensions.height}</p>
+        <p>Orientation: {uiStore.orientation}</p>
       </Box>
 
       <Box width={[1, 2 / 3]} pr={[0, 20]}>
