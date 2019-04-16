@@ -5,7 +5,7 @@ import { flowRight as compose } from 'lodash'
 
 import { withFirebase } from '@lib/firebase'
 import { withAuth } from '@lib/firebase/auth'
-import { UserAgentContext, withUA } from '@lib/userAgent'
+import { withUA } from '@lib/userAgent'
 
 import { GlobalStyles } from '@lib/styles'
 
@@ -22,15 +22,13 @@ class MyApp extends App {
     })
   }
   render() {
-    const { Component, router, userAgent } = this.props
+    const { Component, router } = this.props
 
     return (
       <Container>
-        <UserAgentContext.Provider value={userAgent}>
-          <GlobalStyles />
-          <Helmet titleTemplate={`%s - nextweb.js`} />
-          <Component {...this.props.pageProps} router={router} />
-        </UserAgentContext.Provider>
+        <GlobalStyles />
+        <Helmet titleTemplate={`%s - nextweb.js`} />
+        <Component {...this.props.pageProps} router={router} />
       </Container>
     )
   }

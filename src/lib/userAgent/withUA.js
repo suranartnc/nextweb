@@ -1,8 +1,13 @@
 import React from 'react'
+import userAgentContext from './context'
 
 export default function withUA(PageComponent) {
   function EnhancedPageComponent(props) {
-    return <PageComponent {...props} />
+    return (
+      <userAgentContext.Provider value={props.userAgent}>
+        <PageComponent {...props} />
+      </userAgentContext.Provider>
+    )
   }
 
   EnhancedPageComponent.getInitialProps = async function(appContext) {
