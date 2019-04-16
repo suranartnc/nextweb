@@ -9,6 +9,9 @@ import { withUA } from '@lib/userAgent'
 
 import { GlobalStyles } from '@lib/styles'
 
+// import RootStore from '@lib/store'
+// import { Provider } from 'mobx-react'
+
 let WebFont
 
 class MyApp extends App {
@@ -21,6 +24,7 @@ class MyApp extends App {
       },
     })
   }
+
   render() {
     const { Component, router } = this.props
 
