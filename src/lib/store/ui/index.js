@@ -1,7 +1,8 @@
 import { observable, action, computed } from 'mobx'
 
 export default class UIStore {
-  @observable.struct dimensions = {
+  @observable.struct
+  dimensions = {
     width: '',
     height: '',
   }
@@ -22,11 +23,13 @@ export default class UIStore {
     window.addEventListener('resize', listener)
   }
 
-  @action setDimensions(dimensions) {
+  @action
+  setDimensions(dimensions) {
     this.dimensions = dimensions
   }
 
-  @computed get orientation() {
+  @computed
+  get orientation() {
     return this.dimensions.width > this.dimensions.height
       ? 'landscape'
       : 'portrait'
