@@ -1,4 +1,5 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect, useContext } from 'react'
+import { UserAgentContext } from '@lib/userAgent'
 
 export const breakpoints = {
   md: '48em', // 768px
@@ -8,6 +9,11 @@ export const breakpoints = {
 
 export function media(bp = 'lg') {
   return `@media (min-width: ${breakpoints[bp]})`
+}
+
+export function Adaptive({ wide = null, narrow = null }) {
+  const { isMobile } = useContext(UserAgentContext)
+  return isMobile ? narrow : wide
 }
 
 export function Responsive(options) {
