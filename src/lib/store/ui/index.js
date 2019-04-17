@@ -18,7 +18,7 @@ export default class UIStore {
         height: window.innerHeight,
       })
     }
-    listener()
+    setTimeout(listener, 0)
 
     window.addEventListener('resize', listener)
   }
