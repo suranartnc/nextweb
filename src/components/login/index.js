@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { inject } from 'mobx-react'
+import { flowRight as compose } from 'lodash'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
@@ -6,14 +8,21 @@ import { Router } from '@router'
 import withPage from '@lib/page/withPage'
 import { userContext } from '@lib/firebase/auth'
 
-function LoginPage() {
+function LoginPage({ RootStore }) {
   const userData = useContext(userContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const login = e => {
     e.preventDefault()
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        RootStore.errorStore.addError({
+          title: error.message,
+        })
+      })
   }
 
   useEffect(() => {
@@ -48,4 +57,7 @@ function LoginPage() {
   )
 }
 
-export default withPage()(LoginPage)
+export default compose(
+  withPage(),
+  inject('RootStore'),
+)(LoginPage)
