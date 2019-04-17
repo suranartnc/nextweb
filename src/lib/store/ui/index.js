@@ -10,7 +10,7 @@ export default class UIStore {
   constructor(rootStore) {
     if (!process.browser) return
 
-    this.rootStore = rootStore
+    // this.rootStore = rootStore
 
     const listener = () => {
       this.setDimensions({
@@ -30,8 +30,7 @@ export default class UIStore {
 
   @computed
   get orientation() {
-    return this.dimensions.width > this.dimensions.height
-      ? 'landscape'
-      : 'portrait'
+    const { width, height } = this.dimensions
+    return width > height ? 'landscape' : 'portrait'
   }
 }
