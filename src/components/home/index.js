@@ -1,13 +1,23 @@
 import React from 'react'
+import { flowRight as compose } from 'lodash'
+import { observer, inject } from 'mobx-react'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 import withPage from '@lib/page/withPage'
 import { getLatestArticles } from '@features/article/data/model'
 import ArticleLatest from './ArticleLatest'
 
-function HomePage({ articleLatest }) {
+function HomePage({ articleLatest, RootStore: { uiStore } }) {
+  const { dimensions, orientation } = uiStore
   return (
     <Flex flexWrap="wrap">
+      <Box width={1}>
+        <p>Window Dimension</p>
+        <p>width: {dimensions.width}</p>
+        <p>height: {dimensions.height}</p>
+        <p>Orientation: {orientation}</p>
+      </Box>
+
       <Box width={[1, 2 / 3]} pr={[0, 20]}>
         <ArticleLatest data={articleLatest} />
       </Box>
@@ -28,4 +38,8 @@ HomePage.getInitialProps = async () => {
   }
 }
 
-export default withPage()(HomePage)
+export default compose(
+  withPage(),
+  inject('RootStore'),
+  observer,
+)(HomePage)

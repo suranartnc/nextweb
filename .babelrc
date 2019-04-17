@@ -1,10 +1,16 @@
 {
   "presets": [
-    "next/babel",
+    [
+      "next/babel",
+      {
+        "class-properties": { "loose": true }
+      }
+    ],
     "@emotion/babel-preset-css-prop"
   ],
   "plugins": [
     "lodash",
+    ["@babel/plugin-proposal-decorators", { "legacy": true}],
     [
       "module-resolver", {
         "alias": {

@@ -5,6 +5,8 @@ import { flowRight as compose } from 'lodash'
 
 import { withFirebase } from '@lib/firebase'
 import { withAuth } from '@lib/firebase/auth'
+import { withUA } from '@lib/userAgent'
+import withMobX from '@lib/store/withMobX'
 
 import { GlobalStyles } from '@lib/styles'
 
@@ -20,6 +22,7 @@ class MyApp extends App {
       },
     })
   }
+
   render() {
     const { Component, router } = this.props
 
@@ -34,6 +37,8 @@ class MyApp extends App {
 }
 
 export default compose(
+  withUA,
   withFirebase,
   withAuth,
+  withMobX,
 )(MyApp)
