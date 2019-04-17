@@ -1,10 +1,15 @@
-import { configure } from 'mobx'
-import UIStore from './ui'
+import RootStore from './rootStore'
 
-configure({ enforceActions: 'observed' })
+let store = null
 
-export default class RootStore {
-  constructor() {
-    this.uiStore = new UIStore(this)
+export default function initStore() {
+  if (!process.browser) {
+    return new RootStore()
+  } else {
+    if (store === null) {
+      store = new RootStore()
+    }
+
+    return store
   }
 }

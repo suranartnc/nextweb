@@ -6,11 +6,9 @@ import { flowRight as compose } from 'lodash'
 import { withFirebase } from '@lib/firebase'
 import { withAuth } from '@lib/firebase/auth'
 import { withUA } from '@lib/userAgent'
+import withMobX from '@lib/store/withMobX'
 
 import { GlobalStyles } from '@lib/styles'
-
-import RootStore from '@lib/store'
-import { Provider } from 'mobx-react'
 
 let WebFont
 
@@ -32,9 +30,7 @@ class MyApp extends App {
       <Container>
         <GlobalStyles />
         <Helmet titleTemplate={`%s - nextweb.js`} />
-        <Provider RootStore={new RootStore()}>
-          <Component {...this.props.pageProps} router={router} />
-        </Provider>
+        <Component {...this.props.pageProps} router={router} />
       </Container>
     )
   }
@@ -44,4 +40,5 @@ export default compose(
   withUA,
   withFirebase,
   withAuth,
+  withMobX,
 )(MyApp)

@@ -8,13 +8,14 @@ import { getLatestArticles } from '@features/article/data/model'
 import ArticleLatest from './ArticleLatest'
 
 function HomePage({ articleLatest, RootStore: { uiStore } }) {
+  const { dimensions, orientation } = uiStore
   return (
     <Flex flexWrap="wrap">
       <Box width={1}>
         <p>Window Dimension</p>
-        <p>width: {uiStore.dimensions.width}</p>
-        <p>height: {uiStore.dimensions.height}</p>
-        <p>Orientation: {uiStore.orientation}</p>
+        <p>width: {dimensions.width}</p>
+        <p>height: {dimensions.height}</p>
+        <p>Orientation: {orientation}</p>
       </Box>
 
       <Box width={[1, 2 / 3]} pr={[0, 20]}>
