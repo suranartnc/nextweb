@@ -7,15 +7,18 @@ import ArticleLatest, { ArticleList } from './ArticleLatest'
 
 function FetchMore({ children, api, start, limit }) {
   const [lastStart, setLastStart] = useState(start)
+  const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState([])
 
   const fetchMore = async () => {
+    setIsLoading(true)
     const newData = await api({ start: lastStart, limit })
+    setIsLoading(false)
     setLastStart(lastStart + newData.length)
     setData(data.concat(newData))
   }
 
-  return children({ data, fetchMore })
+  return children({ data, fetchMore, isLoading })
 }
 
 function HomePage({ articleLatest }) {
@@ -28,11 +31,14 @@ function HomePage({ articleLatest }) {
           api={({ start, limit }) => getArticles({ start, limit })}
           start={5}
           limit={5}>
-          {({ data, fetchMore }) => {
+          {({ data, fetchMore, isLoading }) => {
             return (
               <Fragment>
                 <ArticleList data={data} />
-                <button onClick={fetchMore}>Load more</button>
+
+                <button onClick={fetchMore}>
+                  {isLoading ? 'Loading...' : 'Load More'}
+                </button>
               </Fragment>
             )
           }}
