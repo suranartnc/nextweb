@@ -3,7 +3,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 
 import withPage from '@lib/page/withPage'
 import { getLatestArticles, getArticles } from '@features/article/data/model'
-import ArticleLatest from './ArticleLatest'
+import ArticleLatest, { ArticleList } from './ArticleLatest'
 
 function MoreArticles({ start, limit }) {
   const [lastStart, setLastStart] = useState(start)
@@ -12,12 +12,12 @@ function MoreArticles({ start, limit }) {
   const fetchMore = async () => {
     const articles = await getArticles({ start: lastStart, limit })
     setLastStart(lastStart + articles.length)
-    setData([...data, ...articles])
+    setData(data.concat(articles))
   }
 
   return (
     <Fragment>
-      <ArticleLatest data={data} />
+      {data.length > 0 && <ArticleList data={data} />}
       <button onClick={fetchMore}>Load more</button>
     </Fragment>
   )

@@ -11,7 +11,7 @@ export default function ArticleLatest({ data }) {
   )
 }
 
-function ArticleList({ data }) {
+export function ArticleList({ data }) {
   return (
     <div>
       {data.map(article => (
