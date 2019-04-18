@@ -1,30 +1,11 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 
+import { FetchMore } from '@lib/api'
 import withPage from '@lib/page/withPage'
 import { getLatestArticles, getArticles } from '@features/article/data/model'
+
 import ArticleLatest, { ArticleList } from './ArticleLatest'
-
-function FetchMore({ children, api, start, limit }) {
-  const [lastStart, setLastStart] = useState(start)
-  const [isLoading, setIsLoading] = useState(false)
-  const [isDone, setIsDone] = useState(false)
-  const [data, setData] = useState([])
-
-  const fetchMore = async () => {
-    setIsLoading(true)
-    const newData = await api({ start: lastStart, limit })
-    setIsLoading(false)
-    setLastStart(lastStart + newData.length)
-    setData(data.concat(newData))
-
-    if (newData.length < limit) {
-      setIsDone(true)
-    }
-  }
-
-  return children({ data, fetchMore, isLoading, isDone })
-}
 
 function HomePage({ articleLatest }) {
   return (
