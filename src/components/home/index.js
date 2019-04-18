@@ -9,13 +9,13 @@ function FetchMore({ children, api, start, limit }) {
   const [lastStart, setLastStart] = useState(start)
   const [data, setData] = useState([])
 
-  const fetch = async () => {
+  const fetchMore = async () => {
     const newData = await api({ start: lastStart, limit })
     setLastStart(lastStart + newData.length)
     setData(data.concat(newData))
   }
 
-  return children({ data, fetch })
+  return children({ data, fetchMore })
 }
 
 function HomePage({ articleLatest }) {
@@ -28,11 +28,11 @@ function HomePage({ articleLatest }) {
           api={({ start, limit }) => getArticles({ start, limit })}
           start={5}
           limit={5}>
-          {({ data, fetch }) => {
+          {({ data, fetchMore }) => {
             return (
               <Fragment>
-                {data.length > 0 && <ArticleList data={data} />}
-                <button onClick={fetch}>Load more</button>
+                <ArticleList data={data} />
+                <button onClick={fetchMore}>Load more</button>
               </Fragment>
             )
           }}
