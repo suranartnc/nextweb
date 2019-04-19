@@ -1,5 +1,6 @@
 const path = require('path')
 const express = require('express')
+const { parse } = require('url')
 const next = require('next')
 const favicon = require('serve-favicon')
 const useragent = require('express-useragent')
@@ -21,7 +22,15 @@ app.prepare().then(() => {
   server.use(useragent.express())
 
   server.get('*', function(req, res) {
-    handle(req, res)
+    const parsedUrl = parse(req.url, true)
+    const { pathname } = parsedUrl
+
+    if (pathname === '/service-worker.js') {
+      const filePath = path.join(__dirname, '.next', pathname)
+      app.serveStatic(req, res, filePath)
+    } else {
+      handle(req, res)
+    }
   })
 
   server.listen(port, err => {
