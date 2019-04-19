@@ -11,6 +11,7 @@ const nextConfig = {
   assetPrefix: process.env.ASSET_PREFIX,
   useFileSystemPublicRoutes: false,
   workboxOpts: {
+    // importScripts: ['push-notifications.abcd1234.js'],
     runtimeCaching: [
       {
         urlPattern: new RegExp(`^${process.env.API_URL}`),
@@ -30,6 +31,10 @@ const nextConfig = {
           cacheableResponse: {
             statuses: [0, 200],
           },
+          // expiration: {
+          //   maxEntries: 5,
+          //   maxAgeSeconds: 60,
+          // },
         },
       },
       {
