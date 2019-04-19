@@ -2,13 +2,51 @@ require('dotenv').config()
 
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
+const withOffline = require('next-offline')
 const withSass = require('@zeit/next-sass')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
 
 const nextConfig = {
   assetPrefix: process.env.ASSET_PREFIX,
   useFileSystemPublicRoutes: false,
+  workboxOpts: {
+    // importScripts: ['push-notifications.abcd1234.js'],
+    runtimeCaching: [
+      {
+        urlPattern: new RegExp(`^${process.env.API_URL}`),
+        handler: 'networkFirst',
+        options: {
+          cacheName: 'api-cache',
+          cacheableResponse: {
+            statuses: [200],
+          },
+        },
+      },
+      {
+        urlPattern: /.*\.(?:png|jpg|jpeg|svg|gif)/,
+        handler: 'cacheFirst',
+        options: {
+          cacheName: 'image-cache',
+          cacheableResponse: {
+            statuses: [0, 200],
+          },
+          // expiration: {
+          //   maxEntries: 5,
+          //   maxAgeSeconds: 60,
+          // },
+        },
+      },
+      {
+        urlPattern: new RegExp('/.*'),
+        handler: 'networkFirst',
+        options: {
+          cacheName: 'html-cache',
+        },
+      },
+    ],
+  },
   sassLoaderOptions: {
     outputStyle:
       process.env.NODE_ENV !== 'production' ? 'expanded' : 'compressed',
@@ -50,10 +88,34 @@ const nextConfig = {
         entries['main.js'].unshift('@babel/polyfill')
         return entries
       }
+
+      config.plugins.push(
+        new WebpackPwaManifest({
+          filename: 'manifest.json',
+          inject: false,
+          fingerprints: false,
+          name: 'My Progressive Web App',
+          description: 'My awesome Progressive Web App!',
+          short_name: 'MyPWA',
+          start_url: '/',
+          display: 'standalone',
+          orientation: 'portrait',
+          background_color: '#ffffff',
+          theme_color: '#ffffff',
+          publicPath: '_next',
+          icons: [
+            {
+              src: path.join(process.cwd(), 'src/static/icons/next.jslogo.png'),
+              size: [96, 128, 192, 256],
+              destination: path.join('static', 'pwa/icons'),
+            },
+          ],
+        }),
+      )
     }
 
     return config
   },
 }
 
-module.exports = withSass(withBundleAnalyzer(nextConfig))
+module.exports = withOffline(withSass(withBundleAnalyzer(nextConfig)))

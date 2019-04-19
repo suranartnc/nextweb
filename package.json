@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "node src/server.js",
-    "build": "next build src",
+    "build": "npm run clean && next build src",
     "start": "NODE_ENV=production node src/server.js",
+    "clean": "rm -r src/.next",
     "analyze": "BUNDLE_ANALYZE=browser npm run build",
     "api": "node ./api/server.js"
   },
@@ -51,6 +52,7 @@
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
     "next": "^8.0.3",
+    "next-offline": "^3.3.8",
     "next-routes": "^1.4.2",
     "node-sass": "^4.11.0",
     "normalize.css": "^8.0.1",
@@ -60,7 +62,8 @@
     "react-firebase-hooks": "^1.1.0",
     "react-helmet": "^5.2.0",
     "serve-favicon": "^2.5.0",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "webpack-pwa-manifest": "^4.0.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.0",

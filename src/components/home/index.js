@@ -1,15 +1,36 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 
+import { FetchMore } from '@lib/api'
 import withPage from '@lib/page/withPage'
-import { getLatestArticles } from '@features/article/data/model'
-import ArticleLatest from './ArticleLatest'
+import { getLatestArticles, getArticles } from '@features/article/data/model'
+
+import ArticleLatest, { ArticleList } from './ArticleLatest'
 
 function HomePage({ articleLatest }) {
   return (
     <Flex flexWrap="wrap">
       <Box width={[1, 2 / 3]} pr={[0, 20]}>
         <ArticleLatest data={articleLatest} />
+
+        <FetchMore
+          api={({ start, limit }) => getArticles({ start, limit })}
+          start={5}
+          limit={5}>
+          {({ data, fetchMore, isLoading, isDone }) => {
+            return (
+              <Fragment>
+                <ArticleList data={data} />
+
+                {!isDone && (
+                  <button onClick={fetchMore}>
+                    {isLoading ? 'Loading...' : 'Load More'}
+                  </button>
+                )}
+              </Fragment>
+            )
+          }}
+        </FetchMore>
       </Box>
 
       <Box width={[1, 1 / 3]} pl={[0, 20]}>
