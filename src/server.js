@@ -15,6 +15,8 @@ const app = next({
 
 const handle = routes.getRequestHandler(app)
 
+const rootStaticFiles = ['/service-worker.js', '/manifest.json']
+
 app.prepare().then(() => {
   const server = express()
 
@@ -25,7 +27,7 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true)
     const { pathname } = parsedUrl
 
-    if (pathname === '/service-worker.js') {
+    if (rootStaticFiles.indexOf(pathname) > -1) {
       const filePath = path.join(__dirname, '.next', pathname)
       app.serveStatic(req, res, filePath)
     } else {

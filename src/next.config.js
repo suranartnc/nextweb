@@ -5,6 +5,7 @@ const Dotenv = require('dotenv-webpack')
 const withOffline = require('next-offline')
 const withSass = require('@zeit/next-sass')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
 
 const nextConfig = {
@@ -87,6 +88,30 @@ const nextConfig = {
         entries['main.js'].unshift('@babel/polyfill')
         return entries
       }
+
+      config.plugins.push(
+        new WebpackPwaManifest({
+          filename: 'manifest.json',
+          inject: false,
+          fingerprints: false,
+          name: 'My Progressive Web App',
+          description: 'My awesome Progressive Web App!',
+          short_name: 'MyPWA',
+          start_url: '/',
+          display: 'standalone',
+          orientation: 'portrait',
+          background_color: '#ffffff',
+          theme_color: '#ffffff',
+          publicPath: '_next',
+          icons: [
+            {
+              src: path.join(process.cwd(), 'src/static/icons/next.jslogo.png'),
+              size: [96, 128, 192, 256],
+              destination: path.join('static', 'pwa/icons'),
+            },
+          ],
+        }),
+      )
     }
 
     return config
