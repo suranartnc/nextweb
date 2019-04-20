@@ -6,9 +6,6 @@ An opinionated framework for universal server-rendered React applications (Built
 ## Table of Contents
 
 <!-- START doctoc -->
-- [How to use](#how-to-use)
-  - [Setup](#setup)
-- [Production deployment](#production-deployment)
 <!-- END doctoc -->
 
 ---
