@@ -5,8 +5,16 @@ An opinionated framework for universal server-rendered React applications (Built
 
 ## Table of Contents
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [How to use](#how-to-use)
+  - [Setup](#setup)
+  - [Development](#development)
+- [Production Deployment](#production-deployment)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ---
 
