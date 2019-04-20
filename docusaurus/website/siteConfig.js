@@ -18,7 +18,7 @@ const users = [
     infoLink: 'https://www.facebook.com',
     pinned: true,
   },
-];
+]
 
 const siteConfig = {
   title: 'Test Site', // Title for your website.
@@ -38,10 +38,10 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
-    {doc: 'doc4', label: 'API'},
-    {page: 'help', label: 'Help'},
-    {blog: true, label: 'Blog'},
+    {
+      doc: 'getting-started',
+      label: 'Docs',
+    },
   ],
 
   // If you have users set above, you add it here:
@@ -101,6 +101,6 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   //   repoUrl: 'https://github.com/facebook/test-site',
-};
+}
 
-module.exports = siteConfig;
+module.exports = siteConfig
