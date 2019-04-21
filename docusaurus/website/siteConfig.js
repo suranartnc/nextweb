@@ -8,30 +8,18 @@
 // See https://docusaurus.io/docs/site-config for all the possible
 // site configuration options.
 
-// List of projects/orgs using your project for the users page.
-const users = [
-  {
-    caption: 'User1',
-    // You will need to prepend the image path with your baseUrl
-    // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/docusaurus.svg',
-    infoLink: 'https://www.facebook.com',
-    pinned: true,
-  },
-]
-
 const siteConfig = {
-  title: 'Test Site', // Title for your website.
-  tagline: 'A website for testing',
-  url: 'https://your-docusaurus-test-site.com', // Your website URL
-  baseUrl: '/', // Base URL for your project */
+  title: 'NextWeb.js', // Title for your website.
+  tagline: 'Docs for NextWeb.js',
+  url: 'https://suranartnc.github.io', // Your website URL
+  baseUrl: '/nextweb-js/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'test-site',
-  organizationName: 'facebook',
+  projectName: 'nextweb-js',
+  organizationName: 'suranartnc',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -42,20 +30,21 @@ const siteConfig = {
       doc: 'getting-started',
       label: 'Docs',
     },
+    {
+      href: 'https://github.com/suranartnc/nextweb/',
+      label: 'GitHub',
+    },
   ],
 
-  // If you have users set above, you add it here:
-  users,
-
   /* path to images for header/footer */
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
-  favicon: 'img/favicon.png',
+  headerIcon: 'img/favicon/favicon.ico',
+  footerIcon: 'img/favicon/favicon.ico',
+  favicon: 'img/favicon/favicon.ico',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#409f0e',
-    secondaryColor: '#2c6f09',
+    primaryColor: '#20232a',
+    secondaryColor: '#555555',
   },
 
   /* Custom fonts for website */
@@ -73,7 +62,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  // copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -89,8 +78,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png',
+  ogImage: 'img/favicon/favicon.ico',
+  twitterImage: 'img/favicon/favicon.ico',
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,
