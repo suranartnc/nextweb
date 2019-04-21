@@ -20,7 +20,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {
-      doc: 'getting-started',
+      doc: 'getting-started/getting-started',
       label: 'Docs',
     },
     {

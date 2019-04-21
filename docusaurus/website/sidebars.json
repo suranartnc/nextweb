@@ -1,7 +1,48 @@
 {
   "docs": {
-    "Getting Started": ["getting-started", "folder-structure"],
-    "Development": ["routing"],
-    "Deployment": ["deployment"]
+    "Getting Started": [
+      "getting-started/getting-started",
+      "getting-started/folder-structure",
+      "getting-started/available-scripts"
+    ],
+    "App": [
+      "app/environment-variables",
+      "app/module-alias",
+      "app/routing",
+      "app/context",
+      "app/store",
+      "app/authentication",
+      "app/pwa",
+      "app/app-extensions"
+    ],
+    "Page": [
+      "page/layout",
+      "page/meta",
+      "page/breadcrumb",
+      "page/stats",
+      "page/restricted-page",
+      "page/page-extensions"
+    ],
+    "Data Fetching": [
+      "data-fetching/data-models",
+      "data-fetching/server-side",
+      "data-fetching/client-side",
+      "data-fetching/error-handling",
+      "data-fetching/custom-error"
+    ],
+    "Styling": [
+      "styling/global-styles",
+      "styling/local-styles",
+      "styling/sass",
+      "styling/grids",
+      "styling/fonts",
+      "styling/icons",
+      "styling/style-helpers"
+    ],
+    "Deployment": ["deployment"],
+    "Recipes": [
+      "recipes/infinite-scroll"
+    ],
+    "FAQ": ["faq"]
   }
 }
