@@ -1,7 +1,8 @@
 # NextWeb.js
 An opinionated framework for universal server-rendered React applications (Built on top of Next.js).
+- [Documentation](https://suranartnc.github.io/nextweb/) – How to develop web apps bootstrapped with NextWeb.js.
 
-## Table of Contents
+## Quick Start Guide
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
