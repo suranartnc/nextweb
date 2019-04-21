@@ -1,0 +1,7 @@
+{
+  "docs": {
+    "Getting Started": ["getting-started", "folder-structure"],
+    "Development": ["routing"],
+    "Deployment": ["deployment"]
+  }
+}
