@@ -11,18 +11,11 @@
 const siteConfig = {
   title: 'NextWeb.js', // Title for your website.
   tagline: 'Docs for NextWeb.js',
-  url: 'https://suranartnc.github.io', // Your website URL
-  baseUrl: '/nextweb-js/', // Base URL for your project */
-  // For github.io type URLs, you would set the url and baseUrl like:
-  //   url: 'https://facebook.github.io',
-  //   baseUrl: '/test-site/',
 
-  // Used for publishing and more
-  projectName: 'nextweb-js',
+  url: 'https://suranartnc.github.io', // Your website URL
+  baseUrl: '/nextweb/', // Base URL for your project */
+  projectName: 'nextweb',
   organizationName: 'suranartnc',
-  // For top-level user or org sites, the organization is still the same.
-  // e.g., for the https://JoelMarcey.github.io site, it would be set like...
-  //   organizationName: 'JoelMarcey'
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
