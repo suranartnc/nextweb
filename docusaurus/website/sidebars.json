@@ -4,7 +4,7 @@
       "getting-started/getting-started",
       "getting-started/folder-structure",
       "getting-started/create-a-new-page",
-      "getting-started/add-some-routes"
+      "getting-started/navigate-between-pages"
     ],
     "App": [
       "app/environment-variables",

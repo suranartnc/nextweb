@@ -1,6 +1,6 @@
 ---
-id: add-some-routes
-title: Add Some Routes
+id: navigate-between-pages
+title: Navigate Between Pages
 ---
 
 ## Create New Route
