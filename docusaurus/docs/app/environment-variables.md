@@ -3,9 +3,8 @@ id: environment-variables
 title: Environment Variables
 ---
 
-All environment varialbes must be defined in ```.env``` file at the root of the project. You can use ```.env.default``` file as a starter.
+We use environment variables to store the app configuration. 
 
-***Note:*** *The ```.env``` file is ignored from the repository.*
 
 Variables | Example
 ------------ | -------------
@@ -22,4 +21,7 @@ FIREBASE_PROJECT_ID | my-app
 FIREBASE_STORAGE_BUCKET | my-app.appspot.com
 FIREBASE_MESSAGING_SENDER_ID | 123456789012
 
-***Note:*** *You can leave ```ASSET_PREFIX``` blank in local environment.*
+***Note:*** *```ASSET_PREFIX``` can be blank in local environment.*
+
+You can defined these variables in ```.env``` file at the root of the project. Please note that the ```.env``` file is ignored from the repository and you can use ```.env.default``` file as a starter.
+
