@@ -3,7 +3,13 @@ id: client-side
 title: Client-Side Fetching
 ---
 
+Just like server-side fetching, you have to communicate with the model layer. But for client-side, you do not have to touch ```getInitialProps()``` of a page-level component.
+
 ## Fetch Component
+
+**NextWeb.js** comes with a ```Fetch``` render prop to make client-side data fetching super easy. It makes you focus on the data instead of handling loading and error status.
+
+Here are available props of the ```Fetch``` render prop:
 
 Name | Description
 - | -
