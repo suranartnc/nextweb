@@ -55,7 +55,7 @@
     "next": "^8.0.3",
     "next-offline": "^3.3.8",
     "next-routes": "^1.4.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "normalize.css": "^8.0.1",
     "react": "^16.8.6",
     "react-async": "^6.0.1",
@@ -63,6 +63,7 @@
     "react-firebase-hooks": "^1.1.0",
     "react-helmet": "^5.2.0",
     "serve-favicon": "^2.5.0",
+    "tar": ">=4.4.2",
     "webfontloader": "^1.6.28",
     "webpack-pwa-manifest": "^4.0.0"
   },
