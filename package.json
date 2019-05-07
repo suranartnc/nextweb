@@ -63,7 +63,6 @@
     "react-firebase-hooks": "^1.1.0",
     "react-helmet": "^5.2.0",
     "serve-favicon": "^2.5.0",
-    "tar": ">=4.4.2",
     "webfontloader": "^1.6.28",
     "webpack-pwa-manifest": "^4.0.0"
   },
