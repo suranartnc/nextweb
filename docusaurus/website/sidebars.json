@@ -3,7 +3,8 @@
     "Getting Started": [
       "getting-started/getting-started",
       "getting-started/folder-structure",
-      "getting-started/available-scripts"
+      "getting-started/create-a-new-page",
+      "getting-started/navigate-between-pages"
     ],
     "App": [
       "app/environment-variables",
