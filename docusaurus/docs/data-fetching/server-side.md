@@ -3,6 +3,7 @@ id: server-side
 title: Server-Side Fetching
 ---
 
+When you want to fetch some data, you have to communicate with the model layer. For server-side, just call the function from the data models inside ```getInitialProps()``` of a page-level component.
 
 ## Page Component
 
