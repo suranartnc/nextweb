@@ -31,3 +31,22 @@ src/
 ## Component-Level Errors
 
 This type of error is caused by ```Fetch``` render prop. If this error type occurred, the handler will render nothing unless you handle it manually using the ```onError``` prop.
+
+```javascript
+function ArticleDetailPage({ articleDetail }) {
+  return (
+    <div>
+        <ArticleDetail data={articleDetail} />
+
+        <Fetch
+          api={getLatestArticles}
+          onError={error => {
+            console.error(error)
+            return <MyErrorMessage error={error} />
+          }}>
+          {({ data }) => <ArticleLatest data={data} />}
+        </Fetch>
+    </div>
+  )
+}
+```
