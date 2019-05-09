@@ -12,17 +12,14 @@
       "app/routing",
       "app/context",
       "app/store",
-      "app/authentication",
-      "app/pwa",
-      "app/app-extensions"
+      "app/authentication"
     ],
     "Page": [
       "page/layout",
       "page/meta",
       "page/breadcrumb",
       "page/stats",
-      "page/restricted-page",
-      "page/page-extensions"
+      "page/restricted-page"
     ],
     "Data Fetching": [
       "data-fetching/data-models",
@@ -40,10 +37,6 @@
       "styling/fonts",
       "styling/icons"
     ],
-    "Deployment": ["deployment"],
-    "Recipes": [
-      "recipes/infinite-scroll"
-    ],
-    "FAQ": ["faq"]
+    "Deployment": ["deployment"]
   }
 }
