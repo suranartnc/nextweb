@@ -64,3 +64,33 @@ const baseStyles = css`
 
 ## External Fonts
 
+If you want to use some external fonts such as fonts from Google, just write a few lines of config.
+
+
+```javascript
+// src/lib/font/config.js
+
+export default {
+  google: {
+    families: ['Open Sans:400'],
+  },
+}
+```
+
+And add a css rule as usual.
+
+
+```javascript
+// src/lib/styles/GlobalStyles.js 
+
+const baseStyles = css`
+  html,
+  body {
+    font-family: 'Open Sans', sans-serif;
+    ...
+  }
+`
+...
+```
+
+Please note that **NextWeb.js** uses [**Web Font Loader**](https://github.com/typekit/webfontloader). More detail about the configuration is [**here**](https://github.com/typekit/webfontloader#google).
