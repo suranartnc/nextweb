@@ -10,18 +10,18 @@ import withMobX from '@lib/store/withMobX'
 
 import { GlobalStyles } from '@lib/styles'
 
-let WebFont
+// let WebFont
 
 class MyApp extends App {
-  componentDidMount() {
-    WebFont = require('webfontloader')
+  // componentDidMount() {
+  //   WebFont = require('webfontloader')
 
-    WebFont.load({
-      google: {
-        families: ['Open Sans:300,700'],
-      },
-    })
-  }
+  //   WebFont.load({
+  //     google: {
+  //       families: ['Open Sans:300,700'],
+  //     },
+  //   })
+  // }
 
   render() {
     const { Component, router } = this.props
