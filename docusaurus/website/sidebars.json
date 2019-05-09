@@ -32,13 +32,13 @@
       "data-fetching/custom-error"
     ],
     "Styling": [
-      "styling/global-styles",
       "styling/local-styles",
-      "styling/sass",
+      "styling/global-styles",
       "styling/grids",
+      "styling/style-helpers",
+      "styling/sass",
       "styling/fonts",
-      "styling/icons",
-      "styling/style-helpers"
+      "styling/icons"
     ],
     "Deployment": ["deployment"],
     "Recipes": [
