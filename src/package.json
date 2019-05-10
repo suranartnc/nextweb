@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "PORT=3000 node server.js",
-    "build": "npm run clean && next build",
+    "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "clean": "rm -r .next",
     "analyze": "BUNDLE_ANALYZE=browser npm run build",
-    "api": "node ../api/server.js",
     "doctoc": "npx doctoc README.md --github"
   },
   "repository": {
