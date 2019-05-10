@@ -14,10 +14,10 @@
     [
       "module-resolver", {
         "alias": {
-          "@components": "./src/components",
-          "@features": "./src/features",
-          "@lib": "./src/lib",
-          "@router": "./src/router",
+          "@components": "./components",
+          "@features": "./features",
+          "@lib": "./lib",
+          "@router": "./router",
         }
       }
     ]
