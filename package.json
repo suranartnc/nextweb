@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node src/server.js",
-    "build": "npm run clean && next build src",
+    "build": "next build src",
     "start": "NODE_ENV=production node src/server.js",
     "clean": "rm -r src/.next",
     "analyze": "BUNDLE_ANALYZE=browser npm run build",
