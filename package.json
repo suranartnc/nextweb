@@ -53,6 +53,7 @@
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
     "next": "^8.0.3",
+    "next-fonts": "^0.17.0",
     "next-offline": "^3.3.8",
     "next-routes": "^1.4.2",
     "node-sass": "^4.12.0",

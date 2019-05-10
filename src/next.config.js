@@ -2,11 +2,13 @@ require('dotenv').config()
 
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
+const withFonts = require('next-fonts')
 const withOffline = require('next-offline')
 const withSass = require('@zeit/next-sass')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
+const compose = require('lodash/flowRight')
 
 const nextConfig = {
   assetPrefix: process.env.ASSET_PREFIX,
@@ -118,4 +120,9 @@ const nextConfig = {
   },
 }
 
-module.exports = withOffline(withSass(withBundleAnalyzer(nextConfig)))
+module.exports = compose(
+  withSass,
+  withFonts,
+  withOffline,
+  withBundleAnalyzer,
+)(nextConfig)
