@@ -6,10 +6,11 @@ const favicon = require('serve-favicon')
 const useragent = require('express-useragent')
 const routes = require('./router')
 
-const port = process.env.PORT || 80
+const port = process.env.PORT || 3000
 
 const app = next({
   dev: process.env.NODE_ENV !== 'production',
+  dir: './src',
 })
 
 const handle = routes.getRequestHandler(app)

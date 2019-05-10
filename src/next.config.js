@@ -107,7 +107,7 @@ const nextConfig = {
           publicPath: '_next',
           icons: [
             {
-              src: path.join(__dirname, 'static/icons/next.jslogo.png'),
+              src: path.join(process.cwd(), 'src/static/icons/next.jslogo.png'),
               size: [96, 128, 192, 256],
               destination: path.join('static', 'pwa/icons'),
             },
