@@ -7,7 +7,6 @@
     "dev": "node src/server.js",
     "build": "next build src",
     "start": "NODE_ENV=production node src/server.js",
-    "clean": "rm -r src/.next",
     "analyze": "BUNDLE_ANALYZE=browser npm run build",
     "api": "node ./api/server.js",
     "doctoc": "npx doctoc README.md --github"
