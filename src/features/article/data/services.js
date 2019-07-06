@@ -1,4 +1,4 @@
-import * as API from './api'
+import * as API from './repository'
 
 export function getLatestArticles() {
   return API.getArticles({ limit: 5 })

@@ -39,7 +39,7 @@ function ArticleDetailPage({ articleDetail }) {
         <ArticleDetail data={articleDetail} />
 
         <Fetch
-          api={getLatestArticles}
+          service={getLatestArticles}
           onError={error => {
             console.error(error)
             return <MyErrorMessage error={error} />

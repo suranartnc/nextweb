@@ -13,6 +13,24 @@ export function fetchAPI({
   }).then(({ data }) => data)
 }
 
+export function fetchGQL({
+  apiURL = process.env.API_URL,
+  query,
+  timeout = 10000,
+  variables = null,
+}) {
+  return axios({
+    method: 'post',
+    url: apiURL,
+    headers: { 'Content-Type': 'application/json' },
+    data: {
+      query,
+      variables,
+      operationName: null,
+    },
+  }).then(({ data }) => data)
+}
+
 export function throwError(status = 500) {
   const err = new Error()
   err.response = { status }

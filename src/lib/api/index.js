@@ -1,4 +1,4 @@
 export { default as Fetch } from './Fetch'
 export { default as FetchMore } from './FetchMore'
-
-export { fetchAPI, throwError } from './helpers'
+export { default as IfInview } from './IfInview'
+export { fetchAPI, fetchGQL, throwError } from './helpers'
