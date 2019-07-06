@@ -51,14 +51,14 @@ But if you want to attach some custom dimensions to the page tracking, you have 
 
 ```javascript
 import withPage from '@lib/page/withPage'
-import { getArticleDetail } from '@features/article/data/model'
+import * as ArticleService from '@features/article/data/services'
 
 function ArticleDetailPage({ articleDetail }) {
   ...
 }
 
 ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
-  const articleDetail = await getArticleDetail({ id: query.id })
+  const articleDetail = await ArticleService.getArticleDetail({ id: query.id })
 
   return {
     articleDetail,

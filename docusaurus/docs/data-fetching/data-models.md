@@ -1,6 +1,6 @@
 ---
 id: data-models
-title: Data Models
+title: Repositories & Services
 ---
 
 ## Feature-Based Design
@@ -15,24 +15,24 @@ src/
     feature3/
 ````
 
-If a feature has some data, we suggest to separate data layer into 2 parts, API and model.
+If a feature has some data, we suggest to separate data layer into 2 parts, repository and service.
 
 ```bash
 src/
   features/
     feature1/
       data/
-        api.js
-        model.js
+        repository.js
+        services.js
     ...
 ````
 
-### API
+### Repository
 
-The API layer represents all capabilities of the API. You should have naming conventions for function name and you can modify some parameters to make them easier to use.
+The repository represents the data access layer. You should have naming conventions for function name and you can modify some parameters to make them easier to use.
 
 ```javascript
-// src/features/article/data/api.js
+// src/features/article/data/repository.js
 
 import { fetchAPI } from '@lib/api'
 
@@ -50,21 +50,21 @@ export function getArticle({ id }) {
 }
 ```
 
-### Models
+### Services
 
-The model layer just represents business logics. It is a collection of functions that communicate with the API layer. Please note that the model layer grows when business logic grows while the API layer grows when the API has some new capabilities. 
+The service just represents business logics. It is a collection of functions that communicate with the repository. Please note that the service grows when business logic grows while the repository grows when the API has some new capabilities. 
 
 ```javascript
-// src/features/article/data/model.js
+// src/features/article/data/services.js
 
-import * as API from './api'
+import * as Repository from './repository'
 
 export function getArticles({ start = 0, limit = 5 } = {}) {
-  return API.getArticles({ start, limit })
+  return Repository.getArticles({ start, limit })
 }
 
 export function getArticleDetail({ id }) {
-  return API.getArticle({ id })
+  return Repository.getArticle({ id })
 }
 
 ```
