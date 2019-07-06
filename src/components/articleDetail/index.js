@@ -4,10 +4,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import withPage from '@lib/page/withPage'
 import { Fetch } from '@lib/api'
 
-import {
-  getArticleDetail,
-  getLatestArticles,
-} from '@features/article/data/model'
+import * as ArticleService from '@features/article/data/services'
 
 import ArticleDetail from './ArticleDetail'
 import ArticleLatest from '../home/ArticleLatest'
@@ -20,7 +17,7 @@ function ArticleDetailPage({ articleDetail }) {
       </Box>
 
       <Box width={[1, 1 / 3]} pl={[0, 20]}>
-        <Fetch api={getLatestArticles}>
+        <Fetch service={ArticleService.getLatestArticles}>
           {({ data }) => <ArticleLatest data={data} />}
         </Fetch>
       </Box>
@@ -29,7 +26,7 @@ function ArticleDetailPage({ articleDetail }) {
 }
 
 ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
-  const articleDetail = await getArticleDetail({ id: query.id })
+  const articleDetail = await ArticleService.getArticleDetail({ id: query.id })
 
   return {
     title: articleDetail.title,

@@ -4,12 +4,12 @@ import { isEmpty } from 'lodash'
 
 export default function Fetch({
   children,
-  api,
+  service,
   onError,
   preloader = 'Loading...',
 }) {
   return (
-    <Async promiseFn={api}>
+    <Async promiseFn={service}>
       {({ data, error, isLoading }) => {
         if (isLoading) {
           return typeof preloader === 'function'

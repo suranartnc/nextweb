@@ -27,7 +27,7 @@ import { getArticles } from '@features/article/data/model'
 function ArticleDetailPage({ articleDetail }) {
   return (
     <div>
-      <Fetch api={() => getArticles({ limit: 10 }))}>
+      <Fetch service={() => getArticles({ limit: 10 }))}>
         {({ data }) => <ArticleLatest data={data} />}
       </Fetch>
     </div>
