@@ -17,7 +17,7 @@
           "@components": "./src/components",
           "@features": "./src/features",
           "@lib": "./src/lib",
-          "@router": "./src/router",
+          "@router": "./src/router"
         }
       }
     ]

@@ -3,16 +3,14 @@
   "files.exclude": {
     ".editorconfig": true,
     ".eslintrc.json": true,
-    "jsconfig.json": true,
     ".vscode": true,
+    "jsconfig.json": true,
     "node_modules": true,
-    "package-lock.json": true,
     "src/.next": true
   },
   "search.exclude": {
     ".vscode": true,
     "node_modules": true,
-    "src/.next": true,
-    "package-lock.json": true
+    "src/.next": true
   }
 }

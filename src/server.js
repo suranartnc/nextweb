@@ -1,6 +1,5 @@
 const path = require('path')
 const express = require('express')
-const { parse } = require('url')
 const next = require('next')
 const favicon = require('serve-favicon')
 const useragent = require('express-useragent')
@@ -15,8 +14,6 @@ const app = next({
 
 const handle = routes.getRequestHandler(app)
 
-const rootStaticFiles = ['/service-worker.js', '/manifest.json']
-
 app.prepare().then(() => {
   const server = express()
 
@@ -24,15 +21,7 @@ app.prepare().then(() => {
   server.use(useragent.express())
 
   server.get('*', function(req, res) {
-    const parsedUrl = parse(req.url, true)
-    const { pathname } = parsedUrl
-
-    if (rootStaticFiles.indexOf(pathname) > -1) {
-      const filePath = path.join(__dirname, '.next', pathname)
-      app.serveStatic(req, res, filePath)
-    } else {
-      handle(req, res)
-    }
+    handle(req, res)
   })
 
   server.listen(port, err => {
