@@ -12,7 +12,10 @@ export function media(bp = 'lg') {
 }
 
 export function Adaptive({ wide = null, narrow = null }) {
-  const { isMobile } = useContext(userAgentContext)
+  const {
+    device: { isMobile },
+  } = useContext(userAgentContext)
+
   return isMobile ? narrow : wide
 }
 
