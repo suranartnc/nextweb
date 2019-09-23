@@ -3,6 +3,8 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import flush from 'styled-jsx/server'
 import Helmet from 'react-helmet'
 
+import { getStatic } from '@lib/static'
+
 class CustomHead extends Head {
   render() {
     const { head, styles } = this.context._documentProps
@@ -42,7 +44,14 @@ export default class MyDocument extends Document {
           {helmet.title.toComponent()}
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {helmet.meta.toComponent()}
-          <link rel="shortcut icon" href={'/favicon.ico'} />
+          <link rel="shortcut icon" href={`${getStatic('favicon.ico')}`} />
+          <link
+            rel="preload"
+            href={`${getStatic('css/fonts.css')}`}
+            as="style"
+          />
+          <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
           {helmet.link.toComponent()}
           {this.props.nextStyles}
           {helmet.script.toComponent()}
