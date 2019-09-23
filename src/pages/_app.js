@@ -3,27 +3,19 @@ import Helmet from 'react-helmet'
 import App from 'next/app'
 import { Provider } from 'mobx-react'
 
-import initStore from '@lib/store'
-import { getStatic } from '@lib/static'
+import initMobXStore from '@lib/store'
+import * as font from '@lib/font'
 import { GlobalStyles } from '@lib/styles'
 
-class MyApp extends App {
+export default class MyApp extends App {
   componentDidMount() {
     const WebFont = require('webfontloader')
-
-    WebFont.load({
-      custom: {
-        urls: [
-          getStatic('css/fonts.css'),
-          // 'https://fonts.googleapis.com/css?family=Mitr:200,300,500%7CSarabun:400,700&display=swap',
-        ],
-      },
-    })
+    WebFont.load(font.config)
   }
 
   render() {
     const { Component, router } = this.props
-    const rootStore = initStore()
+    const rootStore = initMobXStore()
 
     return (
       <Fragment>
@@ -36,5 +28,3 @@ class MyApp extends App {
     )
   }
 }
-
-export default MyApp
