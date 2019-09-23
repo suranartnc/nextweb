@@ -5,11 +5,12 @@ import Router from 'next/router'
 import { Provider } from 'mobx-react'
 import { CookiesProvider } from 'react-cookie'
 
+import { withAuth } from '@lib/auth'
 import initMobXStore from '@lib/store'
 import * as font from '@lib/font'
 import { GlobalStyles } from '@lib/styles'
 
-export default class MyApp extends App {
+class MyApp extends App {
   componentDidMount() {
     const WebFont = require('webfontloader')
     WebFont.load(font.config)
@@ -42,3 +43,5 @@ export default class MyApp extends App {
     return children
   }
 }
+
+export default withAuth(MyApp)

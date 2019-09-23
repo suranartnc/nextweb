@@ -3,7 +3,6 @@ import { flowRight as compose } from 'lodash'
 import { withUA } from '@lib/userAgent'
 import withGtmScript from '@lib/stats/gtm/withGtmScript'
 import withStats from '@lib/stats/withStats'
-import { withAuth } from '@lib/auth'
 import withRestrictedPage from '@lib/auth/withRestrictedPage'
 
 import withMeta from './withMeta'
@@ -15,7 +14,6 @@ export default function withPage(options = {}) {
   return function(Component) {
     const hocs = [
       withUA,
-      withAuth,
       withMeta,
       withSchema,
       withGtmScript,

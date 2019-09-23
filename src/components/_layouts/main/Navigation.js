@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Link from '@link'
 import * as GTM from '@lib/stats/gtm'
-import { userContext } from '@lib/firebase/auth'
+import { userContext } from '@lib/auth'
 import { media } from '@lib/styles'
 
 const mainMenus = [
