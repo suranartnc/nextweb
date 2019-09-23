@@ -10,6 +10,7 @@
   },
   "search.exclude": {
     ".vscode": true,
+    "docusaurus": true,
     "node_modules": true,
     "src/.next": true
   }
