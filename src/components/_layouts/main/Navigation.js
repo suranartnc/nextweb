@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from '@router'
+import Link from '@link'
 import * as GTM from '@lib/stats/gtm'
 import { userContext } from '@lib/firebase/auth'
 import { media } from '@lib/styles'
@@ -52,17 +52,17 @@ export default function Navigation() {
   return (
     <nav css={{ marginBottom: 10, borderBottom: '1px solid #aaa' }}>
       {mainMenus.map(menu => (
-        <Link key={menu.name} to={menu.route} passHref>
+        <Link key={menu.name} route={menu.route} passHref>
           <LinkItem menu={menu} />
         </Link>
       ))}
 
       {userData ? (
-        <Link key="Account" to="account" passHref>
+        <Link key="Account" route="account" passHref>
           <LinkItem menu={{ name: 'Account' }} />
         </Link>
       ) : (
-        <Link key="Login" to="login" passHref>
+        <Link key="Login" route="login" passHref>
           <LinkItem menu={{ name: 'Login' }} />
         </Link>
       )}

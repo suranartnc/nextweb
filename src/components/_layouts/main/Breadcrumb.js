@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Link } from '@router'
+import Link from '@link'
 
 function LinkItem({ children }) {
   return <a css={{ display: 'inline-box', padding: 5 }}>{children}</a>
@@ -8,14 +8,14 @@ function LinkItem({ children }) {
 export default function Breadcrumb({ data = [] }) {
   return (
     <nav css={{ fontSize: '0.8em', marginBottom: 30 }}>
-      <Link key="Home" to="home">
+      <Link key="Home" route="home">
         <LinkItem>Home</LinkItem>
       </Link>
 
       {data.map(({ label, route }) => (
         <Fragment key={label}>
           <span>&gt;</span>
-          <Link to={route.name} params={route.params}>
+          <Link route={route.name} params={route.params}>
             <LinkItem>{label}</LinkItem>
           </Link>
         </Fragment>

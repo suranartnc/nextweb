@@ -17,7 +17,9 @@
           "@components": "./src/components",
           "@features": "./src/features",
           "@lib": "./src/lib",
-          "@router": "./src/router"
+          "@grid": "@rebass/grid/emotion",
+          "@router": "./src/router",
+          "@link": "./src/components/_common/Link"
         }
       }
     ]

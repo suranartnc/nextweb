@@ -68,14 +68,14 @@ import { Link } from '@router'
 export default function Breadcrumb({ data = [] }) {
   return (
     <nav>
-      <Link key="Home" to="home">
+      <Link key="Home" route="home">
         <a>Home</a>
       </Link>
 
       {data.map(({ label, route }) => (
         <Fragment key={label}>
           <span>&gt;</span>
-          <Link to={route.name} params={route.params}>
+          <Link route={route.name} params={route.params}>
             <a>{label}</a>
           </Link>
         </Fragment>
