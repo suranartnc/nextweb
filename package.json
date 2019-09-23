@@ -9,7 +9,8 @@
     "start": "NODE_ENV=production node src/server.js",
     "analyze": "BUNDLE_ANALYZE=browser npm run build",
     "api": "node ./api/server.js",
-    "doctoc": "npx doctoc README.md --github"
+    "doctoc": "npx doctoc README.md --github",
+    "export": "next export src"
   },
   "repository": {
     "type": "git",
