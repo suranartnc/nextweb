@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useContext } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { userAgentContext } from '@lib/userAgent'
 
 export const breakpoints = {
@@ -19,30 +19,27 @@ export function Adaptive({ wide = null, narrow = null }) {
   return isMobile ? narrow : wide
 }
 
-export function Responsive(options) {
-  if (!process.browser) return null
-
-  return <UISwitcher {...options} />
-}
-
-function UISwitcher({
-  breakpoint = 'lg',
-  wide = null,
-  narrow = null,
-  prerender = null,
-}) {
-  const width = useWindowWidth()
-  const breakpointInPx = breakpoints[breakpoint].replace('em', '') * 16
-  return width === null ? prerender : width >= breakpointInPx ? wide : narrow
-}
-
-function useWindowWidth() {
-  const [width, setWidth] = useState(null)
-  useLayoutEffect(() => {
-    const listener = () => setWidth(window.innerWidth)
-    window.addEventListener('resize', listener)
-    listener()
-    return () => window.removeEventListener('resize', listener)
-  }, [])
-  return width
+export function Responsive({ breakpoint = 'md', wide = null, narrow = null }) {
+  return (
+    <Fragment>
+      <div
+        css={{
+          display: 'block',
+          [media(breakpoint)]: {
+            display: 'none',
+          },
+        }}>
+        {narrow}
+      </div>
+      <div
+        css={{
+          display: 'none',
+          [media(breakpoint)]: {
+            display: 'block',
+          },
+        }}>
+        {wide}
+      </div>
+    </Fragment>
+  )
 }
