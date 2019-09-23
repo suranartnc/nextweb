@@ -3,18 +3,15 @@ import { Link } from '@router'
 import * as GTM from '@lib/stats/gtm'
 import { userContext } from '@lib/firebase/auth'
 import { media } from '@lib/styles'
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 
 const mainMenus = [
   {
     name: 'Home',
     route: 'home',
-    icon: 'home',
   },
   {
     name: 'About',
     route: 'about',
-    icon: 'users',
   },
 ]
 
@@ -44,7 +41,6 @@ function LinkItem({ menu, ...props }) {
           fontSize: '1.2em',
         },
       }}>
-      <Icon icon={menu.icon} />
       {menu.name}
     </a>
   )
@@ -63,11 +59,11 @@ export default function Navigation() {
 
       {userData ? (
         <Link key="Account" to="account" passHref>
-          <LinkItem menu={{ name: 'Account', icon: 'user' }} />
+          <LinkItem menu={{ name: 'Account' }} />
         </Link>
       ) : (
         <Link key="Login" to="login" passHref>
-          <LinkItem menu={{ name: 'Login', icon: 'sign-in-alt' }} />
+          <LinkItem menu={{ name: 'Login' }} />
         </Link>
       )}
     </nav>
