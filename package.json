@@ -1,6 +1,6 @@
 {
   "name": "nextweb",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An opinionated framework built on top of Next.js.",
   "main": "index.js",
   "scripts": {
@@ -8,9 +8,9 @@
     "build": "next build src",
     "start": "NODE_ENV=production node src/server.js",
     "analyze": "BUNDLE_ANALYZE=browser npm run build",
+    "export": "next export src",
     "api": "node ./api/server.js",
-    "doctoc": "npx doctoc README.md --github",
-    "export": "next export src"
+    "doctoc": "npx doctoc README.md --github"
   },
   "repository": {
     "type": "git",
