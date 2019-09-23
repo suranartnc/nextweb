@@ -1,7 +1,12 @@
 import React from 'react'
 import { css, Global } from '@emotion/core'
 
+import normalize from './normalize'
+import reset from './reset'
+
 const baseStyles = css`
+  ${normalize}
+  ${reset}
   html,
   body {
     padding: 3rem 1rem;
