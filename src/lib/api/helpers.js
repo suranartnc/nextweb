@@ -1,9 +1,11 @@
 import axios from 'axios'
 
+const defaultTimeout = 10000
+
 export function fetchAPI({
   apiUrl = process.env.API_URL,
   path,
-  timeout = 10000,
+  timeout = defaultTimeout,
   ...options
 }) {
   return axios({
@@ -16,7 +18,7 @@ export function fetchAPI({
 export function fetchGQL({
   apiURL = process.env.API_URL,
   query,
-  timeout = 10000,
+  timeout = defaultTimeout,
   variables = null,
 }) {
   return axios({
@@ -28,6 +30,7 @@ export function fetchGQL({
       variables,
       operationName: null,
     },
+    timeout,
   }).then(({ data }) => data)
 }
 
