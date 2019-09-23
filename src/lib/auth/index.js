@@ -8,8 +8,20 @@ export const userContext = React.createContext(null)
 export const AUTH_COOKIE_NAME = 'refresh-token'
 const AUTH_COOKIE_MAX_AGE = 60 * 60
 
-function findTokenFromCallbackURL(query) {
-  return get(query, 'token', false)
+function getAuthDataFromCallbackURL(query) {
+  return {
+    token: get(query, 'token', false),
+  }
+}
+
+function parseToken(token, field) {
+  const dataFromToken = {
+    displayName: Math.random()
+      .toString(36)
+      .slice(2),
+  }
+
+  return dataFromToken[field]
 }
 
 export function withAuth(PageComponent) {
@@ -22,7 +34,7 @@ export function withAuth(PageComponent) {
       let token = cookies[AUTH_COOKIE_NAME]
 
       if (!token) {
-        const tokenFromURL = findTokenFromCallbackURL(router.query)
+        const { token: tokenFromURL } = getAuthDataFromCallbackURL(router.query)
 
         if (tokenFromURL) {
           setCookie(AUTH_COOKIE_NAME, tokenFromURL, {
@@ -38,6 +50,7 @@ export function withAuth(PageComponent) {
     }, [])
 
     const userData = {
+      displayName: parseToken(token, 'displayName'),
       token,
     }
 

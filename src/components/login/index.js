@@ -1,12 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { inject } from 'mobx-react'
 import { flowRight as compose } from 'lodash'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 
 import { Router } from '@router'
 import withPage from '@lib/page/withPage'
 import { userContext } from '@lib/firebase/auth'
+
+function signInWithEmailAndPassword({ email, password }) {
+  return new Promise((resolve, reject) => {
+    if (!email || !password) {
+      reject(new Error('No email or password'))
+    }
+
+    resolve({
+      token: 'this is a token',
+    })
+  }).then(({ token }) => {
+    location.href = `/?token=${token}`
+  })
+}
 
 function LoginPage({ RootStore }) {
   const userData = useContext(userContext)
@@ -15,14 +27,12 @@ function LoginPage({ RootStore }) {
 
   const login = e => {
     e.preventDefault()
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch(error => {
-        RootStore.errorStore.addError({
-          title: error.message,
-        })
+
+    signInWithEmailAndPassword({ email, password }).catch(error => {
+      RootStore.errorStore.addError({
+        title: error.message,
       })
+    })
   }
 
   useEffect(() => {
