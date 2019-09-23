@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState } from 'react'
 import { inject } from 'mobx-react'
 import { flowRight as compose } from 'lodash'
 
 import { Router } from '@router'
 import withPage from '@lib/page/withPage'
-import { userContext } from '@lib/firebase/auth'
 
-function signInWithEmailAndPassword({ email, password }) {
+function signInWithEmailAndPassword({ email, password, redirect }) {
   return new Promise((resolve, reject) => {
     if (!email || !password) {
       reject(new Error('No email or password'))
@@ -16,37 +15,29 @@ function signInWithEmailAndPassword({ email, password }) {
       token: 'this is a token',
     })
   }).then(({ token }) => {
+    if (redirect) {
+      location.href = `${redirect}?token=${token}`
+      return
+    }
+
     location.href = `/?token=${token}`
   })
 }
 
 function LoginPage({ RootStore }) {
-  const userData = useContext(userContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const login = e => {
     e.preventDefault()
 
-    signInWithEmailAndPassword({ email, password }).catch(error => {
+    const { redirect } = Router.router.query
+    signInWithEmailAndPassword({ email, password, redirect }).catch(error => {
       RootStore.errorStore.addError({
         title: error.message,
       })
     })
   }
-
-  useEffect(() => {
-    if (userData) {
-      const { redirect } = Router.router.query
-
-      if (redirect) {
-        Router.push(redirect)
-        return
-      }
-
-      Router.pushRoute('account')
-    }
-  }, [userData])
 
   return (
     <form onSubmit={login}>

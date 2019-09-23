@@ -40,7 +40,6 @@ export function withAuth(PageComponent) {
           setCookie(AUTH_COOKIE_NAME, tokenFromURL, {
             maxAge: AUTH_COOKIE_MAX_AGE,
           })
-          history.pushState(null, '', '/')
         }
 
         token = tokenFromURL
