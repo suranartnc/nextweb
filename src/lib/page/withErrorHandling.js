@@ -8,10 +8,12 @@ export default function withErrorHandling(PageComponent) {
   function EnhancedPageComponent(props) {
     const statusCode = get(props, 'statusCode', 200)
 
+    // If any error
     if (statusCode >= 500) {
       return <Error500Page />
     }
 
+    // If no resource
     if (statusCode >= 400) {
       return <Error400Page />
     }
