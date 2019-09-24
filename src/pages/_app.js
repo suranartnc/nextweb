@@ -6,7 +6,7 @@ import { Provider } from 'mobx-react'
 import { CookiesProvider } from 'react-cookie'
 
 import { withAuth } from '@lib/auth'
-import initMobXStore from '@lib/store'
+import { initStore } from '@lib/store'
 import * as font from '@lib/font'
 import { GlobalStyles } from '@lib/styles'
 
@@ -24,7 +24,7 @@ class MyApp extends App {
 
   render() {
     const { Component, router } = this.props
-    const rootStore = initMobXStore()
+    const rootStore = initStore()
 
     const children = (
       <Fragment>

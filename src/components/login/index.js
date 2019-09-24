@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { inject } from 'mobx-react'
 import { flowRight as compose } from 'lodash'
 
 import { Router } from '@router'
+import { inject } from '@lib/store'
 import withPage from '@lib/page/withPage'
 
 function signInWithEmailAndPassword({ email, password, redirect }) {
@@ -24,7 +24,7 @@ function signInWithEmailAndPassword({ email, password, redirect }) {
   })
 }
 
-function LoginPage({ RootStore }) {
+function LoginPage({ errorStore }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -33,7 +33,7 @@ function LoginPage({ RootStore }) {
 
     const { redirect } = Router.router.query
     signInWithEmailAndPassword({ email, password, redirect }).catch(error => {
-      RootStore.errorStore.addError({
+      errorStore.addError({
         title: error.message,
       })
     })
@@ -60,5 +60,5 @@ function LoginPage({ RootStore }) {
 
 export default compose(
   withPage(),
-  inject('RootStore'),
+  inject('errorStore', { observe: false }),
 )(LoginPage)
