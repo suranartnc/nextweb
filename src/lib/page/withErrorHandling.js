@@ -1,17 +1,21 @@
 import React from 'react'
 import { get } from 'lodash'
-import ErrorPage from '../../pages/_error'
+
+import Error400Page from '@components/_error/400'
+import Error500Page from '@components/_error/500'
 
 export default function withErrorHandling(PageComponent) {
   function EnhancedPageComponent(props) {
     const statusCode = get(props, 'statusCode', 200)
 
+    // If any error
     if (statusCode >= 500) {
-      return <ErrorPage statusCode={statusCode} />
+      return <Error500Page />
     }
 
+    // If no resource
     if (statusCode >= 400) {
-      return <ErrorPage statusCode={statusCode} />
+      return <Error400Page />
     }
 
     return <PageComponent {...props} />

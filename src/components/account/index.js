@@ -1,24 +1,25 @@
 import React, { useContext } from 'react'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import { withCookies } from 'react-cookie'
+import { flowRight as compose } from 'lodash'
 
 import withPage from '@lib/page/withPage'
-import { userContext } from '@lib/firebase/auth'
+import { userContext, AUTH_COOKIE_NAME } from '@lib/auth'
 
-function AccountPage() {
+function AccountPage({ cookies }) {
   const userData = useContext(userContext)
 
   const logout = () => {
-    firebase.auth().signOut()
+    cookies.remove(AUTH_COOKIE_NAME)
+    location.href = '/'
   }
 
-  if (!userData) {
+  if (!userData.token) {
     return null
   }
 
   return (
     <div>
-      <p>Current User: {userData.email}</p>
+      <p>Current User: {userData.displayName}</p>
       <button onClick={logout}>Log out</button>
     </div>
   )
@@ -37,4 +38,7 @@ AccountPage.getInitialProps = async function() {
   }
 }
 
-export default withPage({ restricted: true })(AccountPage)
+export default compose(
+  withCookies,
+  withPage({ restricted: true }),
+)(AccountPage)

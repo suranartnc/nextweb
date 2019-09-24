@@ -1,18 +1,18 @@
 import React, { useEffect, useContext } from 'react'
 import { Router } from '@router'
-import { userContext } from './withAuth'
+import { userContext } from '@lib/auth'
 
 export default (restricted = false) => PageComponent => {
   function EnhancedPageComponent(props) {
-    const userData = useContext(userContext)
+    const { token } = useContext(userContext)
 
     useEffect(() => {
-      if (restricted && userData === null) {
+      if (restricted && token === false) {
         Router.pushRoute('login', {
           redirect: props.router.asPath,
         })
       }
-    }, [restricted, userData])
+    }, [restricted, token])
 
     return <PageComponent {...props} />
   }

@@ -15,9 +15,12 @@
       "module-resolver", {
         "alias": {
           "@components": "./src/components",
+          "@common": "./src/components/_common",
           "@features": "./src/features",
           "@lib": "./src/lib",
+          "@grid": "@rebass/grid/emotion",
           "@router": "./src/router",
+          "@link": "./src/components/_common/Link"
         }
       }
     ]

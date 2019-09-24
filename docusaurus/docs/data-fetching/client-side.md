@@ -46,7 +46,7 @@ function ArticleLatest({ data }) {
         {data.map(article => (
           <article key={article.id}>
             <h3>
-              <Link to="articleDetail" params={{ id: data.id }}>
+              <Link route="articleDetail" params={{ id: data.id }}>
                 <a>{data.title}</a>
               </Link>
             </h3>

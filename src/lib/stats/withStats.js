@@ -7,14 +7,20 @@ export default function withStats(PageComponent) {
     const asPath = get(props, 'router.asPath')
     const customDimensions = get(props, 'stats.gtm.customDimensions', {})
 
+    const isSSR =
+      !process.browser || window.__NEXT_DATA__.props.isSSR === undefined
+
     useEffect(
       function() {
-        setTimeout(() => {
-          GTM.logPageview(customDimensions)
-        }, 500)
+        if (!isSSR) {
+          setTimeout(() => {
+            GTM.logPageview(customDimensions)
+          }, 500)
+        }
       },
       [asPath],
     )
+
     return <PageComponent {...props} />
   }
 

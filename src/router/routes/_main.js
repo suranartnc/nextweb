@@ -1,3 +1,8 @@
+const patterns = {
+  slug: '[A-Za-z0-9-%_]+',
+  id: '[1-9][0-9]*',
+}
+
 const routes = [
   {
     pattern: '/',
@@ -5,7 +10,7 @@ const routes = [
     page: 'index',
   },
   {
-    pattern: '/article/:id',
+    pattern: `/article/:id(${patterns.id})`,
     name: 'articleDetail',
     page: 'articleDetail',
   },
