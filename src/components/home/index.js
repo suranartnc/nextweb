@@ -3,7 +3,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 
 import { FetchMore } from '@lib/api'
 import withPage from '@lib/page/withPage'
-import * as ArticleService from '@features/article/data/services'
+import * as ArticleService from '@features/article/services'
 
 import ArticleLatest, { ArticleList } from './ArticleLatest'
 

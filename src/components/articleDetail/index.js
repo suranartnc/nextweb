@@ -4,7 +4,7 @@ import { Flex, Box } from '@grid'
 import withPage from '@lib/page/withPage'
 import { Fetch } from '@lib/api'
 
-import * as ArticleService from '@features/article/data/services'
+import * as ArticleService from '@features/article/services'
 
 import ArticleDetail from './ArticleDetail'
 import ArticleLatest from '../home/ArticleLatest'
