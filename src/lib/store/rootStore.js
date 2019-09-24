@@ -1,6 +1,7 @@
 import { configure } from 'mobx'
-import UIStore from './ui'
-import ErrorStore from './error'
+
+import UIStore from '@features/ui/store'
+import ErrorStore from '@features/error/store'
 
 configure({ enforceActions: 'observed' })
 
