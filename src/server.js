@@ -33,7 +33,7 @@ app.prepare().then(() => {
   server.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
   server.use(useragent.express())
 
-  server.get('*', function(req, res) {
+  server.use((req, res) => {
     handle(req, res)
   })
 
