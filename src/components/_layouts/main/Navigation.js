@@ -47,7 +47,7 @@ function LinkItem({ menu, ...props }) {
 }
 
 export default function Navigation() {
-  const userData = useContext(userContext)
+  const { isAuthenticated } = useContext(userContext)
 
   return (
     <nav css={{ marginBottom: 10, borderBottom: '1px solid #aaa' }}>
@@ -57,7 +57,7 @@ export default function Navigation() {
         </Link>
       ))}
 
-      {userData ? (
+      {isAuthenticated ? (
         <Link key="Account" route="account" passHref>
           <LinkItem menu={{ name: 'Account' }} />
         </Link>

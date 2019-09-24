@@ -1,30 +1,13 @@
 import React, { useState } from 'react'
-import { inject } from 'mobx-react'
 import { flowRight as compose } from 'lodash'
 
 import { Router } from '@router'
+import { inject } from '@lib/store'
 import withPage from '@lib/page/withPage'
 
-function signInWithEmailAndPassword({ email, password, redirect }) {
-  return new Promise((resolve, reject) => {
-    if (!email || !password) {
-      reject(new Error('No email or password'))
-    }
+import { signIn } from '@features/auth'
 
-    resolve({
-      token: 'this is a token',
-    })
-  }).then(({ token }) => {
-    if (redirect) {
-      location.href = `${redirect}?token=${token}`
-      return
-    }
-
-    location.href = `/?token=${token}`
-  })
-}
-
-function LoginPage({ RootStore }) {
+function LoginPage({ errorStore }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -32,8 +15,9 @@ function LoginPage({ RootStore }) {
     e.preventDefault()
 
     const { redirect } = Router.router.query
-    signInWithEmailAndPassword({ email, password, redirect }).catch(error => {
-      RootStore.errorStore.addError({
+
+    signIn({ email, password, redirect }).catch(error => {
+      errorStore.addError({
         title: error.message,
       })
     })
@@ -60,5 +44,5 @@ function LoginPage({ RootStore }) {
 
 export default compose(
   withPage(),
-  inject('RootStore'),
+  inject('errorStore', { observe: false }),
 )(LoginPage)

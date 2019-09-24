@@ -1,8 +1,7 @@
 import React from 'react'
-import { inject, observer } from 'mobx-react'
-import { flowRight as compose } from 'lodash'
+import { inject } from '@lib/store'
 
-function Notifications({ RootStore: { errorStore } }) {
+function Notifications({ errorStore }) {
   return (
     <div css={{ position: 'fixed', right: 0, top: 0, padding: '10px' }}>
       {errorStore.errors.map((error, index) => (
@@ -30,7 +29,4 @@ function Notifications({ RootStore: { errorStore } }) {
   )
 }
 
-export default compose(
-  inject('RootStore'),
-  observer,
-)(Notifications)
+export default inject('errorStore')(Notifications)

@@ -1,8 +1,11 @@
+import { flowRight as compose } from 'lodash'
+import { inject as injectStore, observer } from 'mobx-react'
+
 import RootStore from './rootStore'
 
 let store = null
 
-export default function initStore() {
+export function initStore() {
   if (!process.browser) {
     return new RootStore()
   } else {
@@ -12,4 +15,22 @@ export default function initStore() {
 
     return store
   }
+}
+
+export function inject(subStore, { observe = true } = {}) {
+  const hocs = [
+    injectStore(({ RootStore }) => {
+      if (!subStore) {
+        return { RootStore: RootStore }
+      }
+
+      return { [subStore]: RootStore[subStore] }
+    }),
+  ]
+
+  if (observe) {
+    hocs.push(observer)
+  }
+
+  return compose(...hocs)
 }

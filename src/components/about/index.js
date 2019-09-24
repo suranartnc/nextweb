@@ -2,11 +2,11 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { flowRight as compose } from 'lodash'
-import { inject, observer } from 'mobx-react'
+import { inject } from '@lib/store'
 
 import withPage from '@lib/page/withPage'
 
-function AboutPage({ RootStore: { uiStore } }) {
+function AboutPage({ uiStore }) {
   const { dimensions, orientation } = uiStore
 
   return (
@@ -40,6 +40,5 @@ AboutPage.getInitialProps = async function() {
 
 export default compose(
   withPage(),
-  inject('RootStore'),
-  observer,
+  inject('uiStore'),
 )(AboutPage)

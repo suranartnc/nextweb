@@ -1,26 +1,20 @@
 import React, { useContext } from 'react'
-import { withCookies } from 'react-cookie'
-import { flowRight as compose } from 'lodash'
 
 import withPage from '@lib/page/withPage'
-import { userContext, AUTH_COOKIE_NAME } from '@lib/auth'
+import { userContext } from '@lib/auth'
+import { signOut } from '@features/auth'
 
-function AccountPage({ cookies }) {
-  const userData = useContext(userContext)
+function AccountPage() {
+  const { profile, isAuthenticated } = useContext(userContext)
 
-  const logout = () => {
-    cookies.remove(AUTH_COOKIE_NAME)
-    location.href = '/'
-  }
-
-  if (!userData.token) {
+  if (!isAuthenticated) {
     return null
   }
 
   return (
     <div>
-      <p>Current User: {userData.displayName}</p>
-      <button onClick={logout}>Log out</button>
+      <p>Current User: {profile.displayName}</p>
+      <button onClick={() => signOut()}>Log out</button>
     </div>
   )
 }
@@ -38,7 +32,4 @@ AccountPage.getInitialProps = async function() {
   }
 }
 
-export default compose(
-  withCookies,
-  withPage({ restricted: true }),
-)(AccountPage)
+export default withPage({ restricted: true })(AccountPage)
