@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken'
 export const AUTH_COOKIE_NAME = 'refresh-token'
 const AUTH_COOKIE_MAX_AGE = 60 * 60
 
+// A service to sign the user in
 export function signIn({ email, password, redirect }) {
   return new Promise((resolve, reject) => {
     if (!email || !password) {
@@ -29,11 +30,7 @@ export function signIn({ email, password, redirect }) {
   })
 }
 
-export function signOut() {
-  deleteCookie(AUTH_COOKIE_NAME)
-  location.href = '/'
-}
-
+// A react hook to collect auth data, then makes app knows the user is now logged in
 export function useAuth() {
   const [cookies, setCookie] = useCookies([AUTH_COOKIE_NAME])
   const [token, setToken] = useState(cookies[AUTH_COOKIE_NAME] || null)
@@ -63,6 +60,11 @@ export function useAuth() {
   }
 
   return userData
+}
+
+export function signOut() {
+  deleteCookie(AUTH_COOKIE_NAME)
+  location.href = '/'
 }
 
 function getAuthDataFromCallbackURL(query) {
