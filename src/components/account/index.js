@@ -5,15 +5,15 @@ import { userContext } from '@lib/auth'
 import { signOut } from '@features/auth'
 
 function AccountPage() {
-  const userData = useContext(userContext)
+  const { profile, isAuthenticated } = useContext(userContext)
 
-  if (!userData.token) {
+  if (!isAuthenticated) {
     return null
   }
 
   return (
     <div>
-      <p>Current User: {userData.displayName}</p>
+      <p>Current User: {profile.displayName}</p>
       <button onClick={() => signOut()}>Log out</button>
     </div>
   )

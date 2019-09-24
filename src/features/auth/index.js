@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useCookies } from 'react-cookie'
 import { get } from 'lodash'
+import jwt from 'jsonwebtoken'
 
 export const AUTH_COOKIE_NAME = 'refresh-token'
 const AUTH_COOKIE_MAX_AGE = 60 * 60
@@ -12,8 +13,11 @@ export function signIn({ email, password, redirect }) {
       reject(new Error('No email or password'))
     }
 
+    const exampleJWT =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaXNwbGF5TmFtZSI6IkpvaG4gRG9lIn0.sPK58JizZbQSm-t--cEgifxJkYDt4UGHpBihVha8pJ0'
+
     resolve({
-      token: 'this is a token',
+      token: exampleJWT,
     })
   }).then(({ token }) => {
     if (redirect) {
@@ -54,8 +58,8 @@ export function useAuth() {
   }, [])
 
   const userData = {
-    displayName: parseToken(token, 'displayName'),
-    token,
+    isAuthenticated: token === null ? null : !!token,
+    profile: getDataFromToken(token),
   }
 
   return userData
@@ -67,14 +71,10 @@ function getAuthDataFromCallbackURL(query) {
   }
 }
 
-function parseToken(token, field) {
-  const dataFromToken = {
-    displayName: Math.random()
-      .toString(36)
-      .slice(2),
-  }
+function getDataFromToken(token) {
+  if (token === null) return ''
 
-  return dataFromToken[field]
+  return jwt.decode(token)
 }
 
 function deleteCookie(name) {
