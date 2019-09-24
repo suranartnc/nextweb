@@ -3,30 +3,32 @@ import { useRouter } from 'next/router'
 import { useCookies } from 'react-cookie'
 import { get } from 'lodash'
 import jwt from 'jsonwebtoken'
+import axios from 'axios'
 
 export const AUTH_COOKIE_NAME = 'refresh-token'
 const AUTH_COOKIE_MAX_AGE = 60 * 60
 
 // A service to sign the user in
 export function signIn({ email, password, redirect }) {
-  return new Promise((resolve, reject) => {
-    if (!email || !password) {
-      reject(new Error('No email or password'))
+  return axios({
+    // method: 'post',
+    url: `/api/signIn`,
+    // headers: { 'Content-Type': 'application/json' },
+    // data: {
+    //   email,
+    //   password,
+    // },
+  }).then(({ data }) => {
+    if (!data.token) {
+      throw new Error('Login failed')
     }
 
-    const exampleJWT =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaXNwbGF5TmFtZSI6IkpvaG4gRG9lIn0.sPK58JizZbQSm-t--cEgifxJkYDt4UGHpBihVha8pJ0'
-
-    resolve({
-      token: exampleJWT,
-    })
-  }).then(({ token }) => {
     if (redirect) {
-      location.href = `${redirect}?token=${token}`
+      location.href = `${redirect}?token=${data.token}`
       return
     }
 
-    location.href = `/?token=${token}`
+    location.href = `/?token=${data.token}`
   })
 }
 
