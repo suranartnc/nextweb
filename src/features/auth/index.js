@@ -11,25 +11,25 @@ const AUTH_COOKIE_MAX_AGE = 60 * 60
 // A service to sign the user in
 export function signIn({ email, password, redirect }) {
   return axios({
-    // method: 'post',
+    method: 'post',
     url: `/api/signIn`,
-    // headers: { 'Content-Type': 'application/json' },
-    // data: {
-    //   email,
-    //   password,
-    // },
-  }).then(({ data }) => {
-    if (!data.token) {
-      throw new Error('Login failed')
-    }
-
-    if (redirect) {
-      location.href = `${redirect}?token=${data.token}`
-      return
-    }
-
-    location.href = `/?token=${data.token}`
+    headers: { 'Content-Type': 'application/json' },
+    data: {
+      email,
+      password,
+    },
   })
+    .then(({ data: { token } }) => {
+      if (redirect) {
+        location.href = `${redirect}?token=${token}`
+        return
+      }
+
+      location.href = `/?token=${token}`
+    })
+    .catch(({ response }) => {
+      throw new Error(response.data.message)
+    })
 }
 
 // A react hook to collect auth data, then makes app knows the user is now logged in
