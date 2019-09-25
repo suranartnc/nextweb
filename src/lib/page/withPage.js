@@ -1,8 +1,8 @@
 import { flowRight as compose } from 'lodash'
 
 import { withUA } from '@lib/userAgent'
-import withGtmScript from '@lib/stats/gtm/withGtmScript'
-import withStats from '@lib/stats/withStats'
+// import withGtmScript from '@lib/stats/gtm/withGtmScript'
+// import withStats from '@lib/stats/withStats'
 import withRestrictedPage from '@lib/auth/withRestrictedPage'
 
 import withMeta from './withMeta'
@@ -16,8 +16,8 @@ export default function withPage(options = {}) {
       withUA,
       withMeta,
       withSchema,
-      withGtmScript,
-      withStats,
+      // withGtmScript,
+      // withStats,
       withRestrictedPage(options.restricted),
       withLayout(options.layout),
       withErrorHandling,
