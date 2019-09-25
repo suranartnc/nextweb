@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext, forwardRef } from 'react'
 import Link from '@link'
-import * as GTM from '@lib/stats/gtm'
 import { userContext } from '@lib/auth'
 import { media } from '@lib/styles'
 
@@ -15,36 +14,21 @@ const mainMenus = [
   },
 ]
 
-const trackEvent = menu => () => {
-  GTM.logEvent({
-    category: 'Navigation',
-    action: 'Clicked',
-    label: menu.name,
-    dimension1: 'dimension1',
-    dimension2: 'dimension2',
-  })
-}
-
-function LinkItem({ menu, ...props }) {
-  return (
-    <a
-      {...props}
-      onClick={e => {
-        props.onClick(e)
-        trackEvent(menu)
-      }}
-      css={{
-        display: 'inline-box',
-        padding: '5px 15px 10px 0px',
-        marginRight: 10,
-        [media('md')]: {
-          fontSize: '1.2em',
-        },
-      }}>
-      {menu.name}
-    </a>
-  )
-}
+const LinkItem = forwardRef((props, ref) => (
+  <a
+    {...props}
+    ref={ref}
+    css={{
+      display: 'inline-box',
+      padding: '5px 15px 10px 0px',
+      marginRight: 50,
+      [media('md')]: {
+        fontSize: '1.2em',
+      },
+    }}>
+    {props.menu.name}
+  </a>
+))
 
 export default function Navigation() {
   const { isAuthenticated } = useContext(userContext)
