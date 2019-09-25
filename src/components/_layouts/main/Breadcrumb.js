@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, forwardRef } from 'react'
 import Link from '@link'
 
-function LinkItem({ children }) {
-  return <a css={{ display: 'inline-box', padding: 5 }}>{children}</a>
-}
+const LinkItem = forwardRef((props, ref) => (
+  <a {...props} ref={ref} css={{ display: 'inline-box', padding: 5 }}>
+    {props.children}
+  </a>
+))
 
 export default function Breadcrumb({ data = [] }) {
   return (

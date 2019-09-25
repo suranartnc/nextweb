@@ -1,18 +1,16 @@
 import React, { forwardRef } from 'react'
 import * as GTM from './gtm'
 
-function TrackEvent({ children, event, forwardedRef, ...restProps }) {
+export default forwardRef((props, ref) => {
+  const { children, event, ...restProps } = props
+
   return React.cloneElement(children, {
     ...restProps,
-    ref: forwardedRef,
+    ref,
     onClick: e => {
       restProps.onClick(e)
 
       GTM.logEvent(event)
     },
   })
-}
-
-export default forwardRef((props, ref) => (
-  <TrackEvent {...props} forwardedRef={ref} />
-))
+})
