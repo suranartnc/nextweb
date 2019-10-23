@@ -11,8 +11,8 @@ const routes = [
   },
   {
     pattern: `/article/:id(${patterns.id})`,
-    name: 'articleDetail',
-    page: 'articleDetail',
+    name: 'article-detail',
+    page: 'article-detail',
   },
   {
     pattern: '/about',

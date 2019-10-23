@@ -6,14 +6,14 @@ import { Fetch } from '@lib/api'
 
 import * as ArticleService from '@features/article/services'
 
-import ArticleDetail from './ArticleDetail'
+import ArticleContent from './ArticleContent'
 import ArticleLatest from '../home/ArticleLatest'
 
 function ArticleDetailPage({ articleDetail }) {
   return (
     <Flex flexWrap="wrap">
       <Box width={[1, 2 / 3]} pr={[0, 20]}>
-        <ArticleDetail data={articleDetail} />
+        <ArticleContent data={articleDetail} />
       </Box>
 
       <Box width={[1, 1 / 3]} pl={[0, 20]}>
@@ -48,7 +48,7 @@ ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
       {
         label: articleDetail.title,
         route: {
-          name: 'articleDetail',
+          name: 'article-detail',
           params: {
             id: articleDetail.id,
           },

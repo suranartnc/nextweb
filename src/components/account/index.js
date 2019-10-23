@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 import withPage from '@lib/page/withPage'
-import { userContext } from '@lib/auth'
-import { signOut } from '@features/auth'
+import { useMember } from '@lib/auth'
+import { signOut } from '@features/_auth'
 
 function AccountPage() {
-  const { profile, isAuthenticated } = useContext(userContext)
+  const { profile, isAuthenticated } = useMember()
 
   if (!isAuthenticated) {
     return null
@@ -13,7 +13,7 @@ function AccountPage() {
 
   return (
     <div>
-      <p>Current User: {profile.displayName}</p>
+      <p>Current User: {profile.name}</p>
       <button onClick={() => signOut()}>Log out</button>
     </div>
   )

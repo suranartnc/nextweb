@@ -13,7 +13,10 @@ export default function signIn(req, res) {
     response = { message: 'Email or password is not correct.' }
   } else {
     const payload = {
-      displayName: email,
+      sub: email,
+      name: email,
+      role: 'admin',
+      exp: Math.floor(Date.now() / 1000) + 60 * 60, // 1 hour
     }
 
     const token = jwt.sign(payload, secret)
