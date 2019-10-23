@@ -3,23 +3,21 @@ import { useRouter } from 'next/router'
 import { useCookies } from 'react-cookie'
 import { get } from 'lodash'
 import jwt from 'jsonwebtoken'
-import axios from 'axios'
+import { postAPI } from '@lib/api/helpers'
 
-export const AUTH_COOKIE_NAME = 'refresh-token'
-const AUTH_COOKIE_MAX_AGE = 60 * 60
+export const AUTH_COOKIE_NAME = 'nextweb-token'
 
 // A service to sign the user in
 export function signIn({ email, password, redirect }) {
-  return axios({
-    method: 'post',
-    url: `/api/signIn`,
-    headers: { 'Content-Type': 'application/json' },
+  return postAPI({
+    apiUrl: process.env.HOST,
+    path: '/api/signIn',
     data: {
       email,
       password,
     },
   })
-    .then(({ data: { token } }) => {
+    .then(({ token }) => {
       if (redirect) {
         location.href = `${redirect}?token=${token}`
         return
@@ -35,7 +33,7 @@ export function signIn({ email, password, redirect }) {
 // A react hook to collect auth data, then makes app knows the user is now logged in
 export function useAuth() {
   const [cookies, setCookie] = useCookies([AUTH_COOKIE_NAME])
-  const [token, setToken] = useState(cookies[AUTH_COOKIE_NAME] || null)
+  const [token, setToken] = useState(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -46,7 +44,8 @@ export function useAuth() {
 
       if (tokenFromURL) {
         setCookie(AUTH_COOKIE_NAME, tokenFromURL, {
-          maxAge: AUTH_COOKIE_MAX_AGE,
+          path: '/',
+          expires: new Date(getDataFromToken(tokenFromURL)['exp'] * 1000),
         })
       }
 
@@ -59,6 +58,7 @@ export function useAuth() {
   const userData = {
     isAuthenticated: token === null ? null : !!token,
     profile: getDataFromToken(token),
+    token,
   }
 
   return userData

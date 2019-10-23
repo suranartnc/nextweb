@@ -1,9 +1,13 @@
-import React from 'react'
-import { useAuth } from '@features/auth'
+import React, { useContext } from 'react'
+import { useAuth } from '@features/_auth'
 
 export const userContext = React.createContext({
   isAuthenticated: undefined,
 })
+
+export function useMember() {
+  return useContext(userContext)
+}
 
 export function withAuth(PageComponent) {
   function EnhancedPageComponent(props) {

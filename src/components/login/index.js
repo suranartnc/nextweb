@@ -5,7 +5,7 @@ import { Router } from '@router'
 import { inject } from '@lib/store'
 import withPage from '@lib/page/withPage'
 
-import { signIn } from '@features/auth'
+import { signIn } from '@features/_auth'
 
 function LoginPage({ errorStore }) {
   const [email, setEmail] = useState('')

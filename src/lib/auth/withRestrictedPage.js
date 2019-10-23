@@ -1,10 +1,10 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
 import { Router } from '@router'
-import { userContext } from '@lib/auth'
+import { useMember } from '@lib/auth'
 
 export default (restricted = false) => PageComponent => {
   function EnhancedPageComponent(props) {
-    const { isAuthenticated } = useContext(userContext)
+    const { isAuthenticated } = useMember()
 
     useEffect(() => {
       if (restricted && isAuthenticated === false) {

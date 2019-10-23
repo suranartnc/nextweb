@@ -1,5 +1,5 @@
-import React, { Fragment, useContext } from 'react'
-import { userAgentContext } from '@lib/userAgent'
+import React, { Fragment } from 'react'
+import { useUA } from '@lib/userAgent'
 
 export const breakpoints = {
   md: '48em', // 768px
@@ -14,7 +14,7 @@ export function media(bp = 'lg') {
 export function Adaptive({ wide = null, narrow = null }) {
   const {
     device: { isMobile },
-  } = useContext(userAgentContext)
+  } = useUA()
 
   return isMobile ? narrow : wide
 }

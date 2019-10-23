@@ -16,6 +16,11 @@ const baseStyles = css`
     font-family: 'Open Sans', sans-serif;
     font-size: 24px;
   }
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 `
 
 export default function GlobalStyles() {

@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 export const userAgentContext = React.createContext({})
+
+export function useUA() {
+  return useContext(userAgentContext)
+}
 
 export function withUA(PageComponent) {
   function EnhancedPageComponent(props) {

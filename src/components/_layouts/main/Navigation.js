@@ -1,6 +1,6 @@
-import React, { useContext, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import Link from '@link'
-import { userContext } from '@lib/auth'
+import { useMember } from '@lib/auth'
 import { media } from '@lib/styles'
 
 const mainMenus = [
@@ -31,7 +31,7 @@ const LinkItem = forwardRef((props, ref) => (
 ))
 
 export default function Navigation() {
-  const { isAuthenticated } = useContext(userContext)
+  const { isAuthenticated } = useMember()
 
   return (
     <nav css={{ marginBottom: 10, borderBottom: '1px solid #aaa' }}>

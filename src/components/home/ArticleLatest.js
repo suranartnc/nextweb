@@ -24,7 +24,7 @@ function ArticleItem({ data }) {
   return (
     <article>
       <h3>
-        <Link route="articleDetail" params={{ id: data.id }}>
+        <Link route="article-detail" params={{ id: data.id }}>
           <a>{data.title}</a>
         </Link>
       </h3>
