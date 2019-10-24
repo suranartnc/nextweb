@@ -3,7 +3,7 @@ id: client-side
 title: Client-Side Fetching
 ---
 
-Just like server-side fetching, you have to communicate with the model layer. But for client-side, you do not have to touch ```getInitialProps()``` of a page-level component.
+Just like server-side fetching, you have to communicate with the service layer. But for client-side, you do not have to touch ```getInitialProps()``` of a page-level component.
 
 ## Fetch Component
 
@@ -13,7 +13,7 @@ Here are available props of the ```Fetch``` render prop:
 
 Name | Description
 - | -
-api | A function that returns a promise
+service | A service function that returns a promise
 onError | A callback function to handle an error
 preloader | React Component / Element to render while loading
 
@@ -22,12 +22,12 @@ preloader | React Component / Element to render while loading
 ```javascript
 import { Fetch } from '@lib/api'
 
-import { getArticles } from '@features/article/data/model'
+import * as ArticleService from '@features/article/data/services'
 
 function ArticleDetailPage({ articleDetail }) {
   return (
     <div>
-      <Fetch api={() => getArticles({ limit: 10 }))}>
+      <Fetch service={() => ArticleService.getArticles({ limit: 10 }))}>
         {({ data }) => <ArticleLatest data={data} />}
       </Fetch>
     </div>
@@ -46,7 +46,7 @@ function ArticleLatest({ data }) {
         {data.map(article => (
           <article key={article.id}>
             <h3>
-              <Link to="articleDetail" params={{ id: data.id }}>
+              <Link route="articleDetail" params={{ id: data.id }}>
                 <a>{data.title}</a>
               </Link>
             </h3>

@@ -1,42 +1,27 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { inject } from 'mobx-react'
+import React, { useState } from 'react'
 import { flowRight as compose } from 'lodash'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 
 import { Router } from '@router'
+import { inject } from '@lib/store'
 import withPage from '@lib/page/withPage'
-import { userContext } from '@lib/firebase/auth'
 
-function LoginPage({ RootStore }) {
-  const userData = useContext(userContext)
+import { signIn } from '@features/_auth'
+
+function LoginPage({ errorStore }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const login = e => {
     e.preventDefault()
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch(error => {
-        RootStore.errorStore.addError({
-          title: error.message,
-        })
+
+    const { redirect } = Router.router.query
+
+    signIn({ email, password, redirect }).catch(error => {
+      errorStore.addError({
+        title: error.message,
       })
+    })
   }
-
-  useEffect(() => {
-    if (userData) {
-      const { redirect } = Router.router.query
-
-      if (redirect) {
-        Router.push(redirect)
-        return
-      }
-
-      Router.pushRoute('account')
-    }
-  }, [userData])
 
   return (
     <form onSubmit={login}>
@@ -59,5 +44,5 @@ function LoginPage({ RootStore }) {
 
 export default compose(
   withPage(),
-  inject('RootStore'),
+  inject('errorStore', { observe: false }),
 )(LoginPage)

@@ -7,14 +7,14 @@ Let's say we have a page that fetchs data from an API:
 
 ```javascript
 import withPage from '@lib/page/withPage'
-import { getArticleDetail } from '@features/article/data/model'
+import * as ArticleService from '@features/article/data/services'
 
 function ArticleDetailPage({ articleDetail }) {
   ...
 }
 
 ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
-  const articleDetail = await getArticleDetail({ id: query.id })
+  const articleDetail = await ArticleService.getArticleDetail({ id: query.id })
 
   return {
     articleDetail
@@ -28,14 +28,14 @@ To define the breadcrumb, just add the ```breadcrumb``` property to the returnin
 
 ```javascript
 import withPage from '@lib/page/withPage'
-import { getArticleDetail } from '@features/article/data/model'
+import * as ArticleService from '@features/article/data/services'
 
 function ArticleDetailPage({ articleDetail }) {
   ...
 }
 
 ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
-  const articleDetail = await getArticleDetail({ id: query.id })
+  const articleDetail = await ArticleService.getArticleDetail({ id: query.id })
 
   return {
     articleDetail,
@@ -68,14 +68,14 @@ import { Link } from '@router'
 export default function Breadcrumb({ data = [] }) {
   return (
     <nav>
-      <Link key="Home" to="home">
+      <Link key="Home" route="home">
         <a>Home</a>
       </Link>
 
       {data.map(({ label, route }) => (
         <Fragment key={label}>
           <span>&gt;</span>
-          <Link to={route.name} params={route.params}>
+          <Link route={route.name} params={route.params}>
             <a>{label}</a>
           </Link>
         </Fragment>

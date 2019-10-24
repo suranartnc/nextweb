@@ -1,25 +1,20 @@
-import React, { useContext } from 'react'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import React from 'react'
 
 import withPage from '@lib/page/withPage'
-import { userContext } from '@lib/firebase/auth'
+import { useMember } from '@lib/auth'
+import { signOut } from '@features/_auth'
 
 function AccountPage() {
-  const userData = useContext(userContext)
+  const { profile, isAuthenticated } = useMember()
 
-  const logout = () => {
-    firebase.auth().signOut()
-  }
-
-  if (!userData) {
+  if (!isAuthenticated) {
     return null
   }
 
   return (
     <div>
-      <p>Current User: {userData.email}</p>
-      <button onClick={logout}>Log out</button>
+      <p>Current User: {profile.name}</p>
+      <button onClick={() => signOut()}>Log out</button>
     </div>
   )
 }

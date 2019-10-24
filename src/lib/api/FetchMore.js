@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function FetchMore({ children, api, start, limit }) {
+export default function FetchMore({ children, service, start, limit }) {
   const [lastStart, setLastStart] = useState(start)
   const [isLoading, setIsLoading] = useState(false)
   const [isDone, setIsDone] = useState(false)
@@ -8,7 +8,7 @@ export default function FetchMore({ children, api, start, limit }) {
 
   const fetchMore = async () => {
     setIsLoading(true)
-    const newData = await api({ start: lastStart, limit })
+    const newData = await service({ start: lastStart, limit })
     setIsLoading(false)
     setLastStart(lastStart + newData.length)
     setData(data.concat(newData))

@@ -4,9 +4,10 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
+      "@common/*": ["components/_common/*"],
       "@features/*": ["features/*"],
       "@lib/*": ["lib/*"],
-      "@router/*": ["router/*"],
+      "@link": ["components/_common/Link"]
     }
   },
   "exclude": [

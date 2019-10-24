@@ -1,6 +1,6 @@
 const path = require('path')
 const express = require('express')
-const { parse } = require('url')
+const compression = require('compression')
 const next = require('next')
 const favicon = require('serve-favicon')
 const useragent = require('express-useragent')
@@ -15,24 +15,26 @@ const app = next({
 
 const handle = routes.getRequestHandler(app)
 
-const rootStaticFiles = ['/service-worker.js', '/manifest.json']
-
 app.prepare().then(() => {
   const server = express()
+
+  server.use(
+    compression({
+      filter: function(req, res) {
+        if (process.env.ASSET_PREFIX !== '') {
+          return false
+        }
+
+        return compression.filter(req, res)
+      },
+    }),
+  )
 
   server.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
   server.use(useragent.express())
 
-  server.get('*', function(req, res) {
-    const parsedUrl = parse(req.url, true)
-    const { pathname } = parsedUrl
-
-    if (rootStaticFiles.indexOf(pathname) > -1) {
-      const filePath = path.join(__dirname, '.next', pathname)
-      app.serveStatic(req, res, filePath)
-    } else {
-      handle(req, res)
-    }
+  server.use((req, res) => {
+    handle(req, res)
   })
 
   server.listen(port, err => {

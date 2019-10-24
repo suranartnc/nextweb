@@ -3,7 +3,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 
 import { FetchMore } from '@lib/api'
 import withPage from '@lib/page/withPage'
-import { getLatestArticles, getArticles } from '@features/article/data/model'
+import * as ArticleService from '@features/article/services'
 
 import ArticleLatest, { ArticleList } from './ArticleLatest'
 
@@ -14,7 +14,9 @@ function HomePage({ articleLatest }) {
         <ArticleLatest data={articleLatest} />
 
         <FetchMore
-          api={({ start, limit }) => getArticles({ start, limit })}
+          service={({ start, limit }) =>
+            ArticleService.getArticles({ start, limit })
+          }
           start={5}
           limit={5}>
           {({ data, fetchMore, isLoading, isDone }) => {
@@ -41,7 +43,7 @@ function HomePage({ articleLatest }) {
 }
 
 HomePage.getInitialProps = async () => {
-  const articleLatest = await getLatestArticles()
+  const articleLatest = await ArticleService.getLatestArticles()
 
   return {
     title: 'Home',

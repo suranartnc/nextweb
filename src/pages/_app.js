@@ -1,34 +1,47 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
-import App, { Container } from 'next/app'
-import { flowRight as compose } from 'lodash'
+import App from 'next/app'
+import Router from 'next/router'
+import { Provider } from 'mobx-react'
+import { CookiesProvider } from 'react-cookie'
 
-import { withFontLoader } from '@lib/font'
-import { withFirebase } from '@lib/firebase'
-import { withAuth } from '@lib/firebase/auth'
-import { withUA } from '@lib/userAgent'
-import withMobX from '@lib/store/withMobX'
-
+import { withAuth } from '@lib/auth'
+import { initStore } from '@lib/store'
+import * as font from '@lib/font'
 import { GlobalStyles } from '@lib/styles'
 
 class MyApp extends App {
+  componentDidMount() {
+    const WebFont = require('webfontloader')
+    WebFont.load(font.config)
+
+    Router.events.on('routeChangeStart', url => {
+      if (window.__NEXT_DATA__.props.isSSR === undefined) {
+        window.__NEXT_DATA__.props.isSSR = false
+      }
+    })
+  }
+
   render() {
     const { Component, router } = this.props
+    const rootStore = initStore()
 
-    return (
-      <Container>
+    const children = (
+      <Fragment>
         <GlobalStyles />
         <Helmet titleTemplate={`%s - nextweb.js`} />
-        <Component {...this.props.pageProps} router={router} />
-      </Container>
+        <Provider RootStore={rootStore}>
+          <Component {...this.props.pageProps} router={router} />
+        </Provider>
+      </Fragment>
     )
+
+    if (process.browser) {
+      return <CookiesProvider>{children}</CookiesProvider>
+    }
+
+    return children
   }
 }
 
-export default compose(
-  withUA,
-  withFirebase,
-  withAuth,
-  withMobX,
-  withFontLoader,
-)(MyApp)
+export default withAuth(MyApp)

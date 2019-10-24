@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'mobx-react'
 
-import initStore from './'
+import { initStore } from './'
 
 export default function withMobX(PageComponent) {
   function EnhancedPageComponent(props) {

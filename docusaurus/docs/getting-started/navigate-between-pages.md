@@ -49,15 +49,15 @@ import { Link } from '@router'
 function MyNavigation() {
   return (
     <div>
-      <Link to="home">
+      <Link route="home">
         <a>Home</a>
       </Link>
 
-      <Link to="mypage">
+      <Link route="mypage">
         <a>My Page</a>
       </Link>
 
-      <Link to="articleDetail" params={{ id: 1234 }}>
+      <Link route="articleDetail" params={{ id: 1234 }}>
         <a>Article ID: 1234</a>
       </Link>
     </div>

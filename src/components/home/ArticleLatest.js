@@ -1,6 +1,5 @@
 import React from 'react'
-
-import { Link } from '@router'
+import Link from '@link'
 
 export default function ArticleLatest({ data }) {
   return (
@@ -25,7 +24,7 @@ function ArticleItem({ data }) {
   return (
     <article>
       <h3>
-        <Link to="articleDetail" params={{ id: data.id }}>
+        <Link route="article-detail" params={{ id: data.id }}>
           <a>{data.title}</a>
         </Link>
       </h3>
