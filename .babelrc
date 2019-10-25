@@ -16,11 +16,11 @@
         "alias": {
           "@components": "./src/components",
           "@common": "./src/components/_common",
-          "@features": "./src/features",
+          "@link": "./src/components/_common/Link",
           "@lib": "./src/lib",
-          "@grid": "@rebass/grid/emotion",
+          "@features": "./src/features",
           "@router": "./src/router",
-          "@link": "./src/components/_common/Link"
+          "@grid": "@rebass/grid/emotion"
         }
       }
     ]

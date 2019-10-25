@@ -11,39 +11,26 @@ If you have some font files, just put them inside the ```fonts``` folder and gro
 
 ```bash
 src/
-  lib/
-    styles/
-      sass/
-        fonts/
-          open-sans/
-            opensans-regular-webfont.woff
-            opensans-regular-webfont.woff2
-        _fonts.scss
-        app.scss
+  static/
+    fonts/
+      open-sans/
+        opensans-regular-webfont.woff
+        opensans-regular-webfont.woff2
 ```
 
-Then you add @font-face rules at ```_fonts.scss``` file.
+Then you add ```@font-face``` rules at ```fonts.css``` file.
 
 ```scss
-// src/lib/styles/sass/_fonts_.scss
+// src/static/css/fonts_.css
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('./fonts/open-sans/opensans-regular-webfont.woff2') format('woff2'),
-       url('./fonts/open-sans/opensans-regular-webfont.woff') format('woff');
+  src: url('../fonts/open-sans/opensans-regular-webfont.woff2') format('woff2'),
+       url('../fonts/open-sans/opensans-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
-```
-
-And make sure that ```app.scss``` imports ```_fonts.scss```.
-
-```scss
-// src/lib/styles/sass/app.scss
-
-...
-
-@import "./fonts"
 ```
 
 Now everything is ready, so let's add a css rule to see your font.
@@ -68,13 +55,14 @@ If you want to use some external fonts such as fonts from Google, just write a f
 
 
 ```javascript
-// src/lib/font/config.js
+// src/lib/font.js
 
-export default {
+export const config = {
   google: {
     families: ['Open Sans:400'],
-  },
+  }
 }
+
 ```
 
 And add a css rule as usual.

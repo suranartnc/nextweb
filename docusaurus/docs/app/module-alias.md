@@ -8,10 +8,12 @@ We use [```babel-plugin-module-resolver```](https://github.com/tleunen/babel-plu
 Alias | Path
 ----- | ----
 @components | src/components
-@features | src/features
+@common | src/components/_common
+@link | src/components/_common/Link
 @lib | src/lib
+@features | src/features
 @router | src/router
-
+@grid | @rebass/grid/emotion
 
 ## Examples
 
@@ -30,9 +32,12 @@ Alias | Path
       "module-resolver", {
         "alias": {
           "@components": "./src/components",
-          "@features": "./src/features",
+          "@common": "./src/components/_common",
+          "@link": "./src/components/_common/Link",
           "@lib": "./src/lib",
+          "@features": "./src/features",
           "@router": "./src/router",
+          "@grid": "@rebass/grid/emotion",
 
           ... Add more aliases here ...
         }

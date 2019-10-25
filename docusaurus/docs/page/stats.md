@@ -10,9 +10,9 @@ title: Stats
 First, you have to define your Google Tag Manager container ID.
 
 ```javascript
-// src/lib/stats/gtm/withGtmScript.js
+// .env
 
-const gtmContainerId = process.env.GTM_CONTAINER_ID
+GTM_CONTAINER_ID=GTM-XXXXXXX
 ```
 
 Then you have to set the name of variables you used in Google Tag Manager. Please note that custom dimensions are optional.
@@ -21,9 +21,6 @@ Then you have to set the name of variables you used in Google Tag Manager. Pleas
 // src/lib/stats/gtm/index.js
 
 const variableNames = {
-  pageView: {
-    page: 'customPage',
-  },
   event: {
     category: 'eventCategory',
     action: 'eventAction',
