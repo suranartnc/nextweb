@@ -3,8 +3,6 @@ id: data-models
 title: Repositories & Services
 ---
 
-## Feature-Based Design
-
 To make an app maintainable, all business logics should be grouped by feature. 
 
 ```bash
@@ -15,24 +13,26 @@ src/
     feature3/
 ````
 
-If a feature has some data, we suggest to separate data layer into 2 parts, repository and service.
+For data fetching, we suggest to separate the data layer into 2 parts, repository and service.
 
 ```bash
 src/
   features/
     feature1/
-      data/
-        repository.js
-        services.js
+      repository.js
+      services.js
+    feature2/
+      repository.js
+      services.js
     ...
 ````
 
-### Repository
+### Repository Layer
 
 The repository represents the data access layer. You should have naming conventions for function name and you can modify some parameters to make them easier to use.
 
 ```javascript
-// src/features/article/data/repository.js
+// src/features/article/repository.js
 
 import { fetchAPI } from '@lib/api'
 
@@ -43,29 +43,31 @@ export function getArticles({ q, start, limit }) {
   })
 }
 
-export function getArticle({ id }) {
+export function getArticleById(id) {
   return fetchAPI({
     path: `/articles/${id}`,
   })
 }
 ```
 
-### Services
+### Service Layer
 
-The service just represents business logics. It is a collection of functions that communicate with the repository. Please note that the service grows when business logic grows while the repository grows when the API has some new capabilities. 
+The service just represents business logics. It is a collection of functions that components use to communicate with the repository. Please note that the service grows when business logic grows while the repository grows when the API has some new capabilities. 
 
 ```javascript
-// src/features/article/data/services.js
+// src/features/article/services.js
 
 import * as Repository from './repository'
 
-export function getArticles({ start = 0, limit = 5 } = {}) {
-  return Repository.getArticles({ start, limit })
+export function getArticles({ keyword, start = 0, limit = 5 } = {}) {
+  return API.getArticles({ q: keyword, start, limit })
 }
 
-export function getArticleDetail({ id }) {
-  return Repository.getArticle({ id })
+export function getArticleById(id) {
+  return API.getArticleById(id)
 }
 
 ```
+
+At first, you may not see the different between repository and service layer. But when your application grows, the service layer will become more complex. You can add data preparation in service to make your component very simple.
 

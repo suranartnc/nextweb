@@ -8,6 +8,6 @@ export function getArticles({ keyword, start = 0, limit = 5 } = {}) {
   return API.getArticles({ q: keyword, start, limit })
 }
 
-export function getArticleDetail({ id }) {
-  return API.getArticle({ id })
+export function getArticleById(id) {
+  return API.getArticleById(id)
 }

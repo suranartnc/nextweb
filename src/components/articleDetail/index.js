@@ -26,7 +26,7 @@ function ArticleDetailPage({ articleDetail }) {
 }
 
 ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
-  const articleDetail = await ArticleService.getArticleDetail({ id: query.id })
+  const articleDetail = await ArticleService.getArticleById(query.id)
 
   return {
     title: articleDetail.title,

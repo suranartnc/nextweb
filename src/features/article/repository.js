@@ -7,7 +7,7 @@ export function getArticles({ q, start, limit }) {
   })
 }
 
-export function getArticle({ id }) {
+export function getArticleById(id) {
   return fetchAPI({
     path: `/articles/${id}`,
   })
