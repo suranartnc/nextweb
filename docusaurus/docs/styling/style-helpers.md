@@ -5,7 +5,7 @@ title: Style Helpers
 
 ## Media Queries
 
-```media``` helper allows you to use CSS media queries in object styles.
+```media``` helper allows you to use CSS media queries with object styles.
 
 ```javascript
 import { media } from '@lib/styles'
@@ -24,7 +24,7 @@ function MyComponent() {
 }
 ```
 
-Please note that all available arguments for ```media``` are the breakpoints you have defined.
+Please note that all available arguments for ```media()``` are the breakpoints you have defined.
 
 ```javascript
 // src/lib/styles/helpers.js
@@ -44,7 +44,7 @@ These 2 helpers help us do conditional rendering based on some conditions. The v
 
 ### Viewport Size
 
-This helper will re-render the target component if the viewport size meet the condition. 
+This helper will render the target component that meets the condition in terms of viewport size. 
 
 ```javascript
 import { Responsive } from '@lib/styles'
@@ -66,7 +66,7 @@ Please note that the value of the ```breakpoint``` prop must be one of the prede
 
 ### Device
 
-This helper will re-render the target component if the device type meet the condition.
+This helper will render the target component that meets the condition in terms of device type. 
 
 ```javascript
 import { Adaptive } from '@lib/styles'

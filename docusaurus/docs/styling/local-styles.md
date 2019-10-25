@@ -3,7 +3,7 @@ id: local-styles
 title: Local Styles
 ---
 
-**NextWeb.js** uses [**Emotion**](https://emotion.sh/) for styling. The combining of ```css``` prop and ```Object Styles``` make styling in react app super easy. No more imports!
+**NextWeb.js** uses [**Emotion**](https://emotion.sh/) for styling. The combining of ```css``` prop and ```Object Styles``` make styling in react application super simple. No more imports!
 
 ```javascript
 function MainLayout({ children }) {
@@ -15,7 +15,7 @@ function MainLayout({ children }) {
 }
 ```
 
-To make this happen, we have to add a babel preset.
+To make it works, we have to add this babel preset.
 
 ```bash
 {
@@ -23,4 +23,4 @@ To make this happen, we have to add a babel preset.
 }
 ```
 
-Fortunately, **NextWeb.js** handles this for you. All you have to do is to write some styles and see the [**document**](https://emotion.sh/docs/object-styles) from emotion.
+Fortunately, **NextWeb.js** do it for you. All you have to do is to write some styles and see the [**document**](https://emotion.sh/docs/object-styles) from emotion.
