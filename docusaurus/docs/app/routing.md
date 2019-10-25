@@ -80,13 +80,13 @@ module.exports = routes
 const routes = [
   {
     pattern: '/articles',
-    name: 'articleList',
-    page: 'articleList',
+    name: 'article-list',
+    page: 'article-list',
   },
   {
     pattern: '/article/:id',
-    name: 'articleDetail',
-    page: 'articleDetail',
+    name: 'article-detail',
+    page: 'article-detail',
   },
 
   ...
@@ -112,8 +112,8 @@ const routes = [
   },
   {
     pattern: '/article/:id',
-    name: 'articleDetail',
-    page: 'articleDetail',
+    name: 'article-detail',
+    page: 'article-detail',
   },
   {
     pattern: '/about',

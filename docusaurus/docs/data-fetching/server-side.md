@@ -3,27 +3,25 @@ id: server-side
 title: Server-Side Fetching
 ---
 
-When you want to fetch some data, you have to communicate with the service layer. For server-side, just call the function from services inside ```getInitialProps()``` of a page-level component.
+When you want to fetch some data, you have to communicate with API via services. For server-side, just call the service inside ```getInitialProps()``` of a page-level component.
 
 ## Page Component
 
 ```javascript
 import * as ArticleService from '@features/article/data/services'
 
-function ArticleDetailPage({ articleDetail }) {
+function ArticleDetailPage({ data }) {
   return (
     <div>
-      <ArticleDetail data={articleDetail} />
+      <ArticleDetail data={data} />
     </div>
   )
 }
 
-ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
-  const articleDetail = await ArticleService.getArticleDetail({ id: query.id })
+ArticleDetailPage.getInitialProps = async ({ query }) => {
+  const data = await ArticleService.getArticleById(query.id)
 
-  return {
-    articleDetail,
-  }
+  return { data }
 }
 ```
 

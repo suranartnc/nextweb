@@ -26,10 +26,10 @@ For example:
 
 ```javascript
 import React, { useContext } from 'react'
-import { userAgentContext } from '@lib/userAgent'
+import { useUA } from '@lib/userAgent'
 
 function MyComponent() {
-  const { isMobile } = useContext(userAgentContext)
+  const { device: { isMobile } } = useUA()
 
   return (
     <div>
@@ -45,17 +45,15 @@ You can access authentication data of a user easily using this context:
 
 ```javascript
 import React, { useContext } from 'react'
-import { userContext } from '@lib/firebase/auth'
+import { useMember } from '@lib/auth'
 
 function MyComponent() {
-  const userData = useContext(userContext)
+  const { isAuthenticated } = useMember()
 
   return (
     <div>
-      {userData ? <DashboardPage /> : <LoginPage /> }
+      {isAuthenticated ? <DashboardPage /> : <LoginPage /> }
     </div>
   )
 }
 ```
-
-Please note that **NextWeb.js** comes with firebase authentication by default but you can change it to your own service without affects this context. All you have to do is to save authentication data from your service into ```userContext```.

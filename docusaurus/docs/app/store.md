@@ -50,8 +50,8 @@ export default class ErrorStore {
 Another good reason is isolating global data into multiple stores will helps your app simpler a lot. You will know which global data the app keeps immediately after seeing the ```RootStore``` file.
 
 ```javascript
-import UIStore from './ui'
-import ErrorStore from './error'
+import UIStore from '@features/_ui/store'
+import ErrorStore from '@features/_error/store'
 // Import more store here...
 
 export default class RootStore {

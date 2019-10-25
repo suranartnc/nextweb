@@ -26,8 +26,8 @@ const routes = [
 
   {
     pattern: '/article/:id',  // For dynamic pages, use ":" to make it a variable
-    name: 'articleDetail',
-    page: 'articleDetail',
+    name: 'article-detail',
+    page: 'article-detail',
   },
 
   ...
@@ -57,7 +57,7 @@ function MyNavigation() {
         <a>My Page</a>
       </Link>
 
-      <Link route="articleDetail" params={{ id: 1234 }}>
+      <Link route="article-detail" params={{ id: 1234 }}>
         <a>Article ID: 1234</a>
       </Link>
     </div>
