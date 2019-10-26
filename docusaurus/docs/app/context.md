@@ -57,3 +57,4 @@ function MyComponent() {
   )
 }
 ```
+See more detail about authentication data in [**Authentication**](/nextweb/docs/app/authentication) section
