@@ -10,9 +10,9 @@ If we decide to keep those data in local state, we have to place them at the roo
 The better way is using ```context``` which provides a way to pass data through the component tree without having to pass props down manually.
 
 ## Built-In Contexts
-Fortunately, **NextWeb.js** comes with some useful built-in contexts that will make your life easier.
+Fortunately, **NextWeb.js** comes with some useful built-in contexts that will make your life easier and you can access them using react hooks.
 
-### User Agent
+### useUA()
 There are some useful information **NextWeb.js** extracted from user agent:
 
 Name | Description 
@@ -39,9 +39,9 @@ function MyComponent() {
 }
 ```
 
-### Authentication Data
+### useMember()
 
-You can access authentication data of a user easily using this context:
+You can access authentication data of a user easily using this react hook:
 
 ```javascript
 import React, { useContext } from 'react'
