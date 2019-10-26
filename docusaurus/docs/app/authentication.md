@@ -3,84 +3,89 @@ id: authentication
 title: Authentication
 ---
 
-One of the most frequently asked question is about authentication, so **NextWeb.js** provides it out of the box. By default, we use authentication service from firebase to make it very simple.
+One of the most frequently asked question is about authentication, so **NextWeb.js** provides it out of the box.
 
-## Firebase Authentication
-Firebase Authentication allows users to sign in to your app using a variety of methods, including email address and password sign-in, and 3rd party providers such as Google Sign-in and Facebook Login.
+## How It Works
+Authentication in **NextWeb.js** is consisted of 3 parts:
 
-Here is an example using email address and password sign-in method:
+### 1. userContext
+
+**NextWeb.js** stores authentication data in ```userContext``` and to make it accessible by every components, **NextWeb.js** wraps the app component with a higher-order component called ```withAuth()```.
 
 ```javascript
-function LoginPage({ RootStore }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+// src/lib/auth/index.js
 
-  const login = e => {
-    e.preventDefault()
-    firebase.auth().signInWithEmailAndPassword(email, password)
+export function withAuth(PageComponent) {
+  function EnhancedPageComponent(props) {
+    const userData = useAuth()
+
+    return (
+      <userContext.Provider value={userData}>
+        <PageComponent {...props} />
+      </userContext.Provider>
+    )
   }
 
-  return (
-    <form onSubmit={login}>
-      <p>
-        <label>
-          Email:
-          <input type="text" onChange={e => setEmail(e.target.value)} />
-        </label>
-      </p>
-      <p>
-        <label>
-          Password:
-          <input type="password" onChange={e => setPassword(e.target.value)} />
-        </label>
-      </p>
-      <button>Log in</button>
-    </form>
-  )
+  ...
+
+  return EnhancedPageComponent
 }
 ```
+Please note that authentication data comes from a custom hook called ```useAuth()```.
 
-Whenever authentication state changed, we have to save the new data to a context called ```userContext``` to make it accessible by every components. This is done by ```withAuth.js```.
+### 2. useAuth()
+
+A custom hook used to provide data for ```userContext```.
 
 ```javascript
-// src/lib/firebase/auth/withAuth
+// src/lib/auth/useAuth.js
 
-export const userContext = React.createContext(null)
-
-const useAuth = () => {
+export default function useAuth() {
   const [userData, setUserData] = useState(undefined)
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      setUserData(user)
-    })
-
-    return () => {
-      unsubscribe()
-    }
+    // Wait for an authentication event to update userData
   }, [])
 
   return userData
 }
-
-function PageWithAuth(props) {
-  const userData = useAuth()
-
-  return (
-    <userContext.Provider value={userData}>
-      <Page {...props} />
-    </userContext.Provider>
-  )
-}
 ```
 
 
-## Custom Authentication Service
+Fortunately, **NextWeb.js** comes with buit-in ```useAuth()``` for 2 popular types of authentication service.
 
-If you have your own authentication service, all you have to do is changing the following code:
+Type | Example
+------------ | -------------
+Token-based | src/lib/auth/useAuth.js
+Firebase | src/lib/firebase/useAuth.js
 
-### firebase.auth().signInWithEmailAndPassword
-This method triggers a sign-in method. To use your custom service, use your api or whatever that signs a user in instead.
+So you do not have to write any lines of code, just import the right one.
 
-### firebase.auth().onAuthStateChanged(user => { setUserData(user) })
-This event listener watches the authentication state. If it changed, we use ```setUserData``` to update the data of ```userContext```. To use your custom service, whenever the authentication state changed, just call ```setUserData``` with the new state.
+### 3. signIn()
+
+A function that used to call authentication API and triggers ```useEffects()``` in ```useAuth()```. Here are some examples.
+
+#### Token-based Authentication
+
+```javascript
+function signIn(email, password) {
+  return postAPI({
+    apiUrl: process.env.HOST,
+    path: '/api/signIn',
+    data: {
+      email,
+      password,
+    },
+  }).then(token => {
+    location.href = `/?token=${token}`
+  })
+}
+```
+
+#### Firebase Authentication
+
+```javascript
+function signIn(email, password) {
+  firebase.auth().signInWithEmailAndPassword(email, password)
+}
+```

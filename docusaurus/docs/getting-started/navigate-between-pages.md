@@ -44,7 +44,7 @@ Basically, the value of name and page should be the same because it is easy to r
 Just pass a route name to ```<Link />``` via ```to``` prop
 
 ```javascript
-import { Link } from '@router'
+import Link from '@link'
 
 function MyNavigation() {
   return (

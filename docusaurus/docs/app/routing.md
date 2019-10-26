@@ -95,7 +95,7 @@ const routes = [
 module.exports = routes
 ```
 
-You can separate route groups by your own rule, but what we recommended is separating by the prefix of patterns.
+You can separate route groups by your own rules, but what we recommended is separating by the prefix of patterns.
 
 ### Single Group
 
