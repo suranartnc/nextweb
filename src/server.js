@@ -8,11 +8,11 @@ const routes = require('./router')
 
 const port = process.env.PORT || 3000
 
+const dev = process.env.NODE_ENV !== 'production'
 const app = next({
-  dev: process.env.NODE_ENV !== 'production',
+  dev,
   dir: './src',
 })
-
 const handle = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
@@ -30,7 +30,7 @@ app.prepare().then(() => {
     }),
   )
 
-  server.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
+  server.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
   server.use(useragent.express())
 
   server.use((req, res) => {
