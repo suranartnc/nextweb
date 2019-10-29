@@ -13,7 +13,7 @@ my-app/
     lib/
     pages/
     router/
-    static/
+    public/
     next.config.js
     server.js
   .babelrc
@@ -29,7 +29,7 @@ features/ | Keep business logic separated by entities or modules
 lib/ | Keep built-in utilities separated by modules
 pages/ | Keep pages for Next.js
 router/ | Keep routes and utilities for routing
-static/ | Keep static files
+public/ | Keep public files
 
 ***Note:*** *Adding more subdirectories in   ```src/``` is **not** recommended unless you know what you are doing.*
 
