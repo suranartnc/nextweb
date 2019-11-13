@@ -8,7 +8,7 @@ When you want to fetch some data, you have to communicate with API via services.
 ## Page Component
 
 ```javascript
-import * as ArticleService from '@features/article/data/services'
+import * as ArticleService from '@features/article/services'
 
 function ArticleDetailPage({ data }) {
   return (
