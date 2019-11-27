@@ -22,6 +22,7 @@ export default function Fetch({
             return onError(error)
           }
 
+          console.error(error)
           return null
         }
 
