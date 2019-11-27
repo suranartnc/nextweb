@@ -20,7 +20,7 @@
           "@lib": "./src/lib",
           "@features": "./src/features",
           "@router": "./src/router",
-          "@grid": "@rebass/grid/emotion"
+          "@grid": "./src/lib/styles/grid"
         }
       }
     ]

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@grid'
 
 import { FetchMore } from '@lib/api'
 import withPage from '@lib/page/withPage'
@@ -9,7 +9,7 @@ import ArticleLatest, { ArticleList } from './ArticleLatest'
 
 function HomePage({ articleLatest }) {
   return (
-    <Flex flexWrap="wrap">
+    <Flex>
       <Box width={[1, 2 / 3]} pr={[0, 20]}>
         <ArticleLatest data={articleLatest} />
 
