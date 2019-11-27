@@ -11,7 +11,7 @@ import ArticleLatest from '../home/ArticleLatest'
 
 function ArticleDetailPage({ articleDetail }) {
   return (
-    <Flex flexWrap="wrap">
+    <Flex>
       <Box width={[1, 2 / 3]} pr={[0, 20]}>
         <ArticleContent data={articleDetail} />
       </Box>
