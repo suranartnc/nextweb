@@ -1,10 +1,11 @@
 import React from 'react'
 import Link from '@link'
+import { Flex, Box } from '@grid'
+import colors from '@features/_ui/config/colors'
 
 export default function ArticleLatest({ data }) {
   return (
     <section>
-      <h2>Latest Articles</h2>
       <ArticleList data={data} />
     </section>
   )
@@ -22,13 +23,27 @@ export function ArticleList({ data }) {
 
 function ArticleItem({ data }) {
   return (
-    <article>
-      <h3>
-        <Link route="article-detail" params={{ id: data.id }}>
-          <a>{data.title}</a>
-        </Link>
-      </h3>
-      <div dangerouslySetInnerHTML={{ __html: data.excerpt }} />
+    <article css={{ padding: '20px 0' }}>
+      <Flex>
+        <Box width={6.5 / 10}>
+          <h3>
+            <Link route="article-detail" params={{ id: data.id }}>
+              <a>{data.title}</a>
+            </Link>
+          </h3>
+          <div
+            css={{ color: colors.text.light }}
+            dangerouslySetInnerHTML={{ __html: data.excerpt }}
+          />
+        </Box>
+        <Box width={3.5 / 10} pl={20} pt={10}>
+          <Link route="article-detail" params={{ id: data.id }}>
+            <a>
+              <img src={data.image.featured} />
+            </a>
+          </Link>
+        </Box>
+      </Flex>
     </article>
   )
 }
