@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
-
-import useAuth from './useAuth'
+import useAuth from '@features/_auth/useAuth'
 
 export const userContext = React.createContext({
   isAuthenticated: undefined,

@@ -8,7 +8,7 @@ export default (restricted = false) => PageComponent => {
 
     useEffect(() => {
       if (restricted && isAuthenticated === false) {
-        Router.pushRoute('login', {
+        Router.pushRoute('auth-login', {
           redirect: props.router.asPath,
         })
       }

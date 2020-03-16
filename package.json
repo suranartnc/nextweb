@@ -49,7 +49,7 @@
     "emotion-theming": "^10.0.10",
     "express": "^4.16.4",
     "express-useragent": "^1.0.12",
-    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "mobx": "^5.15.0",
     "mobx-react": "^6.1.4",
