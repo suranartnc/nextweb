@@ -5,20 +5,46 @@ import Error400Page from '@components/_error/400'
 import Error500Page from '@components/_error/500'
 
 export default function withErrorHandling(PageComponent) {
-  function EnhancedPageComponent(props) {
-    const statusCode = get(props, 'statusCode', 200)
-
-    // If any error
-    if (statusCode >= 500) {
-      return <Error500Page />
+  class EnhancedPageComponent extends React.Component {
+    state = {
+      hasRuntimeError: false,
+      error: {},
     }
 
-    // If no resource
-    if (statusCode >= 400) {
-      return <Error400Page />
+    static getDerivedStateFromError(error) {
+      const errorResponse = get(error, 'response', {})
+
+      return {
+        hasRuntimeError: true,
+        error: errorResponse,
+      }
     }
 
-    return <PageComponent {...props} />
+    componentDidCatch(error, errorInfo) {
+      console.error('Runtime Error:', error, errorInfo)
+    }
+
+    render() {
+      const statusCode = get(this.props, 'statusCode', 200)
+
+      // If any runtime error
+      if (this.state.hasRuntimeError) {
+        return <Error500Page errorCode={this.state.error.errorCode} />
+      }
+
+      // If any error
+      if (statusCode >= 500) {
+        return <Error500Page />
+      }
+
+      // If no resource
+      if (statusCode >= 400) {
+        const errorCode = get(this.props, 'errorCode', '')
+        return <Error400Page errorCode={errorCode} />
+      }
+
+      return <PageComponent {...this.props} />
+    }
   }
 
   EnhancedPageComponent.getInitialProps = async function(ctx) {
@@ -31,6 +57,7 @@ export default function withErrorHandling(PageComponent) {
         console.error(error)
 
         const statusCode = get(error, 'response.status', 500)
+        const errorCode = get(error, 'response.errorCode', '')
 
         if (ctx.res) {
           ctx.res.statusCode = statusCode
@@ -39,6 +66,7 @@ export default function withErrorHandling(PageComponent) {
         pageProps = {
           ...pageProps,
           statusCode,
+          errorCode,
         }
       }
     }

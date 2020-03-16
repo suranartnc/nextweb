@@ -1,5 +1,6 @@
 import React from 'react'
+import InternalServerError from './InternalServerError'
 
-export default function Error500Page() {
-  return <p>Something went wrong.</p>
+export default function Error500Page(props) {
+  return <InternalServerError {...props} />
 }

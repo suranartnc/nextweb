@@ -3,7 +3,14 @@
     [
       "next/babel",
       {
-        "class-properties": { "loose": true }
+        "class-properties": { "loose": true },
+        "preset-env": {
+          "targets": {
+            "ie": "11"
+          },
+          "useBuiltIns": "usage",
+          "corejs": "3.3.6"
+        }
       }
     ],
     "@emotion/babel-preset-css-prop"
@@ -18,9 +25,10 @@
           "@common": "./src/components/_common",
           "@link": "./src/components/_common/Link",
           "@lib": "./src/lib",
+          "@grid": "./src/lib/styles/grid",
           "@features": "./src/features",
           "@router": "./src/router",
-          "@grid": "./src/lib/styles/grid"
+          "@routes": "./src/routes"
         }
       }
     ]

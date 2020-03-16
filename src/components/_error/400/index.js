@@ -1,5 +1,8 @@
 import React from 'react'
 
-export default function Error400Page({ routeMisMatched }) {
-  return routeMisMatched ? <p>Page Not Found.</p> : <p>No resource.</p>
+import NoResource from './NoResource'
+import NotFound from './NotFound'
+
+export default function Error400Page({ routeMisMatched, ...props }) {
+  return routeMisMatched ? <NotFound {...props} /> : <NoResource {...props} />
 }

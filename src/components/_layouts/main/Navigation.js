@@ -10,7 +10,7 @@ const mainMenus = [
   },
   {
     name: 'About',
-    route: 'about',
+    route: 'static-about',
   },
 ]
 
@@ -42,11 +42,11 @@ export default function Navigation() {
       ))}
 
       {isAuthenticated ? (
-        <Link key="Account" route="account" passHref>
+        <Link key="Account" route="auth-account" passHref>
           <LinkItem menu={{ name: 'Account' }} />
         </Link>
       ) : (
-        <Link key="Login" route="login" passHref>
+        <Link key="Login" route="auth-login" passHref>
           <LinkItem menu={{ name: 'Login' }} />
         </Link>
       )}

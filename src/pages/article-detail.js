@@ -1,2 +1,2 @@
-import articleDetail from '@components/articleDetail'
-export default articleDetail
+import ArticleDetailPage from '@routes/article/ArticleDetailPage'
+export default ArticleDetailPage
