@@ -32,7 +32,7 @@ function getPrefix() {
     if (hostname === 'localhost') {
       prefix = `http://${host}`
     } else {
-      prefix = `https://${hostname}`
+      prefix = process.env.HOST || ''
     }
   }
 
