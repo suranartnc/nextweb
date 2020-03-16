@@ -1,12 +1,10 @@
 module.exports = [
   {
     pattern: '/login',
-    name: 'login',
-    page: 'login',
+    name: 'auth-login',
   },
   {
     pattern: '/account',
-    name: 'account',
-    page: 'account',
+    name: 'auth-account',
   },
 ]

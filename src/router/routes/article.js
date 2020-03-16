@@ -4,6 +4,5 @@ module.exports = [
   {
     pattern: `/article/:id(${patterns.id})`,
     name: 'article-detail',
-    page: 'article-detail',
   },
 ]

@@ -10,8 +10,7 @@ const routes = [
 
   {
     pattern: '/about',
-    name: 'about',
-    page: 'about',
+    name: 'static-about',
   },
 
   ...authRoutes,
