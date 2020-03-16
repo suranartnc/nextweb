@@ -38,7 +38,4 @@ AboutPage.getInitialProps = async function() {
   }
 }
 
-export default compose(
-  withPage(),
-  inject('uiStore'),
-)(AboutPage)
+export default compose(withPage(), inject('uiStore'))(AboutPage)

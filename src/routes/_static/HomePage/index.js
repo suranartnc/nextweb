@@ -6,8 +6,9 @@ import withPage from '@lib/page/withPage'
 import * as ArticleService from '@features/article/services'
 import colors from '@features/_ui/config/colors'
 
+import PopularArticles from '@routes/article/ArticleDetailPage/PopularArticles'
+
 import ArticleLatest, { ArticleList } from './ArticleLatest'
-import PopularArticles from '../articleDetail/PopularArticles'
 
 function HomePage({ articleLatest }) {
   return (

@@ -1,2 +1,2 @@
-import LoginPage from '@components/login'
+import LoginPage from '@routes/_auth/LoginPage'
 export default LoginPage
