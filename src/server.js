@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const path = require('path')
 const express = require('express')
 const compression = require('compression')
@@ -8,11 +10,11 @@ const routes = require('./router')
 
 const port = process.env.PORT || 3000
 
-const dev = process.env.NODE_ENV !== 'production'
 const app = next({
-  dev,
+  dev: process.env.NODE_ENV !== 'production',
   dir: './src',
 })
+
 const handle = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
