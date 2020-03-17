@@ -65,6 +65,7 @@ function createNextApp(project_name) {
   const PACKAGE_JSON = _.merge(packageJson, {
     name: project_name,
   })
+
   console.log(`Creating a new NextWeb app in ${colors.green(root)}.`)
 
   shell.exec(`cp -r ../../.vscode ${project_name}`)
@@ -77,35 +78,37 @@ function createNextApp(project_name) {
   shell.exec(`cp -r ../../.gitignore ${project_name}`)
   shell.exec(`cp -r ../../jsconfig.json ${project_name}`)
   shell.exec(`cp -r ../../yarn.lock ${project_name}`)
-
   shell.exec(`cd ${project_name}`)
+
   fs.writeFile('xxx.json', JSON.stringify(PACKAGE_JSON, null, 2), () => null)
+
   shell.exec(
     `mv ${process.cwd()}/xxx.json ${process.cwd()}/${project_name}/package.json`,
   )
-  console.log()
-  shell.exec('npm install')
-  console.log('Installing packages. This might take a couple of minutes.')
-  console.log()
 
-  console.log(`${colors.green('Success!')} Created ${project_name} at ${root}`)
-  console.log('Inside that directory, you can run several commands:')
-  console.log()
-  console.log(colors.cyan(`  ${displayedCommand} run dev`))
-  console.log('    Starts the development server.')
-  console.log()
-  console.log(colors.cyan(`  ${displayedCommand} run build`))
-  console.log('    Builds the app for production.')
-  console.log()
-  console.log(colors.cyan(`  ${displayedCommand} start`))
-  console.log('    Runs the built app in production mode.')
-  console.log()
-  console.log('We suggest that you begin by typing:')
-  console.log()
-  console.log(colors.cyan('  cd'), project_name)
-  console.log(`  ${colors.cyan(`${displayedCommand} install`)}`)
-  console.log(`  ${colors.cyan(`${displayedCommand} run dev`)}`)
-  console.log()
+  // console.log()
+  // shell.exec('npm install')
+  // console.log('Installing packages. This might take a couple of minutes.')
+  // console.log()
+
+  // console.log(`${colors.green('Success!')} Created ${project_name} at ${root}`)
+  // console.log('Inside that directory, you can run several commands:')
+  // console.log()
+  // console.log(colors.cyan(`  ${displayedCommand} run dev`))
+  // console.log('    Starts the development server.')
+  // console.log()
+  // console.log(colors.cyan(`  ${displayedCommand} run build`))
+  // console.log('    Builds the app for production.')
+  // console.log()
+  // console.log(colors.cyan(`  ${displayedCommand} start`))
+  // console.log('    Runs the built app in production mode.')
+  // console.log()
+  // console.log('We suggest that you begin by typing:')
+  // console.log()
+  // console.log(colors.cyan('  cd'), project_name)
+  // console.log(`  ${colors.cyan(`${displayedCommand} install`)}`)
+  // console.log(`  ${colors.cyan(`${displayedCommand} run dev`)}`)
+  // console.log()
 }
 
 main()
