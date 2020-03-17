@@ -12,6 +12,9 @@
     "api": "node ./api/server.js",
     "doctoc": "npx doctoc README.md --github"
   },
+  "bin": {
+    "create-nextweb-app": "./scripts/create/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/suranartnc/nextweb.git"
