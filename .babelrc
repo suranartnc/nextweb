@@ -18,9 +18,10 @@
           "@common": "./src/components/_common",
           "@link": "./src/components/_common/Link",
           "@lib": "./src/lib",
+          "@grid": "./src/lib/styles/grid",
           "@features": "./src/features",
           "@router": "./src/router",
-          "@grid": "@rebass/grid/emotion"
+          "@routes": "./src/routes"
         }
       }
     ]

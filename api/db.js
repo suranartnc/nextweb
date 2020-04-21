@@ -38,8 +38,12 @@ function generateArticles(limit) {
     articles.push({
       id: i + 1,
       title: title,
-      excerpt: nlToBr(faker.lorem.paragraphs(2)),
+      excerpt: nlToBr(faker.lorem.paragraphs(1)),
       body: nlToBr(faker.lorem.paragraphs(10)),
+      image: {
+        thumbnail: `http://placeimg.com/304/286/any?${Math.random()}`,
+        featured: `http://placeimg.com/640/360/any?${Math.random()}`,
+      },
       author: {
         name: faker.name.firstName() + ' ' + faker.name.lastName(),
         avatar: faker.image.avatar(),

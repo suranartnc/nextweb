@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react'
-import { get } from 'lodash'
-import jwt from 'jsonwebtoken'
 import { useRouter } from 'next/router'
-
 import { useCookies } from 'react-cookie'
-import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from '@features/_auth'
+import { get } from 'lodash'
+import jwtDecode from 'jwt-decode'
+
+import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from './constants'
 
 export default function useAuth() {
-  const [token, setToken] = useState(null)
-  const router = useRouter()
   const [cookies, setCookie] = useCookies([AUTH_COOKIE_NAME])
+  const [token, setToken] = useState(cookies[AUTH_COOKIE_NAME] || null)
+  const router = useRouter()
 
   useEffect(() => {
     let token = cookies[AUTH_COOKIE_NAME]
 
     if (!token) {
-      const tokenFromURL = get(router.query, 'token', false)
+      const { token: tokenFromURL } = getAuthDataFromCallbackURL(router.query)
 
       if (tokenFromURL) {
         const payload = getDataFromToken(tokenFromURL)
@@ -44,8 +44,14 @@ export default function useAuth() {
   return userData
 }
 
-function getDataFromToken(token) {
-  if (token === null) return null
+function getAuthDataFromCallbackURL(query) {
+  return {
+    token: get(query, 'token', false),
+  }
+}
 
-  return jwt.decode(token)
+function getDataFromToken(token) {
+  if (token === null || token === false) return ''
+
+  return jwtDecode(token)
 }

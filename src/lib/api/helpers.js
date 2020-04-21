@@ -1,4 +1,9 @@
 import axios from 'axios'
+import { trimEnd } from 'lodash'
+import { deleteCookie } from '@lib/cookie'
+import { getFullUrlByRoute } from '@router/utils'
+
+import { AUTH_COOKIE_NAME } from '@features/_auth/constants'
 
 const defaultTimeout = 10000
 
@@ -59,8 +64,13 @@ export function fetchGQL({
   }).then(({ data }) => data)
 }
 
-export function throwError(status = 500) {
+export function throwError(status = 500, { errorCode = '' } = {}) {
   const err = new Error()
-  err.response = { status }
+  err.response = { status, errorCode }
   throw err
+}
+
+function resetAuthorization({ redirect = '' }) {
+  deleteCookie(AUTH_COOKIE_NAME)
+  location.href = trimEnd(getFullUrlByRoute('auth-login', { redirect }), '/')
 }

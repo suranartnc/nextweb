@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@grid'
 import { flowRight as compose } from 'lodash'
 import { inject } from '@lib/store'
 
@@ -10,7 +10,7 @@ function AboutPage({ uiStore }) {
   const { dimensions, orientation } = uiStore
 
   return (
-    <Flex flexWrap="wrap">
+    <Flex>
       <Box>
         <Helmet title="About" />
         About Page
@@ -38,7 +38,4 @@ AboutPage.getInitialProps = async function() {
   }
 }
 
-export default compose(
-  withPage(),
-  inject('uiStore'),
-)(AboutPage)
+export default compose(withPage(), inject('uiStore'))(AboutPage)

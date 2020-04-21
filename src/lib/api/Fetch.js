@@ -6,7 +6,7 @@ export default function Fetch({
   children,
   service,
   onError,
-  preloader = 'Loading...',
+  preloader = null,
 }) {
   return (
     <Async promiseFn={service}>
@@ -22,6 +22,7 @@ export default function Fetch({
             return onError(error)
           }
 
+          console.error(error)
           return null
         }
 
