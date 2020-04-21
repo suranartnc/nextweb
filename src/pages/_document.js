@@ -5,21 +5,6 @@ import Helmet from 'react-helmet'
 
 import { getStatic } from '@lib/static'
 
-class CustomHead extends Head {
-  render() {
-    const { head, styles } = this.context._documentProps
-
-    return (
-      <head {...this.props}>
-        {head}
-        {this.getCssLinks()}
-        {styles || null}
-        {this.props.children}
-      </head>
-    )
-  }
-}
-
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }) {
     const documentProps = renderPage()
@@ -40,7 +25,7 @@ export default class MyDocument extends Document {
 
     return (
       <html {...htmlAttrs}>
-        <CustomHead>
+        <Head>
           {helmet.title.toComponent()}
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {helmet.meta.toComponent()}
@@ -54,7 +39,7 @@ export default class MyDocument extends Document {
           {helmet.link.toComponent()}
           {this.props.nextStyles}
           {helmet.script.toComponent()}
-        </CustomHead>
+        </Head>
         <body {...bodyAttrs}>
           {helmet.noscript.toComponent()}
           <Main />

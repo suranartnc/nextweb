@@ -10,6 +10,8 @@ import { initStore } from '@lib/store'
 import * as font from '@lib/font'
 import { GlobalStyles } from '@lib/styles'
 
+import '@features/styles/index.css'
+
 class MyApp extends App {
   componentDidMount() {
     const WebFont = require('webfontloader')
