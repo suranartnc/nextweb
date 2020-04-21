@@ -14,7 +14,7 @@ const mainMenus = [
   },
 ]
 
-const LinkItem = forwardRef((props, ref) => (
+const LinkItem = forwardRef(({ menu, ...props }, ref) => (
   <a
     {...props}
     ref={ref}
@@ -26,7 +26,7 @@ const LinkItem = forwardRef((props, ref) => (
         fontSize: '1.2em',
       },
     }}>
-    {props.menu.name}
+    {menu.name}
   </a>
 ))
 
