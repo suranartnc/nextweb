@@ -1,5 +1,4 @@
 {
-  "eslint.autoFixOnSave": true,
   "files.exclude": {
     ".editorconfig": true,
     ".eslintrc.json": true,
@@ -13,5 +12,8 @@
     "docusaurus": true,
     "node_modules": true,
     "src/.next": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
 }
