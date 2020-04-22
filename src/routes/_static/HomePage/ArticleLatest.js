@@ -23,27 +23,27 @@ export function ArticleList({ data }) {
 
 function ArticleItem({ data }) {
   return (
-    <article css={{ padding: '20px 0' }}>
-      <Flex>
-        <Box width={6.5 / 10}>
+    <article className="py-8 px-0">
+      <div className="flex">
+        <div className="w-7/12">
           <h3>
             <Link route="article-detail" params={{ id: data.id }}>
               <a>{data.title}</a>
             </Link>
           </h3>
           <div
-            css={{ color: colors.text.light }}
+            className="text-gray-600"
             dangerouslySetInnerHTML={{ __html: data.excerpt }}
           />
-        </Box>
-        <Box width={3.5 / 10} pl={20} pt={10}>
+        </div>
+        <div className="w-5/12 pt-4 pl-8">
           <Link route="article-detail" params={{ id: data.id }}>
             <a>
               <img src={data.image.featured} />
             </a>
           </Link>
-        </Box>
-      </Flex>
+        </div>
+      </div>
     </article>
   )
 }
