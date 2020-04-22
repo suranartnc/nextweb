@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react'
-import { Flex, Box } from '@grid'
 
 import { Fetch, FetchMore } from '@lib/api'
 import withPage from '@lib/page/withPage'
 import * as ArticleService from '@features/article/services'
-import colors from '@features/_ui/config/colors'
 
 import PopularArticles from '@routes/article/ArticleDetailPage/PopularArticles'
 
@@ -12,8 +10,8 @@ import ArticleLatest, { ArticleList } from './ArticleLatest'
 
 function HomePage({ articleLatest }) {
   return (
-    <Flex>
-      <Box width={[1, 2 / 3]} pr={[0, 20]}>
+    <div className="flex">
+      <div className="w-2/3 pr-5">
         <ArticleLatest data={articleLatest} />
 
         <FetchMore
@@ -28,16 +26,10 @@ function HomePage({ articleLatest }) {
                 <ArticleList data={data} />
 
                 {!isDone && (
-                  <div css={{ textAlign: 'center' }}>
+                  <div className="text-center">
                     <button
                       onClick={fetchMore}
-                      css={{
-                        width: '100%',
-                        padding: '10px 20px',
-                        border: `1px solid ${colors.background.darkGray}`,
-                        borderRadius: '5px',
-                        color: colors.text.light,
-                      }}>
+                      className="w-full py-2 border border-gray-300 rounded-sm text-gray-600">
                       {isLoading ? 'Loading...' : 'Load More'}
                     </button>
                   </div>
@@ -46,14 +38,14 @@ function HomePage({ articleLatest }) {
             )
           }}
         </FetchMore>
-      </Box>
+      </div>
 
-      <Box width={[1, 1 / 3]} pl={[0, 20]}>
+      <div className="w-1/3 pl-5">
         <Fetch service={() => ArticleService.getArticles({ limit: 5 })}>
           {({ data }) => <PopularArticles data={data} />}
         </Fetch>
-      </Box>
-    </Flex>
+      </div>
+    </div>
   )
 }
 
