@@ -3,19 +3,11 @@ import { inject } from '@lib/store'
 
 function Notifications({ errorStore }) {
   return (
-    <div css={{ position: 'fixed', right: 0, top: 0, padding: '10px' }}>
+    <div className="fixed top-0 right-0 p-4">
       {errorStore.errors.map((error, index) => (
         <div
           key={index}
-          css={{
-            marginBottom: '10px',
-            border: '1px solid black',
-            fontSize: '14px',
-            padding: '0px 15px',
-            borderRadius: '5px',
-            backgroundColor: '#222',
-            color: '#fff',
-          }}>
+          className="mb-4 border border-black rounded-md text-sm py-0 px-3 text-white bg-gray-900">
           <p>{error.title}</p>
           <a
             onClick={() => {
