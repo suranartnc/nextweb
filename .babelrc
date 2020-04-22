@@ -5,8 +5,7 @@
       {
         "class-properties": { "loose": true }
       }
-    ],
-    "@emotion/babel-preset-css-prop"
+    ]
   ],
   "plugins": [
     "lodash",
