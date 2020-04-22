@@ -1,6 +1,5 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Flex, Box } from '@grid'
 import { flowRight as compose } from 'lodash'
 import { inject } from '@lib/store'
 
@@ -10,18 +9,18 @@ function AboutPage({ uiStore }) {
   const { dimensions, orientation } = uiStore
 
   return (
-    <Flex>
-      <Box>
+    <div className="flex">
+      <div>
         <Helmet title="About" />
         About Page
-      </Box>
-      <Box width={1}>
+      </div>
+      <div className="" w-full>
         <p>Window Dimension</p>
         <p>width: {dimensions.width}</p>
         <p>height: {dimensions.height}</p>
         <p>Orientation: {orientation}</p>
-      </Box>
-    </Flex>
+      </div>
+    </div>
   )
 }
 
