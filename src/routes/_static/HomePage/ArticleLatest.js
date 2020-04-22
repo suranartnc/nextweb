@@ -1,7 +1,5 @@
 import React from 'react'
 import Link from '@link'
-import { Flex, Box } from '@grid'
-import colors from '@features/_ui/config/colors'
 
 export default function ArticleLatest({ data }) {
   return (
