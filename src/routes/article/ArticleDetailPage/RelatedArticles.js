@@ -1,11 +1,9 @@
 import React from 'react'
 import Link from '@link'
-import { Flex, Box } from '@grid'
-import colors from '@features/_ui/config/colors'
 
 export default function RelatedArticles({ data }) {
   return (
-    <section css={{ margin: '100px 0' }}>
+    <section className="my-40 mx-0">
       <h2>More</h2>
       <ArticleList data={data} />
     </section>
@@ -14,17 +12,17 @@ export default function RelatedArticles({ data }) {
 
 function ArticleList({ data }) {
   return (
-    <Flex css={{ margin: '0 -20px' }}>
+    <div className="flex my-0 -mx-8">
       {data.map(article => (
         <ArticleItem key={article.id} data={article} />
       ))}
-    </Flex>
+    </div>
   )
 }
 
 function ArticleItem({ data }) {
   return (
-    <Box width={1 / 3} px={20}>
+    <div className="w-1/3 px-8">
       <article>
         <Link route="article-detail" params={{ id: data.id }}>
           <a>
@@ -37,10 +35,10 @@ function ArticleItem({ data }) {
           </Link>
         </h3>
         <div
-          css={{ color: colors.text.light }}
+          className="text-gray-600"
           dangerouslySetInnerHTML={{ __html: data.excerpt }}
         />
       </article>
-    </Box>
+    </div>
   )
 }
