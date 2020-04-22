@@ -1,8 +1,6 @@
 /* purgecss start ignore */
 @tailwind base;
-@tailwind components;
 /* purgecss end ignore */
-@tailwind utilities;
 
 html,
 body {
@@ -33,3 +31,9 @@ button {
   outline: none;
   cursor: pointer;
 }
+
+/* purgecss start ignore */
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;
