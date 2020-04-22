@@ -8,7 +8,6 @@ import { CookiesProvider } from 'react-cookie'
 import { withAuth } from '@lib/auth'
 import { initStore } from '@lib/store'
 import * as font from '@lib/font'
-import { GlobalStyles } from '@lib/styles'
 
 import '@features/styles/index.css'
 
@@ -30,7 +29,6 @@ class MyApp extends App {
 
     const children = (
       <Fragment>
-        <GlobalStyles />
         <Helmet titleTemplate={`%s - nextweb.js`} />
         <Provider RootStore={rootStore}>
           <Component {...this.props.pageProps} router={router} />

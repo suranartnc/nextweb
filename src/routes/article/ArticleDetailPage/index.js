@@ -1,5 +1,4 @@
 import React from 'react'
-import { Flex, Box } from '@grid'
 
 import withPage from '@lib/page/withPage'
 import { Fetch } from '@lib/api'
@@ -12,27 +11,27 @@ import RelatedArticles from './RelatedArticles'
 
 function ArticleDetailPage({ articleDetail }) {
   return (
-    <Flex>
-      <Box width={1}>
-        <Flex>
-          <Box width={[1, 2 / 3]} pr={[0, 20]}>
+    <div className="flex flex-col">
+      <div className="w-full">
+        <div className="flex flex-wrap">
+          <div className="w-full lg:w-2/3 pr-0 lg:pr-8">
             <ArticleContent data={articleDetail} />
-          </Box>
+          </div>
 
-          <Box width={[1, 1 / 3]} pl={[0, 20]}>
+          <div className="w-full lg:w-1/3 pl-0 lg:pl-8">
             <Fetch service={() => ArticleService.getArticles({ limit: 5 })}>
               {({ data }) => <PopularArticles data={data} />}
             </Fetch>
-          </Box>
-        </Flex>
-      </Box>
+          </div>
+        </div>
+      </div>
 
-      <Box width={1}>
+      <div className="w-full">
         <Fetch service={() => ArticleService.getArticles({ limit: 3 })}>
           {({ data }) => <RelatedArticles data={data} />}
         </Fetch>
-      </Box>
-    </Flex>
+      </div>
+    </div>
   )
 }
 
