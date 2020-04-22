@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react'
 import Link from '@link'
 import { useMember } from '@lib/auth'
-import { media } from '@lib/styles'
 
 const mainMenus = [
   {
@@ -18,14 +17,7 @@ const LinkItem = forwardRef(({ menu, ...props }, ref) => (
   <a
     {...props}
     ref={ref}
-    css={{
-      display: 'inline-box',
-      padding: '5px 15px 10px 0px',
-      marginRight: 50,
-      [media('md')]: {
-        fontSize: '1.2em',
-      },
-    }}>
+    className="inline-block	pt-1 pr-3 pb-2 mr-12 lg:text-xl">
     {menu.name}
   </a>
 ))
@@ -34,7 +26,7 @@ export default function Navigation() {
   const { isAuthenticated } = useMember()
 
   return (
-    <nav css={{ marginBottom: 10, borderBottom: '1px solid #aaa' }}>
+    <nav className="mb-8 border-b border-gray-600">
       {mainMenus.map(menu => (
         <Link key={menu.name} route={menu.route} passHref>
           <LinkItem menu={menu} />
