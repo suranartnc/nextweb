@@ -17,6 +17,8 @@ export default function withStats(PageComponent) {
             GTM.logPageview(customDimensions)
           }, 500)
         }
+
+        GTM.logExperiment()
       },
       [asPath],
     )

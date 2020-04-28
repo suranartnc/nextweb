@@ -69,3 +69,9 @@ export function logEvent({
     ...customData,
   })
 }
+
+export function logExperiment() {
+  gtmPush({
+    event: 'optimize.activate',
+  })
+}
