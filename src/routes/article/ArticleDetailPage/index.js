@@ -6,14 +6,14 @@ import { Fetch } from '@lib/api'
 
 import * as ArticleService from '@features/article/services'
 
-import MainLayout from '@components/_layouts/main'
+import Page from '@components/Page'
 import ArticleContent from './ArticleContent'
 import PopularArticles from './PopularArticles'
 import RelatedArticles from './RelatedArticles'
 
 function ArticleDetailPage({ articleDetail }) {
   return (
-    <MainLayout>
+    <Page>
       <Flex>
         <Box width={1}>
           <Flex>
@@ -35,7 +35,7 @@ function ArticleDetailPage({ articleDetail }) {
           </Fetch>
         </Box>
       </Flex>
-    </MainLayout>
+    </Page>
   )
 }
 

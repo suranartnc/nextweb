@@ -6,13 +6,13 @@ import withPage from '@lib/page/withPage'
 import * as ArticleService from '@features/article/services'
 import colors from '@features/_ui/config/colors'
 
-import MainLayout from '@components/_layouts/main'
+import Page from '@components/Page'
 import PopularArticles from '@routes/article/ArticleDetailPage/PopularArticles'
 import ArticleLatest, { ArticleList } from './ArticleLatest'
 
 function HomePage({ articleLatest }) {
   return (
-    <MainLayout>
+    <Page>
       <Flex>
         <Box width={[1, 2 / 3]} pr={[0, 20]}>
           <ArticleLatest data={articleLatest} />
@@ -55,7 +55,7 @@ function HomePage({ articleLatest }) {
           </Fetch>
         </Box>
       </Flex>
-    </MainLayout>
+    </Page>
   )
 }
 

@@ -6,7 +6,7 @@ import { inject } from '@lib/store'
 import withPage from '@lib/page/withPage'
 
 import { signIn } from '@features/_auth'
-import MainLayout from '@components/_layouts/main'
+import Page from '@components/Page'
 
 function LoginPage({ errorStore }) {
   const [email, setEmail] = useState('')
@@ -25,7 +25,7 @@ function LoginPage({ errorStore }) {
   }
 
   return (
-    <MainLayout>
+    <Page>
       <form onSubmit={login}>
         <p>
           <label>
@@ -44,7 +44,7 @@ function LoginPage({ errorStore }) {
         </p>
         <button>Log in</button>
       </form>
-    </MainLayout>
+    </Page>
   )
 }
 

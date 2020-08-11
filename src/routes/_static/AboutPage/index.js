@@ -4,14 +4,14 @@ import { Flex, Box } from '@grid'
 import { flowRight as compose } from 'lodash'
 import { inject } from '@lib/store'
 
-import MainLayout from '@components/_layouts/main'
+import Page from '@components/Page'
 import withPage from '@lib/page/withPage'
 
 function AboutPage({ uiStore }) {
   const { dimensions, orientation } = uiStore
 
   return (
-    <MainLayout>
+    <Page options={{ restricted: true }}>
       <Flex>
         <Box>
           <Helmet title="About" />
@@ -24,7 +24,7 @@ function AboutPage({ uiStore }) {
           <p>Orientation: {orientation}</p>
         </Box>
       </Flex>
-    </MainLayout>
+    </Page>
   )
 }
 

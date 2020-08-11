@@ -4,7 +4,7 @@ import withPage from '@lib/page/withPage'
 import { useMember } from '@lib/auth'
 import { signOut } from '@features/_auth'
 
-import MainLayout from '@components/_layouts/main'
+import Page from '@components/Page'
 
 function AccountPage() {
   const { profile, isAuthenticated } = useMember()
@@ -14,12 +14,12 @@ function AccountPage() {
   }
 
   return (
-    <MainLayout>
+    <Page options={{ restricted: true }}>
       <div>
         <p>Current User: {profile.name}</p>
         <button onClick={() => signOut()}>Log out</button>
       </div>
-    </MainLayout>
+    </Page>
   )
 }
 
@@ -36,4 +36,4 @@ AccountPage.getInitialProps = async function() {
   }
 }
 
-export default withPage({ restricted: true })(AccountPage)
+export default withPage()(AccountPage)

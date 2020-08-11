@@ -1,6 +1,6 @@
 import React from 'react'
 
-import MainLayout from '@components/_layouts/main'
+import Page from '@components/Page'
 import Error400Page from '@components/_error/400'
 import Error500Page from '@components/_error/500'
 
@@ -10,9 +10,9 @@ function ErrorNotFoundPage({ statusCode = 500 }) {
   const isError400 = statusCode >= 400 && statusCode < 500
 
   return (
-    <MainLayout>
+    <Page>
       {isError400 ? <Error400Page routeMisMatched={true} /> : <Error500Page />}
-    </MainLayout>
+    </Page>
   )
 }
 
