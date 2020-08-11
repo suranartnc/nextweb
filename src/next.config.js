@@ -9,7 +9,7 @@ const exportPathMap = require('./exportPathMap')
 
 const nextConfig = {
   exportPathMap,
-  exportTrailingSlash: true,
+  trailingSlash: true,
   assetPrefix: process.env.ASSET_PREFIX,
   analyzeBrowser: process.env.BUNDLE_ANALYZE === 'browser',
   bundleAnalyzerConfig: {
