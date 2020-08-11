@@ -27,7 +27,6 @@ export default class MyDocument extends Document {
       <html {...htmlAttrs}>
         <Head>
           {helmet.title.toComponent()}
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           {helmet.meta.toComponent()}
           <link
             rel="preload"
