@@ -6,6 +6,7 @@ import { inject } from '@lib/store'
 import withPage from '@lib/page/withPage'
 
 import { signIn } from '@features/_auth'
+import MainLayout from '@components/_layouts/main'
 
 function LoginPage({ errorStore }) {
   const [email, setEmail] = useState('')
@@ -24,21 +25,26 @@ function LoginPage({ errorStore }) {
   }
 
   return (
-    <form onSubmit={login}>
-      <p>
-        <label>
-          Email:
-          <input type="text" onChange={e => setEmail(e.target.value)} />
-        </label>
-      </p>
-      <p>
-        <label>
-          Password:
-          <input type="password" onChange={e => setPassword(e.target.value)} />
-        </label>
-      </p>
-      <button>Log in</button>
-    </form>
+    <MainLayout>
+      <form onSubmit={login}>
+        <p>
+          <label>
+            Email:
+            <input type="text" onChange={e => setEmail(e.target.value)} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Password:
+            <input
+              type="password"
+              onChange={e => setPassword(e.target.value)}
+            />
+          </label>
+        </p>
+        <button>Log in</button>
+      </form>
+    </MainLayout>
   )
 }
 

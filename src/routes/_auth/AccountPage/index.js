@@ -4,6 +4,8 @@ import withPage from '@lib/page/withPage'
 import { useMember } from '@lib/auth'
 import { signOut } from '@features/_auth'
 
+import MainLayout from '@components/_layouts/main'
+
 function AccountPage() {
   const { profile, isAuthenticated } = useMember()
 
@@ -12,10 +14,12 @@ function AccountPage() {
   }
 
   return (
-    <div>
-      <p>Current User: {profile.name}</p>
-      <button onClick={() => signOut()}>Log out</button>
-    </div>
+    <MainLayout>
+      <div>
+        <p>Current User: {profile.name}</p>
+        <button onClick={() => signOut()}>Log out</button>
+      </div>
+    </MainLayout>
   )
 }
 

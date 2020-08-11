@@ -7,7 +7,6 @@ import withRestrictedPage from '@lib/auth/withRestrictedPage'
 
 import withMeta from './withMeta'
 import withSchema from './withSchema'
-import withLayout from './withLayout'
 import withErrorHandling from './withErrorHandling'
 
 export default function withPage(options = {}) {
@@ -19,7 +18,6 @@ export default function withPage(options = {}) {
       // withGtmScript,
       // withStats,
       withRestrictedPage(options.restricted),
-      withLayout(options.layout),
       withErrorHandling,
     ]
 
