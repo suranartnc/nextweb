@@ -85,6 +85,7 @@
     "prettier": "^1.16.4"
   },
   "resolutions": {
-    "webpack-bundle-analyzer": "^3.3.2"
+    "webpack-bundle-analyzer": "^3.3.2",
+    "minimist": "^1.2.3" 
   }
 }
