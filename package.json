@@ -57,7 +57,7 @@
     "lodash": "^4.17.19",
     "mobx": "^5.15.0",
     "mobx-react": "^6.1.4",
-    "next": "^9.3.5",
+    "next": "^9.5.2",
     "next-offline": "^3.3.8",
     "next-routes": "^1.4.2",
     "react": "^16.13.1",
