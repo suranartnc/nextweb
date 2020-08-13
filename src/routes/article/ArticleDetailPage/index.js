@@ -1,9 +1,7 @@
 import React from 'react'
 import { Flex, Box } from '@grid'
 
-import withDynamicPage from '@lib/page/withDynamicPage'
 import { Fetch } from '@lib/api'
-
 import * as ArticleService from '@features/article/services'
 
 import Page from '@components/Page'
@@ -11,7 +9,7 @@ import ArticleContent from './ArticleContent'
 import PopularArticles from './PopularArticles'
 import RelatedArticles from './RelatedArticles'
 
-function ArticleDetailPage({ articleDetail }) {
+export default function ArticleDetailPage({ articleDetail }) {
   return (
     <Page>
       <Flex>
@@ -38,39 +36,3 @@ function ArticleDetailPage({ articleDetail }) {
     </Page>
   )
 }
-
-ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
-  const articleDetail = await ArticleService.getArticleById(query.id)
-
-  return {
-    title: articleDetail.title,
-    meta: {
-      description: articleDetail.excerpt,
-      keywords: articleDetail.tags.join(', '),
-      'og:title': articleDetail.title,
-      'og:description': articleDetail.excerpt,
-    },
-    stats: {
-      gtm: {
-        customDimensions: {
-          customDM1: articleDetail.author.name,
-          customDM2: articleDetail.pubDate,
-        },
-      },
-    },
-    breadcrumb: [
-      {
-        label: articleDetail.title,
-        route: {
-          name: 'article-detail',
-          params: {
-            id: articleDetail.id,
-          },
-        },
-      },
-    ],
-    articleDetail,
-  }
-}
-
-export default withDynamicPage()(ArticleDetailPage)
