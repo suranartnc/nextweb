@@ -1,6 +1,6 @@
 import React from 'react'
 
-import withPage from '@lib/page/withPage'
+import withDynamicPage from '@lib/page/withDynamicPage'
 import { useMember } from '@lib/auth'
 import { signOut } from '@features/_auth'
 
@@ -32,4 +32,4 @@ AccountPage.getInitialProps = async function() {
   }
 }
 
-export default withPage()(AccountPage)
+export default withDynamicPage()(AccountPage)

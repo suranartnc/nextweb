@@ -8,7 +8,7 @@ import withMeta from './withMeta'
 import withSchema from './withSchema'
 import withErrorHandling from './withErrorHandling'
 
-export default function withPage(options = {}) {
+export default function withDynamicPage(options = {}) {
   return function(Component) {
     const hocs = [
       withUA,

@@ -3,7 +3,7 @@ import { flowRight as compose } from 'lodash'
 
 import { Router } from '@router'
 import { inject } from '@lib/store'
-import withPage from '@lib/page/withPage'
+import withDynamicPage from '@lib/page/withDynamicPage'
 
 import { signIn } from '@features/_auth'
 import Page from '@components/Page'
@@ -49,6 +49,6 @@ function LoginPage({ errorStore }) {
 }
 
 export default compose(
-  withPage(),
+  withDynamicPage(),
   inject('errorStore', { observe: false }),
 )(LoginPage)

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Flex, Box } from '@grid'
 
 import { Fetch, FetchMore } from '@lib/api'
-import withPage from '@lib/page/withPage'
+import withDynamicPage from '@lib/page/withDynamicPage'
 import * as ArticleService from '@features/article/services'
 import colors from '@features/_ui/config/colors'
 
@@ -68,4 +68,4 @@ HomePage.getInitialProps = async () => {
   }
 }
 
-export default withPage()(HomePage)
+export default withDynamicPage()(HomePage)

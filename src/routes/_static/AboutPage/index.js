@@ -5,7 +5,7 @@ import { flowRight as compose } from 'lodash'
 import { inject } from '@lib/store'
 
 import Page from '@components/Page'
-import withPage from '@lib/page/withPage'
+import withDynamicPage from '@lib/page/withDynamicPage'
 
 function AboutPage({ uiStore }) {
   const { dimensions, orientation } = uiStore
@@ -41,4 +41,4 @@ AboutPage.getInitialProps = async function() {
   }
 }
 
-export default compose(withPage(), inject('uiStore'))(AboutPage)
+export default compose(withDynamicPage(), inject('uiStore'))(AboutPage)

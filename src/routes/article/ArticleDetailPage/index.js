@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Box } from '@grid'
 
-import withPage from '@lib/page/withPage'
+import withDynamicPage from '@lib/page/withDynamicPage'
 import { Fetch } from '@lib/api'
 
 import * as ArticleService from '@features/article/services'
@@ -73,4 +73,4 @@ ArticleDetailPage.getInitialProps = async ({ asPath, query }) => {
   }
 }
 
-export default withPage()(ArticleDetailPage)
+export default withDynamicPage()(ArticleDetailPage)
