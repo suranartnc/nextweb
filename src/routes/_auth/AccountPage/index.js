@@ -7,11 +7,7 @@ import { signOut } from '@features/_auth'
 import Page from '@components/Page'
 
 function AccountPage() {
-  const { profile, isAuthenticated } = useMember()
-
-  if (!isAuthenticated) {
-    return null
-  }
+  const { profile } = useMember()
 
   return (
     <Page options={{ restricted: true }}>
