@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import useAuth from '@features/_auth/useAuth'
 
 export const userContext = React.createContext({
   isAuthenticated: undefined,
@@ -6,4 +7,12 @@ export const userContext = React.createContext({
 
 export function useMember() {
   return useContext(userContext)
+}
+
+export function AuthProvider({ children }) {
+  const userData = useAuth()
+
+  return (
+    <userContext.Provider value={userData}>{children}</userContext.Provider>
+  )
 }

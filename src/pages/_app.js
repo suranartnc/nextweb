@@ -2,17 +2,15 @@ import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import App from 'next/app'
 import Router from 'next/router'
-import { Provider } from 'mobx-react'
+import { Provider as StoreProvider } from 'mobx-react'
 import { CookiesProvider } from 'react-cookie'
 
-import { userContext } from '@lib/auth'
+import { AuthProvider } from '@lib/auth'
 import { initStore } from '@lib/store'
 import * as font from '@lib/font'
 import { GlobalStyles } from '@lib/styles'
 
-import useAuth from '@features/_auth/useAuth'
-
-class MyApp extends App {
+export default class MyApp extends App {
   componentDidMount() {
     const WebFont = require('webfontloader')
     WebFont.load(font.config)
@@ -32,9 +30,11 @@ class MyApp extends App {
       <Fragment>
         <GlobalStyles />
         <Helmet titleTemplate={`%s - nextweb.js`} />
-        <Provider RootStore={rootStore}>
-          <Component {...this.props.pageProps} router={router} />
-        </Provider>
+        <AuthProvider>
+          <StoreProvider RootStore={rootStore}>
+            <Component {...this.props.pageProps} router={router} />
+          </StoreProvider>
+        </AuthProvider>
       </Fragment>
     )
 
@@ -44,14 +44,4 @@ class MyApp extends App {
 
     return children
   }
-}
-
-export default function MyAppWithAuth(props) {
-  const userData = useAuth()
-
-  return (
-    <userContext.Provider value={userData}>
-      <MyApp {...props} />
-    </userContext.Provider>
-  )
 }
