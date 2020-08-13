@@ -5,10 +5,12 @@ import Router from 'next/router'
 import { Provider } from 'mobx-react'
 import { CookiesProvider } from 'react-cookie'
 
-import { withAuth } from '@lib/auth'
+import { userContext } from '@lib/auth'
 import { initStore } from '@lib/store'
 import * as font from '@lib/font'
 import { GlobalStyles } from '@lib/styles'
+
+import useAuth from '@features/_auth/useAuth'
 
 class MyApp extends App {
   componentDidMount() {
@@ -44,4 +46,12 @@ class MyApp extends App {
   }
 }
 
-export default withAuth(MyApp)
+export default function MyAppWithAuth(props) {
+  const userData = useAuth()
+
+  return (
+    <userContext.Provider value={userData}>
+      <MyApp {...props} />
+    </userContext.Provider>
+  )
+}
