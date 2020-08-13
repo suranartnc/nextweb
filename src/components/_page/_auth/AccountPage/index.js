@@ -1,12 +1,11 @@
 import React from 'react'
 
-import withDynamicPage from '@lib/page/withDynamicPage'
 import { useMember } from '@lib/auth'
 import { signOut } from '@features/_auth'
 
 import Page from '@components/_common/Page'
 
-function AccountPage() {
+export default function AccountPage() {
   const { profile } = useMember()
 
   return (
@@ -18,18 +17,3 @@ function AccountPage() {
     </Page>
   )
 }
-
-AccountPage.getInitialProps = async function() {
-  return {
-    breadcrumb: [
-      {
-        label: 'Account',
-        route: {
-          name: 'account',
-        },
-      },
-    ],
-  }
-}
-
-export default withDynamicPage()(AccountPage)

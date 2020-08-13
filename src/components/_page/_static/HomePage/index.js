@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import { Flex, Box } from '@grid'
 
 import { Fetch, FetchMore } from '@lib/api'
-import withDynamicPage from '@lib/page/withDynamicPage'
 import * as ArticleService from '@features/article/services'
 import colors from '@features/_ui/config/colors'
 
@@ -59,13 +58,4 @@ function HomePage({ articleLatest }) {
   )
 }
 
-HomePage.getInitialProps = async () => {
-  const articleLatest = await ArticleService.getArticles({ limit: 10 })
-
-  return {
-    title: 'Home',
-    articleLatest,
-  }
-}
-
-export default withDynamicPage()(HomePage)
+export default HomePage

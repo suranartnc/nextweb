@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import { flowRight as compose } from 'lodash'
 
 import { Router } from '@router'
 import { inject } from '@lib/store'
-import withDynamicPage from '@lib/page/withDynamicPage'
 
 import { signIn } from '@features/_auth'
 import Page from '@components/_common/Page'
@@ -48,7 +46,4 @@ function LoginPage({ errorStore }) {
   )
 }
 
-export default compose(
-  withDynamicPage(),
-  inject('errorStore', { observe: false }),
-)(LoginPage)
+export default inject('errorStore', { observe: false })(LoginPage)

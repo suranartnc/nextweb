@@ -1,11 +1,9 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Flex, Box } from '@grid'
-import { flowRight as compose } from 'lodash'
 import { inject } from '@lib/store'
 
 import Page from '@components/_common/Page'
-import withDynamicPage from '@lib/page/withDynamicPage'
 
 function AboutPage({ uiStore }) {
   const { dimensions, orientation } = uiStore
@@ -28,17 +26,4 @@ function AboutPage({ uiStore }) {
   )
 }
 
-AboutPage.getInitialProps = async function() {
-  return {
-    breadcrumb: [
-      {
-        label: 'About',
-        route: {
-          name: 'about',
-        },
-      },
-    ],
-  }
-}
-
-export default compose(withDynamicPage(), inject('uiStore'))(AboutPage)
+export default inject('uiStore')(AboutPage)
