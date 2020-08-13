@@ -4,12 +4,12 @@ import { get } from 'lodash'
 import Error400Page from '@components/_error/400'
 import Error500Page from '@components/_error/500'
 
-export async function withErrorHandling(_getServerSideProps) {
+export async function withErrorHandling(getServerSideProps) {
   return async context => {
     let pageProps = {}
 
     try {
-      pageProps = await _getServerSideProps(context)
+      pageProps = await getServerSideProps(context)
     } catch (error) {
       console.error(error)
 
