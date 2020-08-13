@@ -6,6 +6,8 @@ import { Provider as StoreProvider } from 'mobx-react'
 import { CookiesProvider } from 'react-cookie'
 
 import { AuthProvider } from '@lib/auth'
+import { ErrorProvider } from '@lib/error'
+
 import { initStore } from '@lib/store'
 import * as font from '@lib/font'
 import { GlobalStyles } from '@lib/styles'
@@ -32,7 +34,9 @@ export default class MyApp extends App {
         <Helmet titleTemplate={`%s - nextweb.js`} />
         <AuthProvider>
           <StoreProvider RootStore={rootStore}>
-            <Component {...this.props.pageProps} router={router} />
+            <ErrorProvider>
+              <Component {...this.props.pageProps} router={router} />
+            </ErrorProvider>
           </StoreProvider>
         </AuthProvider>
       </Fragment>

@@ -9,7 +9,7 @@ import Page from '@components/_common/Page'
 import PopularArticles from '@components/_page/article/ArticleDetailPage/PopularArticles'
 import ArticleLatest, { ArticleList } from './ArticleLatest'
 
-function HomePage({ articleLatest }) {
+export default function HomePage({ articleLatest, ...props }) {
   return (
     <Page>
       <Flex>
@@ -57,5 +57,3 @@ function HomePage({ articleLatest }) {
     </Page>
   )
 }
-
-export default HomePage

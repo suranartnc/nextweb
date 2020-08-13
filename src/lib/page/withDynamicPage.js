@@ -6,7 +6,7 @@ import { withUA } from '@lib/userAgent'
 
 import withMeta from './withMeta'
 import withSchema from './withSchema'
-import withErrorHandling from './withErrorHandling'
+// import withErrorHandling from './withErrorHandling'
 
 export default function withDynamicPage(options = {}) {
   return function(Component) {
@@ -16,7 +16,7 @@ export default function withDynamicPage(options = {}) {
       withSchema,
       // withGtmScript,
       // withStats,
-      withErrorHandling,
+      // withErrorHandling,
     ]
 
     return compose(...hocs)(Component)
