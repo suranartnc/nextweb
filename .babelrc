@@ -20,8 +20,7 @@
           "@lib": "./src/lib",
           "@grid": "./src/lib/styles/grid",
           "@features": "./src/features",
-          "@router": "./src/router",
-          "@routes": "./src/routes"
+          "@router": "./src/router"
         }
       }
     ]

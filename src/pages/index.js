@@ -1,2 +1,2 @@
-import HomePage from '@routes/_static/HomePage'
+import HomePage from '@components/_page/_static/HomePage'
 export default HomePage

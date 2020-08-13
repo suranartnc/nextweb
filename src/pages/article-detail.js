@@ -1,5 +1,7 @@
-import ArticleDetailPage from '@routes/article/ArticleDetailPage'
+import ArticleDetailPage from '@components/_page/article/ArticleDetailPage'
 import * as ArticleService from '@features/article/services'
+
+export default ArticleDetailPage
 
 export async function getServerSideProps({ query }) {
   const articleDetail = await ArticleService.getArticleById(query.id)
@@ -36,5 +38,3 @@ export async function getServerSideProps({ query }) {
     },
   }
 }
-
-export default ArticleDetailPage

@@ -4,14 +4,14 @@ import { Flex, Box } from '@grid'
 import { flowRight as compose } from 'lodash'
 import { inject } from '@lib/store'
 
-import Page from '@components/Page'
+import Page from '@components/_common/Page'
 import withDynamicPage from '@lib/page/withDynamicPage'
 
 function AboutPage({ uiStore }) {
   const { dimensions, orientation } = uiStore
 
   return (
-    <Page options={{ restricted: true }}>
+    <Page>
       <Flex>
         <Box>
           <Helmet title="About" />

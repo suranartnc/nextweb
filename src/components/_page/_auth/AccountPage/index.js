@@ -4,7 +4,7 @@ import withDynamicPage from '@lib/page/withDynamicPage'
 import { useMember } from '@lib/auth'
 import { signOut } from '@features/_auth'
 
-import Page from '@components/Page'
+import Page from '@components/_common/Page'
 
 function AccountPage() {
   const { profile } = useMember()

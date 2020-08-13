@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Page from '@components/Page'
+import Page from '@components/_common/Page'
 
 import NoResource from './NoResource'
 import NotFound from './NotFound'

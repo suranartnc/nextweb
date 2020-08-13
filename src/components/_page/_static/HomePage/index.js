@@ -6,8 +6,8 @@ import withDynamicPage from '@lib/page/withDynamicPage'
 import * as ArticleService from '@features/article/services'
 import colors from '@features/_ui/config/colors'
 
-import Page from '@components/Page'
-import PopularArticles from '@routes/article/ArticleDetailPage/PopularArticles'
+import Page from '@components/_common/Page'
+import PopularArticles from '@components/_page/article/ArticleDetailPage/PopularArticles'
 import ArticleLatest, { ArticleList } from './ArticleLatest'
 
 function HomePage({ articleLatest }) {
