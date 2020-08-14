@@ -9,9 +9,11 @@ import Page from '@components/_common/Page'
 import PopularArticles from '@components/_page/article/ArticleDetailPage/PopularArticles'
 import ArticleLatest, { ArticleList } from './ArticleLatest'
 
+import * as metaConfig from './meta'
+
 export default function HomePage({ articleLatest, ...props }) {
   return (
-    <Page>
+    <Page metaConfig={metaConfig}>
       <Flex>
         <Box width={[1, 2 / 3]} pr={[0, 20]}>
           <ArticleLatest data={articleLatest} />

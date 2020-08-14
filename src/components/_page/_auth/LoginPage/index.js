@@ -6,6 +6,8 @@ import { inject } from '@lib/store'
 import { signIn } from '@features/_auth'
 import Page from '@components/_common/Page'
 
+import * as metaConfig from './meta'
+
 function LoginPage({ errorStore }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -23,7 +25,7 @@ function LoginPage({ errorStore }) {
   }
 
   return (
-    <Page>
+    <Page metaConfig={metaConfig}>
       <form onSubmit={login}>
         <p>
           <label>

@@ -1,20 +1,18 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { Flex, Box } from '@grid'
 import { inject } from '@lib/store'
 
 import Page from '@components/_common/Page'
 
+import * as metaConfig from './meta'
+
 function AboutPage({ uiStore }) {
   const { dimensions, orientation } = uiStore
 
   return (
-    <Page>
+    <Page metaConfig={metaConfig}>
       <Flex>
-        <Box>
-          <Helmet title="About" />
-          About Page
-        </Box>
+        <Box>About Page</Box>
         <Box width={1}>
           <p>Window Dimension</p>
           <p>width: {dimensions.width}</p>
