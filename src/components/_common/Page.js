@@ -23,7 +23,7 @@ export default function Page({ children, data, metaConfig, options = {} }) {
 
   return (
     <Fragment>
-      <Meta router={router} data={data} metaConfig={metaConfig} />
+      <Meta data={data} metaConfig={metaConfig} />
       <Layout restricted={restricted}>{children}</Layout>
     </Fragment>
   )
