@@ -9,7 +9,8 @@ import ArticleContent from './ArticleContent'
 import PopularArticles from './PopularArticles'
 import RelatedArticles from './RelatedArticles'
 
-export default function ArticleDetailPage({ articleDetail }) {
+export default function ArticleDetailPage({ articleDetail, ...props }) {
+  console.log('props', props)
   return (
     <Page>
       <Flex>
