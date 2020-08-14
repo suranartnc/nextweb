@@ -9,9 +9,11 @@ import ArticleContent from './ArticleContent'
 import PopularArticles from './PopularArticles'
 import RelatedArticles from './RelatedArticles'
 
-export default function ArticleDetailPage({ articleDetail, ...props }) {
+import * as metaConfig from './meta'
+
+export default function ArticleDetailPage({ articleDetail }) {
   return (
-    <Page>
+    <Page data={articleDetail} metaConfig={metaConfig}>
       <Flex>
         <Box width={1}>
           <Flex>

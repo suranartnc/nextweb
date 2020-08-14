@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import { useRouter } from 'next/router'
 import { Router } from '@router'
 
 import { useMember } from '@lib/auth'
 import MainLayout from '@components/_layouts/main'
+import Meta from '@components/_common/Meta'
 
-export default function Page({ children, options = {} }) {
+export default function Page({ children, data, metaConfig, options = {} }) {
   const router = useRouter()
   const { isAuthenticated } = useMember()
 
@@ -20,5 +21,10 @@ export default function Page({ children, options = {} }) {
     }
   }, [restricted, isAuthenticated])
 
-  return <Layout restricted={restricted}>{children}</Layout>
+  return (
+    <Fragment>
+      <Meta data={data} metaConfig={metaConfig} />
+      <Layout restricted={restricted}>{children}</Layout>
+    </Fragment>
+  )
 }
