@@ -10,6 +10,7 @@
   ],
   "plugins": [
     "lodash",
+    "@babel/plugin-proposal-export-default-from",
     ["@babel/plugin-proposal-decorators", { "legacy": true}],
     [
       "module-resolver", {
@@ -20,8 +21,7 @@
           "@lib": "./src/lib",
           "@grid": "./src/lib/styles/grid",
           "@features": "./src/features",
-          "@router": "./src/router",
-          "@routes": "./src/routes"
+          "@router": "./src/router"
         }
       }
     ]

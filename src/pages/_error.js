@@ -3,8 +3,6 @@ import React from 'react'
 import Error400Page from '@components/_error/400'
 import Error500Page from '@components/_error/500'
 
-import withPageError from '@lib/page/withPageError'
-
 function ErrorNotFoundPage({ statusCode = 500 }) {
   const isError400 = statusCode >= 400 && statusCode < 500
 
@@ -17,4 +15,4 @@ ErrorNotFoundPage.getInitialProps = async function({ res, err = {} }) {
   }
 }
 
-export default withPageError()(ErrorNotFoundPage)
+export default ErrorNotFoundPage

@@ -8,7 +8,7 @@ import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from './constants'
 
 export default function useAuth() {
   const [cookies, setCookie] = useCookies([AUTH_COOKIE_NAME])
-  const [token, setToken] = useState(cookies[AUTH_COOKIE_NAME] || null)
+  const [token, setToken] = useState(null)
   const router = useRouter()
 
   useEffect(() => {

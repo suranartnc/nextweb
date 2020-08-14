@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { useUA } from '@lib/userAgent'
+// import { useUA } from '@lib/userAgent'
 
 export const breakpoints = {
   md: '48em', // 768px
@@ -11,13 +11,13 @@ export function media(bp = 'lg') {
   return `@media (min-width: ${breakpoints[bp]})`
 }
 
-export function Adaptive({ wide = null, narrow = null }) {
-  const {
-    device: { isMobile },
-  } = useUA()
+// export function Adaptive({ wide = null, narrow = null }) {
+//   const {
+//     device: { isMobile },
+//   } = useUA()
 
-  return isMobile ? narrow : wide
-}
+//   return isMobile ? narrow : wide
+// }
 
 export function Responsive({ breakpoint = 'md', wide = null, narrow = null }) {
   return (

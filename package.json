@@ -33,9 +33,10 @@
   "homepage": "https://github.com/suranartnc/nextweb#readme",
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.0",
-    "@emotion/babel-preset-css-prop": "^10.0.9",
-    "@emotion/core": "^10.0.10",
-    "@emotion/styled": "^10.0.10",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@emotion/core": "^10.0.34",
+    "@emotion/styled": "^10.0.27",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
@@ -49,7 +50,7 @@
     "core-js": "3.3.6",
     "dotenv": "^7.0.0",
     "dotenv-webpack": "^1.7.0",
-    "emotion-theming": "^10.0.10",
+    "emotion-theming": "^10.0.27",
     "express": "^4.16.4",
     "express-useragent": "^1.0.12",
     "json-server": "^0.16.1",
@@ -63,9 +64,10 @@
     "react-async": "^8.0.0",
     "react-cookie": "^4.0.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.1.0",
     "react-waypoint": "^9.0.2",
     "serve-favicon": "^2.5.0",
+    "striptags": "^3.1.1",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
@@ -86,6 +88,6 @@
   },
   "resolutions": {
     "webpack-bundle-analyzer": "^3.3.2",
-    "minimist": "^1.2.3" 
+    "minimist": "^1.2.3"
   }
 }
