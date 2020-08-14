@@ -8,7 +8,7 @@ import { withUA } from '@lib/userAgent'
 // import withSchema from './withSchema'
 import { withErrorHandling } from '@lib/error'
 
-export default function withDynamicPage(options = {}) {
+export default function withDynamicRendering(options = {}) {
   return function(Component) {
     const hocs = [
       withUA,

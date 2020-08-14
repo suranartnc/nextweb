@@ -1,5 +1,5 @@
 import HomePage from '@components/_page/_static/HomePage'
-import { withErrorHandling } from '@lib/error'
+import withDynamicRendering from '@lib/page/withDynamicRendering'
 import * as ArticleService from '@features/article/services'
 
 async function _getServerSideProps() {
@@ -11,7 +11,9 @@ async function _getServerSideProps() {
 }
 
 export async function getServerSideProps(context) {
-  const getPropsWithErrorHandling = await withErrorHandling(_getServerSideProps)
+  const getPropsWithErrorHandling = await withDynamicRendering()(
+    _getServerSideProps,
+  )
   return getPropsWithErrorHandling(context)
 }
 

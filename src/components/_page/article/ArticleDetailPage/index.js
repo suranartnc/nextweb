@@ -10,7 +10,6 @@ import PopularArticles from './PopularArticles'
 import RelatedArticles from './RelatedArticles'
 
 export default function ArticleDetailPage({ articleDetail, ...props }) {
-  console.log('props', props)
   return (
     <Page>
       <Flex>
