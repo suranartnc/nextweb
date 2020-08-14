@@ -6,7 +6,7 @@ async function _getServerSideProps() {
   const articleLatest = await ArticleService.getArticles({ limit: 10 })
 
   return {
-    props: { title: 'Home', articleLatest },
+    props: { articleLatest },
   }
 }
 
