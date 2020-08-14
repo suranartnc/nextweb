@@ -1,27 +1,21 @@
 import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
-import { isArray, isEmpty } from 'lodash'
+import { get, isArray, isEmpty } from 'lodash'
 
-import { renderPageMeta, parseMetaConfig } from '@lib/meta'
-
-export default function Meta({ data, metaConfig = {} }) {
+export default function Meta({ router, data, metaConfig = {} }) {
   const {
-    meta,
     getPage = () => 'main',
+    getMeta = () => {},
     getSchema = () => {},
-    getTemplateParams = () => {},
   } = metaConfig
-
-  if (!meta) {
-    throw new Error('Meta needed!')
-  }
 
   const page = getPage(data)
   const schema = getSchema(data) || {}
-  const templateParams = getTemplateParams(data)
+  const meta = getMeta(data) || {}
 
   const parsedMeta = {
-    meta: parseMetaConfig(meta[page], templateParams),
+    title: get(meta[page], 'title', ''),
+    meta: get(meta[page], 'meta', {}),
     schema: schema[page],
   }
 
@@ -36,8 +30,22 @@ export default function Meta({ data, metaConfig = {} }) {
               }))
             : []),
         ]}>
-        {renderPageMeta(parsedMeta.meta)}
+        {parsedMeta.title && <title>{parsedMeta.title}</title>}
+        {Object.keys(parsedMeta.meta).map(name =>
+          isSocialMeta(name) ? (
+            <meta key={name} property={name} content={parsedMeta.meta[name]} />
+          ) : (
+            <meta key={name} name={name} content={parsedMeta.meta[name]} />
+          ),
+        )}
+        <meta property="og:url" content={router.asPath} />
+        <link rel="canonical" href={router.asPath} />
       </Helmet>
     </Fragment>
   )
+}
+
+function isSocialMeta(meta) {
+  const patterns = ['og:', 'twitter:']
+  return patterns.some(pattern => meta.indexOf(pattern) !== -1)
 }

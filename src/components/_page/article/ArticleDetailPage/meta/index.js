@@ -1,30 +1,22 @@
 import striptags from 'striptags'
 
-export const meta = {
-  main: {
-    seo: {
-      title: '<%- title %>',
-      description: '<%- description %>',
-      keywords: '<%- keywords %>',
-    },
-    og: {
-      title: '<%- title %>',
-      description: '<%- description %>',
-      type: 'website',
-      image: '<%- featuredImage %>',
-    },
-  },
-}
+export function getMeta(data) {
+  const { title, excerpt, tags, image } = data
 
-export function getTemplateParams(data) {
-  const { title, image, tags, excerpt } = data
-
-  return {
-    title,
-    description: excerpt,
-    keywords: tags,
-    featuredImage: image.featured,
+  const meta = {
+    main: {
+      title,
+      meta: {
+        description: excerpt,
+        keywords: tags,
+        'og:title': title,
+        'og:description': excerpt,
+        'og:image': image.featured,
+      },
+    },
   }
+
+  return meta
 }
 
 export function getSchema(data) {
