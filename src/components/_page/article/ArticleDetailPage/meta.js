@@ -37,3 +37,10 @@ export function getSchema(data) {
 
   return schema
 }
+
+export function getGTMDimensions(data) {
+  return {
+    customDM1: data.author.name,
+    customDM2: data.pubDate,
+  }
+}
