@@ -1,14 +1,13 @@
 import React from 'react'
 import { Flex, Box } from '@grid'
 
+import { Page } from '@lib/page'
 import { Fetch } from '@lib/api'
 import * as ArticleService from '@features/article/services'
 
-import Page from '@components/_common/Page'
 import ArticleContent from './ArticleContent'
 import PopularArticles from './PopularArticles'
 import RelatedArticles from './RelatedArticles'
-
 import * as metaConfig from './meta'
 
 export default function ArticleDetailPage({ articleDetail }) {

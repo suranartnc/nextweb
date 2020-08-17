@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 
 import { Router } from '@router'
 import { inject } from '@lib/store'
-
+import { Page } from '@lib/page'
 import { signIn } from '@features/_auth'
-import Page from '@components/_common/Page'
 
 import * as metaConfig from './meta'
 

@@ -1,9 +1,9 @@
 import React from 'react'
 
+import { Page } from '@lib/page'
 import { useMember } from '@lib/auth'
 import { signOut } from '@features/_auth'
 
-import Page from '@components/_common/Page'
 import * as metaConfig from './meta'
 
 export default function AccountPage() {

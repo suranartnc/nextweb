@@ -3,15 +3,21 @@ import { useRouter } from 'next/router'
 import { Router } from '@router'
 
 import { useMember } from '@lib/auth'
-import MainLayout from '@components/_layouts/main'
+import * as layouts from '@components/_layouts'
+
 import Meta from './Meta'
 import Stats from './Stats'
 
-export default function Page({ children, data, metaConfig, options = {} }) {
+export function Page({
+  children,
+  data,
+  metaConfig,
+  options = { layout: 'main' },
+}) {
   const router = useRouter()
   const { isAuthenticated } = useMember()
 
-  const Layout = options.layout || MainLayout
+  const Layout = layouts[options.layout]
   const restricted = options.restricted || false
 
   useEffect(() => {
