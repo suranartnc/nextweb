@@ -1,10 +1,6 @@
 import React, { Fragment } from 'react'
 
-export const breakpoints = {
-  md: '48em', // 768px
-  lg: '60em', // 960px
-  xl: '80em', // 1280px
-}
+import breakpoints from '@features/_ui/config/breakpoints'
 
 export function media(bp = 'lg') {
   return `@media (min-width: ${breakpoints[bp]})`
