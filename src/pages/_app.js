@@ -3,19 +3,17 @@ import Helmet from 'react-helmet'
 import App from 'next/app'
 import Router from 'next/router'
 import { Provider as StoreProvider } from 'mobx-react'
-import { CookiesProvider } from 'react-cookie'
 
 import { AuthProvider } from '@lib/auth'
 import { ErrorProvider } from '@lib/error'
-
 import { initStore } from '@lib/store'
-import * as font from '@lib/font'
-import { GlobalStyles } from '@lib/styles'
+import { BaseStyles } from '@lib/styles'
+import fontConfig from '@features/_ui/config/font'
 
 export default class MyApp extends App {
   componentDidMount() {
     const WebFont = require('webfontloader')
-    WebFont.load(font.config)
+    WebFont.load(fontConfig)
 
     Router.events.on('routeChangeStart', url => {
       if (window.__NEXT_DATA__.props.isSSR === undefined) {
@@ -28,9 +26,9 @@ export default class MyApp extends App {
     const { Component, router } = this.props
     const rootStore = initStore()
 
-    const children = (
+    return (
       <Fragment>
-        <GlobalStyles />
+        <BaseStyles />
         <Helmet titleTemplate={`%s - nextweb.js`} />
         <AuthProvider>
           <StoreProvider RootStore={rootStore}>
@@ -41,11 +39,5 @@ export default class MyApp extends App {
         </AuthProvider>
       </Fragment>
     )
-
-    if (process.browser) {
-      return <CookiesProvider>{children}</CookiesProvider>
-    }
-
-    return children
   }
 }

@@ -1,4 +1,4 @@
-const patterns = require('../patterns')
+const patterns = require('./_patterns')
 
 module.exports = [
   {

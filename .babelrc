@@ -17,11 +17,10 @@
         "alias": {
           "@components": "./src/components",
           "@common": "./src/components/_common",
-          "@link": "./src/components/_common/Link",
+          "@link": "./src/lib/router/Link",
           "@lib": "./src/lib",
           "@grid": "./src/lib/styles/grid",
-          "@features": "./src/features",
-          "@router": "./src/router"
+          "@features": "./src/features"
         }
       }
     ]

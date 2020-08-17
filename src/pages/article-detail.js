@@ -1,21 +1,16 @@
-import ArticleDetailPage from '@components/_page/article/ArticleDetailPage'
 import withDynamicRendering from '@lib/page/withDynamicRendering'
-
 import * as ArticleService from '@features/article/services'
+export { default } from '@components/_page/article/ArticleDetailPage'
 
-export async function _getServerSideProps({ query }) {
+export async function getServerSideProps(context) {
+  const enhancedFetchData = await withDynamicRendering()(fetchData)
+  return enhancedFetchData(context)
+}
+
+async function fetchData({ query }) {
   const articleDetail = await ArticleService.getArticleById(query.id)
 
   return {
     props: { articleDetail },
   }
 }
-
-export async function getServerSideProps(context) {
-  const getPropsWithErrorHandling = await withDynamicRendering()(
-    _getServerSideProps,
-  )
-  return getPropsWithErrorHandling(context)
-}
-
-export default ArticleDetailPage

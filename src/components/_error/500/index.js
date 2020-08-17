@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Page from '@components/_common/Page'
+import { Page } from '@lib/page'
 import InternalServerError from './InternalServerError'
 
 export default function Error500Page(props) {

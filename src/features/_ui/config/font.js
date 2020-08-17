@@ -1,6 +1,6 @@
 import { getStatic } from '@lib/static'
 
-export const config = {
+export default {
   // google: {
   //   families: ['Open Sans:400'],
   // },

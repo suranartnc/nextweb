@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useCookies } from 'react-cookie'
+import { parseCookies, setCookie } from 'nookies'
 import { get } from 'lodash'
 import jwtDecode from 'jwt-decode'
 
 import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from './constants'
 
 export default function useAuth() {
-  const [cookies, setCookie] = useCookies([AUTH_COOKIE_NAME])
+  const cookies = parseCookies()
+
   const [token, setToken] = useState(null)
   const router = useRouter()
 
@@ -23,7 +24,7 @@ export default function useAuth() {
           get(payload, 'exp') ||
           Math.floor(Date.now() / 1000) + AUTH_COOKIE_MAX_AGE
 
-        setCookie(AUTH_COOKIE_NAME, tokenFromURL, {
+        setCookie(null, AUTH_COOKIE_NAME, tokenFromURL, {
           path: '/',
           expires: new Date(expires * 1000),
         })

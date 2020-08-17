@@ -1,8 +1,7 @@
 import React from 'react'
 import { Flex, Box } from '@grid'
 import { inject } from '@lib/store'
-
-import Page from '@components/_common/Page'
+import { Page } from '@lib/page'
 
 import * as metaConfig from './meta'
 

@@ -1,25 +1,21 @@
 import React, { Fragment } from 'react'
-// import { useUA } from '@lib/userAgent'
 
-export const breakpoints = {
-  md: '48em', // 768px
-  lg: '60em', // 960px
-  xl: '80em', // 1280px
-}
+import breakpoints from '@features/_ui/config/breakpoints'
 
 export function media(bp = 'lg') {
   return `@media (min-width: ${breakpoints[bp]})`
 }
 
-// export function Adaptive({ wide = null, narrow = null }) {
-//   const {
-//     device: { isMobile },
-//   } = useUA()
+export function Adaptive({ userAgent, desktop = null, mobile = null }) {
+  const isMobile = userAgent.device.isMobile
+  return isMobile ? mobile : desktop
+}
 
-//   return isMobile ? narrow : wide
-// }
-
-export function Responsive({ breakpoint = 'md', wide = null, narrow = null }) {
+export function Responsive({
+  breakpoint = 'md',
+  desktop = null,
+  mobile = null,
+}) {
   return (
     <Fragment>
       <div
@@ -29,7 +25,7 @@ export function Responsive({ breakpoint = 'md', wide = null, narrow = null }) {
             display: 'none',
           },
         }}>
-        {narrow}
+        {mobile}
       </div>
       <div
         css={{
@@ -38,7 +34,7 @@ export function Responsive({ breakpoint = 'md', wide = null, narrow = null }) {
             display: 'block',
           },
         }}>
-        {wide}
+        {desktop}
       </div>
     </Fragment>
   )

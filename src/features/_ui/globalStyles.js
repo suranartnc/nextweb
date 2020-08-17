@@ -1,11 +1,7 @@
-import React from 'react'
-import { css, Global } from '@emotion/core'
+import { css } from '@emotion/core'
 import colors from '@features/_ui/config/colors'
 
-import normalize from './normalize'
-
-const baseStyles = css`
-  ${normalize}
+export default css`
   html,
   body {
     padding: 3rem 1rem;
@@ -44,11 +40,3 @@ const baseStyles = css`
     cursor: pointer;
   }
 `
-
-export default function GlobalStyles() {
-  return (
-    <React.Fragment>
-      <Global styles={baseStyles} />
-    </React.Fragment>
-  )
-}

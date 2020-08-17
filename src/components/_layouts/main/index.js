@@ -2,7 +2,7 @@ import React from 'react'
 import { ThemeProvider } from 'emotion-theming'
 import Notifications from './Notifications'
 import Navigation from './Navigation'
-import { breakpoints } from '@lib/styles'
+import breakpoints from '@features/_ui/config/breakpoints'
 
 const theme = {
   breakpoints: Object.keys(breakpoints).map(key => breakpoints[key]),

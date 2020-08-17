@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react'
 import { Flex, Box } from '@grid'
 
+import { Page } from '@lib/page'
 import { Fetch, FetchMore } from '@lib/api'
 import * as ArticleService from '@features/article/services'
 import colors from '@features/_ui/config/colors'
 
-import Page from '@components/_common/Page'
 import PopularArticles from '@components/_page/article/ArticleDetailPage/PopularArticles'
 import ArticleLatest, { ArticleList } from './ArticleLatest'
-
 import * as metaConfig from './meta'
 
 export default function HomePage({ articleLatest, ...props }) {
