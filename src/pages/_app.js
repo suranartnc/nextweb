@@ -6,15 +6,14 @@ import { Provider as StoreProvider } from 'mobx-react'
 
 import { AuthProvider } from '@lib/auth'
 import { ErrorProvider } from '@lib/error'
-
 import { initStore } from '@lib/store'
-import * as font from '@lib/font'
 import { BaseStyles } from '@lib/styles'
+import fontConfig from '@features/_ui/config/font'
 
 export default class MyApp extends App {
   componentDidMount() {
     const WebFont = require('webfontloader')
-    WebFont.load(font.config)
+    WebFont.load(fontConfig)
 
     Router.events.on('routeChangeStart', url => {
       if (window.__NEXT_DATA__.props.isSSR === undefined) {
