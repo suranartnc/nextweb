@@ -1,20 +1,16 @@
-import HomePage from '@components/_page/_static/HomePage'
 import withDynamicRendering from '@lib/page/withDynamicRendering'
 import * as ArticleService from '@features/article/services'
+export { default } from '@components/_page/_static/HomePage'
 
-async function _getServerSideProps() {
+export async function getServerSideProps(context) {
+  const enhancedFetchData = await withDynamicRendering()(fetchData)
+  return enhancedFetchData(context)
+}
+
+async function fetchData() {
   const articleLatest = await ArticleService.getArticles({ limit: 10 })
 
   return {
     props: { articleLatest },
   }
 }
-
-export async function getServerSideProps(context) {
-  const getPropsWithErrorHandling = await withDynamicRendering()(
-    _getServerSideProps,
-  )
-  return getPropsWithErrorHandling(context)
-}
-
-export default HomePage
