@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from 'react'
 import { useRouter } from 'next/router'
-import { Router } from '@router'
+import { Router } from '@lib/router'
 
 import { useMember } from '@lib/auth'
 import * as layouts from '@components/_layouts'

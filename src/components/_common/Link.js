@@ -1,5 +1,5 @@
 import React from 'react'
-import Routes, { Link } from '@router'
+import Routes, { Link } from '@lib/router'
 
 const linkOptions = {
   prefetch: false,

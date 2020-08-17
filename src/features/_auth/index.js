@@ -1,7 +1,7 @@
 import { trimEnd } from 'lodash'
 import { postAPI } from '@lib/api/helpers'
 import { destroyCookie } from 'nookies'
-import { getFullUrlByRoute } from '@router/utils'
+import { getFullUrlByRoute } from '@lib/router/utils'
 
 import { AUTH_COOKIE_NAME } from './constants'
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Router } from '@router'
+import { Router } from '@lib/router'
 import { inject } from '@lib/store'
 import { Page } from '@lib/page'
 import { signIn } from '@features/_auth'

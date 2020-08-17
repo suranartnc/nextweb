@@ -1,4 +1,4 @@
-const authRoutes = require('./_auth')
+const authRoutes = require('./auth')
 const articleRoutes = require('./article')
 
 const routes = [

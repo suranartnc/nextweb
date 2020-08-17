@@ -6,7 +6,7 @@ const compression = require('compression')
 const next = require('next')
 const favicon = require('serve-favicon')
 const useragent = require('express-useragent')
-const routes = require('./router')
+const routes = require('./lib/router')
 
 const port = process.env.PORT || 3000
 
