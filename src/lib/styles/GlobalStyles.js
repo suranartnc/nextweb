@@ -3,9 +3,13 @@ import { css, Global } from '@emotion/core'
 import colors from '@features/_ui/config/colors'
 
 import normalize from './normalize'
+import reset from './reset'
+import clearFix from './clearFix'
 
 const baseStyles = css`
   ${normalize}
+  ${reset}
+  ${clearFix}
   html,
   body {
     padding: 3rem 1rem;
