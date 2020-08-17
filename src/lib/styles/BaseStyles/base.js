@@ -1,12 +1,11 @@
-import React from 'react'
-import { css, Global } from '@emotion/core'
+import { css } from '@emotion/core'
 import colors from '@features/_ui/config/colors'
 
-import normalize from './normalize'
-import reset from './reset'
-import clearFix from './clearFix'
+import normalize from './_normalize'
+import reset from './_reset'
+import clearFix from './_clearFix'
 
-const baseStyles = css`
+export default css`
   ${normalize}
   ${reset}
   ${clearFix}
@@ -48,11 +47,3 @@ const baseStyles = css`
     cursor: pointer;
   }
 `
-
-export default function GlobalStyles() {
-  return (
-    <React.Fragment>
-      <Global styles={baseStyles} />
-    </React.Fragment>
-  )
-}

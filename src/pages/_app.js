@@ -9,7 +9,7 @@ import { ErrorProvider } from '@lib/error'
 
 import { initStore } from '@lib/store'
 import * as font from '@lib/font'
-import { GlobalStyles } from '@lib/styles'
+import { BaseStyles } from '@lib/styles'
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -29,7 +29,7 @@ export default class MyApp extends App {
 
     return (
       <Fragment>
-        <GlobalStyles />
+        <BaseStyles />
         <Helmet titleTemplate={`%s - nextweb.js`} />
         <AuthProvider>
           <StoreProvider RootStore={rootStore}>
