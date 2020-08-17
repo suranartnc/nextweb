@@ -1,5 +1,7 @@
+import { trimEnd } from 'lodash'
 import { postAPI } from '@lib/api/helpers'
 import { deleteCookie } from '@lib/cookie'
+import { getFullUrlByRoute } from '@router/utils'
 
 import { AUTH_COOKIE_NAME } from './constants'
 
@@ -27,5 +29,10 @@ export function signIn({ email, password, redirect }) {
 
 export function signOut() {
   deleteCookie(AUTH_COOKIE_NAME)
-  location.href = '/'
+  location.href = getFullUrlByRoute('home')
+}
+
+export function resetAuthentication({ redirect = '' }) {
+  deleteCookie(AUTH_COOKIE_NAME)
+  location.href = trimEnd(getFullUrlByRoute('auth-login', { redirect }), '/')
 }
