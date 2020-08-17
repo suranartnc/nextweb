@@ -4,7 +4,7 @@ import { Router } from '@router'
 
 import { useMember } from '@lib/auth'
 import MainLayout from '@components/_layouts/main'
-import Meta from '@components/_common/Meta'
+import Meta from './Meta'
 
 export default function Page({ children, data, metaConfig, options = {} }) {
   const router = useRouter()
