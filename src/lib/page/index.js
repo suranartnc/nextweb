@@ -8,16 +8,11 @@ import * as layouts from '@components/_layouts'
 import Meta from './Meta'
 import Stats from './Stats'
 
-export function Page({
-  children,
-  data,
-  metaConfig,
-  options = { layout: 'main' },
-}) {
+export function Page({ children, data, metaConfig, options = {} }) {
   const router = useRouter()
   const { isAuthenticated } = useMember()
 
-  const Layout = layouts[options.layout]
+  const Layout = layouts[options.layout || 'main']
   const restricted = options.restricted || false
 
   useEffect(() => {

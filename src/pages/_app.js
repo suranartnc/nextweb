@@ -3,7 +3,6 @@ import Helmet from 'react-helmet'
 import App from 'next/app'
 import Router from 'next/router'
 import { Provider as StoreProvider } from 'mobx-react'
-import { CookiesProvider } from 'react-cookie'
 
 import { AuthProvider } from '@lib/auth'
 import { ErrorProvider } from '@lib/error'
@@ -28,7 +27,7 @@ export default class MyApp extends App {
     const { Component, router } = this.props
     const rootStore = initStore()
 
-    const children = (
+    return (
       <Fragment>
         <GlobalStyles />
         <Helmet titleTemplate={`%s - nextweb.js`} />
@@ -41,11 +40,5 @@ export default class MyApp extends App {
         </AuthProvider>
       </Fragment>
     )
-
-    if (process.browser) {
-      return <CookiesProvider>{children}</CookiesProvider>
-    }
-
-    return children
   }
 }
