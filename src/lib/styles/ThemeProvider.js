@@ -1,5 +1,4 @@
 import React from 'react'
-import { useRouter } from 'next/router'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import BaseStyles from '@lib/styles/BaseStyles'
 import { breakpoints, variables } from '@features/_ui/config'
@@ -11,8 +10,7 @@ const emotionTheme = {
 }
 
 export default function ThemeProvider({ children }) {
-  const router = useRouter()
-  const themeMode = router.query.theme === 'dark' ? 'dark' : 'light'
+  const themeMode = Object.keys(variables)[0]
 
   return (
     <themeContext.Provider value={themeMode}>
