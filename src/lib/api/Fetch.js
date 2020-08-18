@@ -1,6 +1,10 @@
 import React from 'react'
-import Async from 'react-async'
+import useSWR from 'swr'
 import { isEmpty } from 'lodash'
+
+function fetcher(callService) {
+  return callService()
+}
 
 export default function Fetch({
   children,
@@ -8,30 +12,26 @@ export default function Fetch({
   onError,
   preloader = null,
 }) {
-  return (
-    <Async promiseFn={service}>
-      {({ data, error, isLoading }) => {
-        if (isLoading) {
-          return typeof preloader === 'function'
-            ? React.createElement(preloader)
-            : preloader
-        }
+  const { data, isValidating, error } = useSWR([service], fetcher)
 
-        if (error) {
-          if (typeof onError === 'function') {
-            return onError(error)
-          }
+  if (isValidating) {
+    return typeof preloader === 'function'
+      ? React.createElement(preloader)
+      : preloader
+  }
 
-          console.error(error)
-          return null
-        }
+  if (error) {
+    if (typeof onError === 'function') {
+      return onError(error)
+    }
 
-        if (isEmpty(data)) {
-          return null
-        }
+    console.error(error)
+    return null
+  }
 
-        return children({ data })
-      }}
-    </Async>
-  )
+  if (isEmpty(data)) {
+    return null
+  }
+
+  return children({ data })
 }
