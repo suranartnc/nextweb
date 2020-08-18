@@ -1,24 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import BaseStyles from '@lib/styles/BaseStyles'
 import { breakpoints, variables } from '@features/_ui/config'
-
-const themeContext = React.createContext({})
 
 const emotionTheme = {
   breakpoints: Object.keys(breakpoints).map(key => breakpoints[key]),
 }
 
 export default function ThemeProvider({ children }) {
-  const themeMode = Object.keys(variables)[0]
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const themeMode = isDarkMode ? 'dark' : 'light'
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode)
 
   return (
-    <themeContext.Provider value={themeMode}>
-      <EmotionThemeProvider
-        theme={{ ...emotionTheme, variables: variables[themeMode] }}>
-        <BaseStyles />
-        {children}
-      </EmotionThemeProvider>
-    </themeContext.Provider>
+    <EmotionThemeProvider
+      theme={{
+        ...emotionTheme,
+        variables: variables[themeMode],
+        toggleTheme,
+      }}>
+      <BaseStyles />
+      {children}
+    </EmotionThemeProvider>
   )
 }

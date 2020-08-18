@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react'
+import { useTheme } from 'emotion-theming'
 import Link from '@link'
 import { useMember } from '@lib/auth'
 import { media } from '@lib/styles/helpers'
@@ -31,6 +32,7 @@ const LinkItem = forwardRef(({ menu, ...props }, ref) => (
 ))
 
 export default function Navigation() {
+  const { variables, toggleTheme } = useTheme()
   const { isAuthenticated } = useMember()
 
   return (
@@ -50,6 +52,18 @@ export default function Navigation() {
           <LinkItem menu={{ name: 'Login' }} />
         </Link>
       )}
+
+      <button
+        onClick={() => toggleTheme()}
+        css={{
+          float: 'right',
+          padding: '8px 15px',
+          border: `1px solid ${variables.colors.background.secondary}`,
+          borderRadius: '5px',
+          color: variables.colors.text.secondary,
+        }}>
+        Toggle Theme
+      </button>
     </nav>
   )
 }
