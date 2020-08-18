@@ -4,11 +4,11 @@ import App from 'next/app'
 import Router from 'next/router'
 import { Provider as StoreProvider } from 'mobx-react'
 
+import ThemeProvider from '@lib/styles/ThemeProvider'
 import { AuthProvider } from '@lib/auth'
-import { ErrorProvider } from '@lib/error'
 import { initStore } from '@lib/store'
-import { BaseStyles } from '@lib/styles'
-import fontConfig from '@features/_ui/config/font'
+import { ErrorProvider } from '@lib/error'
+import { font as fontConfig } from '@features/_ui/config'
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -28,15 +28,16 @@ export default class MyApp extends App {
 
     return (
       <Fragment>
-        <BaseStyles />
         <Helmet titleTemplate={`%s - nextweb.js`} />
-        <AuthProvider>
-          <StoreProvider RootStore={rootStore}>
-            <ErrorProvider>
-              <Component {...this.props.pageProps} router={router} />
-            </ErrorProvider>
-          </StoreProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <StoreProvider RootStore={rootStore}>
+              <ErrorProvider>
+                <Component {...this.props.pageProps} router={router} />
+              </ErrorProvider>
+            </StoreProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </Fragment>
     )
   }

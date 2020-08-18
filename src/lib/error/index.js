@@ -56,13 +56,13 @@ export class ErrorProvider extends React.Component {
 
     // If any error
     if (statusCode >= 500) {
-      return <Error500Page />
+      return <Error500Page statusCode={statusCode} />
     }
 
     // If no resource
     if (statusCode >= 400) {
       const errorCode = get(this.props.children, 'props.errorCode', '')
-      return <Error400Page errorCode={errorCode} />
+      return <Error400Page statusCode={statusCode} errorCode={errorCode} />
     }
 
     return this.props.children

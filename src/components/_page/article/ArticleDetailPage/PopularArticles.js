@@ -1,7 +1,7 @@
 import React from 'react'
+import { useTheme } from 'emotion-theming'
 import Link from '@link'
 import { Flex, Box } from '@grid'
-import colors from '@features/_ui/config/colors'
 
 export default function RelatedArticles({ data }) {
   return (
@@ -23,11 +23,17 @@ function ArticleList({ data }) {
 }
 
 function ArticleItem({ data, index }) {
+  const { variables } = useTheme()
+
   return (
     <Box width={1} py={10}>
       <Flex>
         <Box css={{ width: '50px' }}>
-          <span css={{ color: colors.background.darkGray, fontSize: '28px' }}>
+          <span
+            css={{
+              color: variables.colors.background.secondary,
+              fontSize: '28px',
+            }}>
             {index}
           </span>
         </Box>
@@ -39,7 +45,7 @@ function ArticleItem({ data, index }) {
               </Link>
             </h3>
             <div
-              css={{ color: colors.text.light }}
+              css={{ color: variables.colors.text.secondary }}
               dangerouslySetInnerHTML={{ __html: data.excerpt }}
             />
           </article>

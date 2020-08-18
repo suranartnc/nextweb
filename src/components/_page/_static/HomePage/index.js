@@ -1,16 +1,18 @@
 import React, { Fragment } from 'react'
+import { useTheme } from 'emotion-theming'
 import { Flex, Box } from '@grid'
 
 import { Page } from '@lib/page'
 import { Fetch, FetchMore } from '@lib/api'
 import * as ArticleService from '@features/article/services'
-import colors from '@features/_ui/config/colors'
 
 import PopularArticles from '@components/_page/article/ArticleDetailPage/PopularArticles'
 import ArticleLatest, { ArticleList } from './ArticleLatest'
 import * as metaConfig from './meta'
 
-export default function HomePage({ articleLatest, ...props }) {
+export default function HomePage({ articleLatest }) {
+  const { variables } = useTheme()
+
   return (
     <Page metaConfig={metaConfig}>
       <Flex>
@@ -35,9 +37,9 @@ export default function HomePage({ articleLatest, ...props }) {
                         css={{
                           width: '100%',
                           padding: '10px 20px',
-                          border: `1px solid ${colors.background.darkGray}`,
+                          border: `1px solid ${variables.colors.background.secondary}`,
                           borderRadius: '5px',
-                          color: colors.text.light,
+                          color: variables.colors.text.secondary,
                         }}>
                         {isLoading ? 'Loading...' : 'Load More'}
                       </button>

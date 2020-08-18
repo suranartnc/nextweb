@@ -1,7 +1,7 @@
 import React from 'react'
+import { useTheme } from 'emotion-theming'
 import Link from '@link'
 import { Flex, Box } from '@grid'
-import colors from '@features/_ui/config/colors'
 
 export default function ArticleLatest({ data }) {
   return (
@@ -22,6 +22,8 @@ export function ArticleList({ data }) {
 }
 
 function ArticleItem({ data }) {
+  const { variables } = useTheme()
+
   return (
     <article css={{ padding: '20px 0' }}>
       <Flex>
@@ -32,7 +34,7 @@ function ArticleItem({ data }) {
             </Link>
           </h3>
           <div
-            css={{ color: colors.text.light }}
+            css={{ color: variables.colors.text.secondary }}
             dangerouslySetInnerHTML={{ __html: data.excerpt }}
           />
         </Box>

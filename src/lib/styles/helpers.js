@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import breakpoints from '@features/_ui/config/breakpoints'
+import { breakpoints } from '@features/_ui/config'
 
 export function media(bp = 'lg') {
   return `@media (min-width: ${breakpoints[bp]})`

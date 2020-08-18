@@ -1,12 +1,17 @@
 import React from 'react'
+import { useTheme } from 'emotion-theming'
 
 function ArticleDetail({ data }) {
+  const { variables } = useTheme()
+
   return (
     <article>
       <img src={data.image.featured} css={{ margin: '20px 0 10px' }} />
-      <h1>{data.title}</h1>
+      <h1 css={{ fontSize: '42px', color: variables.colors.link }}>
+        {data.title}
+      </h1>
       <div
-        css={{ fontSize: '22px' }}
+        css={{ padding: '20px 0', fontSize: '22px' }}
         dangerouslySetInnerHTML={{ __html: data.body }}
       />
     </article>
