@@ -23,7 +23,7 @@ function ArticleList({ data }) {
 }
 
 function ArticleItem({ data }) {
-  const { colors } = useTheme()
+  const { variables } = useTheme()
 
   return (
     <Box width={1 / 3} px={20}>
@@ -39,7 +39,7 @@ function ArticleItem({ data }) {
           </Link>
         </h3>
         <div
-          css={{ color: colors.text.light }}
+          css={{ color: variables.colors.text.light }}
           dangerouslySetInnerHTML={{ __html: data.excerpt }}
         />
       </article>

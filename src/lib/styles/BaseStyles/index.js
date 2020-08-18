@@ -15,11 +15,11 @@ const getBaseStyles = colors => css`
 `
 
 export default function BaseStyles() {
-  const { colors } = useTheme()
+  const { variables } = useTheme()
 
   return (
     <React.Fragment>
-      <Global styles={getBaseStyles(colors)} />
+      <Global styles={getBaseStyles(variables)} />
     </React.Fragment>
   )
 }

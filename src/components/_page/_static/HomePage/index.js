@@ -11,7 +11,7 @@ import ArticleLatest, { ArticleList } from './ArticleLatest'
 import * as metaConfig from './meta'
 
 export default function HomePage({ articleLatest }) {
-  const { colors } = useTheme()
+  const { variables } = useTheme()
 
   return (
     <Page metaConfig={metaConfig}>
@@ -37,9 +37,9 @@ export default function HomePage({ articleLatest }) {
                         css={{
                           width: '100%',
                           padding: '10px 20px',
-                          border: `1px solid ${colors.background.darkGray}`,
+                          border: `1px solid ${variables.colors.background.darkGray}`,
                           borderRadius: '5px',
-                          color: colors.text.light,
+                          color: variables.colors.text.light,
                         }}>
                         {isLoading ? 'Loading...' : 'Load More'}
                       </button>

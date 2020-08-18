@@ -1,6 +1,6 @@
 import { css } from '@emotion/core'
 
-export default function getGlobalStyles(colors) {
+export default function getGlobalStyles(variables) {
   return css`
     html,
     body {
@@ -9,7 +9,7 @@ export default function getGlobalStyles(colors) {
       min-height: 100%;
       font-family: 'Open Sans', sans-serif;
       font-size: 16px;
-      color: ${colors.text.dark};
+      color: ${variables.colors.text.dark};
       line-height: 1.5;
     }
     img {
@@ -18,16 +18,16 @@ export default function getGlobalStyles(colors) {
       height: auto;
     }
     a {
-      color: ${colors.link};
+      color: ${variables.colors.link};
       font-weight: bold;
     }
     h1,
     h2,
     h3 {
-      color: ${colors.link};
+      color: ${variables.colors.link};
     }
     h2 {
-      border-bottom: 1px solid ${colors.background.darkGray};
+      border-bottom: 1px solid ${variables.colors.background.darkGray};
       padding-bottom: 10px;
     }
     h3 {

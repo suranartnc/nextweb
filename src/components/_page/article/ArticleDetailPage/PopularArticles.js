@@ -23,13 +23,17 @@ function ArticleList({ data }) {
 }
 
 function ArticleItem({ data, index }) {
-  const { colors } = useTheme()
+  const { variables } = useTheme()
 
   return (
     <Box width={1} py={10}>
       <Flex>
         <Box css={{ width: '50px' }}>
-          <span css={{ color: colors.background.darkGray, fontSize: '28px' }}>
+          <span
+            css={{
+              color: variables.colors.background.darkGray,
+              fontSize: '28px',
+            }}>
             {index}
           </span>
         </Box>
@@ -41,7 +45,7 @@ function ArticleItem({ data, index }) {
               </Link>
             </h3>
             <div
-              css={{ color: colors.text.light }}
+              css={{ color: variables.colors.text.light }}
               dangerouslySetInnerHTML={{ __html: data.excerpt }}
             />
           </article>

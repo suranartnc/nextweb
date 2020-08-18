@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import BaseStyles from '@lib/styles/BaseStyles'
-import { breakpoints, colors } from '@features/_ui/config'
+import { breakpoints, variables } from '@features/_ui/config'
 
 const themeContext = React.createContext({})
 
@@ -17,7 +17,7 @@ export default function ThemeProvider({ children }) {
   return (
     <themeContext.Provider value={themeMode}>
       <EmotionThemeProvider
-        theme={{ ...emotionTheme, colors: colors[themeMode] }}>
+        theme={{ ...emotionTheme, variables: variables[themeMode] }}>
         <BaseStyles />
         {children}
       </EmotionThemeProvider>
