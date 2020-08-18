@@ -1,7 +1,7 @@
 import React from 'react'
+import { useTheme } from 'emotion-theming'
 import Link from '@link'
 import { Flex, Box } from '@grid'
-import colors from '@features/_ui/config/colors'
 
 export default function RelatedArticles({ data }) {
   return (
@@ -23,6 +23,8 @@ function ArticleList({ data }) {
 }
 
 function ArticleItem({ data }) {
+  const { colors } = useTheme()
+
   return (
     <Box width={1 / 3} px={20}>
       <article>

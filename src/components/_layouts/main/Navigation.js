@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import Link from '@link'
 import { useMember } from '@lib/auth'
-import { media } from '@lib/styles'
+import { media } from '@lib/styles/helpers'
 
 const mainMenus = [
   {
