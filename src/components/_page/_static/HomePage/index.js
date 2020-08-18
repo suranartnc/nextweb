@@ -37,9 +37,9 @@ export default function HomePage({ articleLatest }) {
                         css={{
                           width: '100%',
                           padding: '10px 20px',
-                          border: `1px solid ${variables.colors.background.darkGray}`,
+                          border: `1px solid ${variables.colors.background.secondary}`,
                           borderRadius: '5px',
-                          color: variables.colors.text.light,
+                          color: variables.colors.text.secondary,
                         }}>
                         {isLoading ? 'Loading...' : 'Load More'}
                       </button>

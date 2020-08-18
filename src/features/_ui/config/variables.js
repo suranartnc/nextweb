@@ -2,15 +2,27 @@ export default {
   light: {
     colors: {
       text: {
-        light: '#888',
-        dark: '#444',
+        primary: '#666',
+        secondary: '#888',
       },
-      link: '#222',
       background: {
-        white: '#fff',
-        lightGray: '#fafafa',
-        darkGray: '#ddd',
+        primary: '#fff',
+        secondary: '#ddd',
       },
+      link: '#444',
+    },
+  },
+  dark: {
+    colors: {
+      text: {
+        primary: '#aaa',
+        secondary: '#888',
+      },
+      background: {
+        primary: '#111',
+        secondary: '#888',
+      },
+      link: '#ddd',
     },
   },
 }

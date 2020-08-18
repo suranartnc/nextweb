@@ -39,7 +39,7 @@ function ArticleItem({ data }) {
           </Link>
         </h3>
         <div
-          css={{ color: variables.colors.text.light }}
+          css={{ color: variables.colors.text.secondary }}
           dangerouslySetInnerHTML={{ __html: data.excerpt }}
         />
       </article>

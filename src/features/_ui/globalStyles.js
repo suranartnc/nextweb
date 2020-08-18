@@ -9,7 +9,8 @@ export default function getGlobalStyles(variables) {
       min-height: 100%;
       font-family: 'Open Sans', sans-serif;
       font-size: 16px;
-      color: ${variables.colors.text.dark};
+      color: ${variables.colors.text.primary};
+      background-color: ${variables.colors.background.primary};
       line-height: 1.5;
     }
     img {
@@ -21,18 +22,16 @@ export default function getGlobalStyles(variables) {
       color: ${variables.colors.link};
       font-weight: bold;
     }
-    h1,
-    h2,
-    h3 {
-      color: ${variables.colors.link};
-    }
     h2 {
-      border-bottom: 1px solid ${variables.colors.background.darkGray};
-      padding-bottom: 10px;
+      font-size: 24px;
+      border-bottom: 1px solid ${variables.colors.background.secondary};
+      padding-bottom: 5px;
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
     h3 {
-      font-size: 24px;
-      margin: 5px 0;
+      font-size: 20px;
+      margin: 5px 0 10px;
     }
     a,
     button {

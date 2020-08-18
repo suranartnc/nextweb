@@ -31,7 +31,7 @@ function ArticleItem({ data, index }) {
         <Box css={{ width: '50px' }}>
           <span
             css={{
-              color: variables.colors.background.darkGray,
+              color: variables.colors.background.secondary,
               fontSize: '28px',
             }}>
             {index}
@@ -45,7 +45,7 @@ function ArticleItem({ data, index }) {
               </Link>
             </h3>
             <div
-              css={{ color: variables.colors.text.light }}
+              css={{ color: variables.colors.text.secondary }}
               dangerouslySetInnerHTML={{ __html: data.excerpt }}
             />
           </article>
