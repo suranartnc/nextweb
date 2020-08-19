@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+
 import { Router } from '@lib/router'
 import { inject } from '@lib/store'
 import { signIn } from '@features/_auth'
 
 function LoginForm({ errorStore }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const { register, handleSubmit, errors } = useForm()
 
-  const login = e => {
-    e.preventDefault()
-
+  const onSubmit = data => {
     const { redirect } = Router.router.query
 
-    signIn({ email, password, redirect }).catch(error => {
+    signIn({ ...data, redirect }).catch(error => {
       errorStore.addError({
         title: error.message,
       })
@@ -20,18 +19,23 @@ function LoginForm({ errorStore }) {
   }
 
   return (
-    <form onSubmit={login}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <p>
         <label>
           Email:
-          <input type="text" onChange={e => setEmail(e.target.value)} />
+          <input type="text" name="email" ref={register} />
         </label>
       </p>
       <p>
         <label>
           Password:
-          <input type="password" onChange={e => setPassword(e.target.value)} />
+          <input
+            type="password"
+            name="password"
+            ref={register({ required: true })}
+          />
         </label>
+        {errors.password && <span>This field is required</span>}
       </p>
       <button>Log in</button>
     </form>
