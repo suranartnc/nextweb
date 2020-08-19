@@ -1,9 +1,18 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers'
 import { inject } from '@lib/store'
 
-function Form({ errorStore, children, onSubmit, onError = handleError }) {
-  const { register, handleSubmit, errors } = useForm()
+function Form({
+  errorStore,
+  children,
+  schema,
+  onSubmit,
+  onError = handleError,
+}) {
+  const { register, handleSubmit, errors } = useForm({
+    resolver: schema ? yupResolver(schema) : null,
+  })
 
   return (
     <form
