@@ -32,7 +32,7 @@ const LinkItem = forwardRef(({ menu, ...props }, ref) => (
 ))
 
 export default function Navigation() {
-  const { variables, toggleTheme } = useTheme()
+  const { variables, themeMode, toggleTheme } = useTheme()
   const { isAuthenticated } = useMember()
 
   return (
@@ -61,8 +61,9 @@ export default function Navigation() {
           border: `1px solid ${variables.colors.background.secondary}`,
           borderRadius: '5px',
           color: variables.colors.text.secondary,
+          textTransform: 'capitalize',
         }}>
-        Toggle Theme
+        {themeMode === 'light' ? 'dark' : 'light'} Mode
       </button>
     </nav>
   )

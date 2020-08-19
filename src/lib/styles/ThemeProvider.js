@@ -18,6 +18,7 @@ export default function ThemeProvider({ children }) {
       theme={{
         ...emotionTheme,
         variables: variables[themeMode],
+        themeMode,
         toggleTheme,
       }}>
       <BaseStyles />
