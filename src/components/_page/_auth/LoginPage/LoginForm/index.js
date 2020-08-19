@@ -5,9 +5,9 @@ import Template from './Template'
 import schema from './schema'
 import onSubmit from './onSubmit'
 
-export default function LoginForm() {
+export default function LoginForm({ defaultValues }) {
   return (
-    <Form schema={schema} onSubmit={onSubmit}>
+    <Form defaultValues={defaultValues} schema={schema} onSubmit={onSubmit}>
       {Template}
     </Form>
   )

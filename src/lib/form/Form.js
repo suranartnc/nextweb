@@ -6,11 +6,13 @@ import { inject } from '@lib/store'
 function Form({
   errorStore,
   children,
+  defaultValues = {},
   schema,
   onSubmit,
   onError = handleError,
 }) {
   const { register, handleSubmit, errors } = useForm({
+    defaultValues,
     resolver: schema ? yupResolver(schema) : null,
   })
 
