@@ -8,7 +8,7 @@ export default function signIn(req, res) {
   let response = null
   let status = 200
 
-  if (email !== 'admin' && password !== 'admin') {
+  if (email !== 'admin' || password !== 'admin') {
     status = 401
     response = { message: 'Email or password is not correct.' }
   } else {
