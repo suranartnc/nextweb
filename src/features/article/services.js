@@ -1,9 +1,9 @@
-import * as API from './repository'
+import * as repository from './repository'
 
 export function getArticles({ keyword, start = 0, limit = 5 } = {}) {
-  return API.getArticles({ q: keyword, start, limit })
+  return repository.find({ q: keyword, start, limit })
 }
 
 export function getArticleById(id) {
-  return API.getArticleById(id)
+  return repository.findOneById(id)
 }
