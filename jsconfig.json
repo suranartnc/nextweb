@@ -4,8 +4,7 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
-      "@common/*": ["components/_common/*"],
-      "@features/*": ["features/*"],
+      "@modules/*": ["modules/*"],
       "@lib/*": ["lib/*"],
       "@link": ["components/_common/Link"]
     }
