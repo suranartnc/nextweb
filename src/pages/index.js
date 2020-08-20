@@ -1,5 +1,5 @@
 import withDynamicRendering from '@lib/page/withDynamicRendering'
-import * as ArticleService from '@features/article/services'
+import * as ArticleService from '@modules/article/services'
 export { default } from '@components/_page/_static/HomePage'
 
 export async function getServerSideProps(context) {

@@ -1,5 +1,5 @@
 import { Router } from '@lib/router'
-import { signIn } from '@features/_auth'
+import { signIn } from '@modules/_auth'
 
 export default function onSubmit(data) {
   const { redirect } = Router.router.query

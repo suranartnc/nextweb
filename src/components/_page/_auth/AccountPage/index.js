@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Page } from '@lib/page'
 import { useMember } from '@lib/auth'
-import { signOut } from '@features/_auth'
+import { signOut } from '@modules/_auth'
 
 import * as metaConfig from './meta'
 

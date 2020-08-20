@@ -8,7 +8,7 @@ import ThemeProvider from '@lib/styles/ThemeProvider'
 import { AuthProvider } from '@lib/auth'
 import { initStore } from '@lib/store'
 import { ErrorProvider } from '@lib/error'
-import { font as fontConfig } from '@features/_ui/config'
+import { font as fontConfig } from '@modules/_ui/config'
 
 export default class MyApp extends App {
   componentDidMount() {

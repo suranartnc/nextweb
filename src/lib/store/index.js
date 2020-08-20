@@ -1,7 +1,7 @@
 import { flowRight as compose } from 'lodash'
 import { inject as injectStore, observer } from 'mobx-react'
 
-import RootStore from '@features/_store'
+import RootStore from '@modules/_store'
 
 let store = null
 

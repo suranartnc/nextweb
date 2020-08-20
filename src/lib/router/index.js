@@ -2,7 +2,7 @@ const nextRoutes = require('next-routes')
 const { trimEnd } = require('lodash')
 const url = require('url')
 
-const allRoutes = require('../../features/_routes')
+const allRoutes = require('../../modules/_routes')
 
 const routes = nextRoutes()
 
