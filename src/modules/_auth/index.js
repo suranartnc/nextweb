@@ -1,4 +1,4 @@
-import { trimEnd } from 'lodash'
+import trimEnd from 'lodash.trimend'
 import { postAPI } from '@lib/api/helpers'
 import { destroyCookie } from 'nookies'
 import { getFullUrlByRoute } from '@lib/router/utils'

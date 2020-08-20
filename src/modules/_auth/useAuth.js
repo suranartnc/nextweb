@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { parseCookies, setCookie } from 'nookies'
-import { get } from 'lodash'
 import jwtDecode from 'jwt-decode'
 
 import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from './constants'
@@ -21,8 +20,7 @@ export default function useAuth() {
       if (tokenFromURL) {
         const payload = getDataFromToken(tokenFromURL)
         const expires =
-          get(payload, 'exp') ||
-          Math.floor(Date.now() / 1000) + AUTH_COOKIE_MAX_AGE
+          payload?.exp || Math.floor(Date.now() / 1000) + AUTH_COOKIE_MAX_AGE
 
         setCookie(null, AUTH_COOKIE_NAME, tokenFromURL, {
           path: '/',
@@ -47,7 +45,7 @@ export default function useAuth() {
 
 function getAuthDataFromCallbackURL(query) {
   return {
-    token: get(query, 'token', false),
+    token: query?.token || false,
   }
 }
 
