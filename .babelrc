@@ -9,7 +9,6 @@
     "@emotion/babel-preset-css-prop"
   ],
   "plugins": [
-    "lodash",
     "@babel/plugin-proposal-export-default-from",
     ["@babel/plugin-proposal-decorators", { "legacy": true}],
     [
