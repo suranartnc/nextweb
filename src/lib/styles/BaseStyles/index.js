@@ -6,7 +6,7 @@ import getGlobalStyles from '@modules/_ui/globalStyles'
 import normalize from './_normalize'
 import reset from './_reset'
 import clearFix from './_clearFix'
-import './_fontAwesome'
+// import './_fontAwesome'
 
 const getBaseStyles = colors => css`
   ${normalize}
