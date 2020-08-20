@@ -67,6 +67,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.4.1",
     "react-waypoint": "^9.0.2",
+    "reflexbox": "^4.0.6",
     "serve-favicon": "^2.5.0",
     "striptags": "^3.1.1",
     "swr": "^0.3.0",

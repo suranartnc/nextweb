@@ -1,7 +1,7 @@
 import React from 'react'
-import { Flex as RebassFlex } from '@rebass/grid/emotion'
-export { Box } from '@rebass/grid/emotion'
+import { Flex as ReflexBoxFlex } from 'reflexbox'
+export { Box } from 'reflexbox'
 
 export function Flex(props) {
-  return <RebassFlex flexWrap="wrap" {...props} />
+  return <ReflexBoxFlex flexWrap="wrap" {...props} />
 }
