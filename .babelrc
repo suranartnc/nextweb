@@ -16,11 +16,10 @@
       "module-resolver", {
         "alias": {
           "@components": "./src/components",
-          "@common": "./src/components/_common",
           "@link": "./src/lib/router/Link",
           "@lib": "./src/lib",
           "@grid": "./src/lib/styles/grid",
-          "@features": "./src/features"
+          "@modules": "./src/modules"
         }
       }
     ]

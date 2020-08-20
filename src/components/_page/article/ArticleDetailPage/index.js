@@ -3,7 +3,7 @@ import { Flex, Box } from '@grid'
 
 import { Page } from '@lib/page'
 import { Fetch } from '@lib/api'
-import * as ArticleService from '@features/article/services'
+import * as ArticleService from '@modules/article/services'
 
 import ArticleContent from './ArticleContent'
 import PopularArticles from './PopularArticles'

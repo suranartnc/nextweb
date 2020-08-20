@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import BaseStyles from '@lib/styles/BaseStyles'
-import { breakpoints, variables } from '@features/_ui/config'
+import { breakpoints, variables } from '@modules/_ui/config'
 
 const emotionTheme = {
   breakpoints: Object.keys(breakpoints).map(key => breakpoints[key]),

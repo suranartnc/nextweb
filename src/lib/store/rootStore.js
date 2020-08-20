@@ -1,5 +1,5 @@
 import { configure } from 'mobx'
-import ErrorStore from '@features/_error/store'
+import ErrorStore from '@modules/_error/store'
 
 configure({ enforceActions: 'observed' })
 
