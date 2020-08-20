@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
-
 import { breakpoints } from '@modules/_ui/config'
+
+export { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 
 export function media(bp = 'lg') {
   return `@media (min-width: ${breakpoints[bp]})`
