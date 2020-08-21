@@ -1,2 +1,1 @@
-import AboutPage from '@components/_page/_static/AboutPage'
-export default AboutPage
+export { default } from '@components/_page/_static/AboutPage'

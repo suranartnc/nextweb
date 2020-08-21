@@ -1,2 +1,1 @@
-import LoginPage from '@components/_page/_auth/LoginPage'
-export default LoginPage
+export { default } from '@components/_page/_auth/LoginPage'
