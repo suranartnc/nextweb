@@ -4,9 +4,9 @@
   "description": "An opinionated framework built on top of Next.js.",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/server.js",
-    "build": "next build src",
-    "start": "NODE_ENV=production node src/server.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "analyze": "BUNDLE_ANALYZE=browser npm run build",
     "export": "next export src",
     "api": "node ./api/server.js",

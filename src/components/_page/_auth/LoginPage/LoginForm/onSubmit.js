@@ -1,4 +1,4 @@
-import { Router } from '@lib/router'
+import Router from 'next/router'
 import { signIn } from '@modules/_auth'
 
 export default function onSubmit(data) {

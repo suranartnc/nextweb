@@ -29,7 +29,7 @@ function ArticleItem({ data }) {
       <Flex>
         <Box width={6.5 / 10}>
           <h3>
-            <Link route="article-detail" params={{ id: data.id }}>
+            <Link pathname="/article/[id]" query={{ id: data.id }}>
               <a>{data.title}</a>
             </Link>
           </h3>
@@ -39,7 +39,7 @@ function ArticleItem({ data }) {
           />
         </Box>
         <Box width={3.5 / 10} pl={20} pt={10}>
-          <Link route="article-detail" params={{ id: data.id }}>
+          <Link pathname="/article/[id]" query={{ id: data.id }}>
             <a>
               <img src={data.image.featured} />
             </a>

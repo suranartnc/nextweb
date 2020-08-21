@@ -1,6 +1,5 @@
 import React, { useEffect, Fragment } from 'react'
 import { useRouter } from 'next/router'
-import { Router } from '@lib/router'
 
 import { useMember } from '@lib/auth'
 import * as layouts from '@components/_layouts'
@@ -17,7 +16,7 @@ export function Page({ children, data, metaConfig, options = {} }) {
 
   useEffect(() => {
     if (restricted && isAuthenticated === false) {
-      Router.pushRoute('auth-login', {
+      router.push('/login', {
         redirect: router.asPath,
       })
     }

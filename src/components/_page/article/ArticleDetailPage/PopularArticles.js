@@ -40,7 +40,7 @@ function ArticleItem({ data, index }) {
         <Box css={{ flex: 1 }}>
           <article>
             <h3 css={{ fontSize: '18px' }}>
-              <Link route="article-detail" params={{ id: data.id }}>
+              <Link pathname="/article/[id]" query={{ id: data.id }}>
                 <a>{data.title}</a>
               </Link>
             </h3>

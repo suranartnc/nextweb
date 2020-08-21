@@ -1,7 +1,6 @@
 import trimEnd from 'lodash.trimend'
 import { postAPI } from '@lib/api/helpers'
 import { destroyCookie } from 'nookies'
-import { getFullUrlByRoute } from '@lib/router/utils'
 
 import { AUTH_COOKIE_NAME } from './constants'
 
@@ -29,10 +28,10 @@ export function signIn({ email, password, redirect }) {
 
 export function signOut() {
   destroyCookie(null, AUTH_COOKIE_NAME)
-  location.href = getFullUrlByRoute('home')
+  location.href = '/'
 }
 
 export function resetAuthentication({ redirect = '' }) {
   destroyCookie(null, AUTH_COOKIE_NAME)
-  location.href = trimEnd(getFullUrlByRoute('auth-login', { redirect }), '/')
+  location.href = trimEnd(`/?redirect=${redirect}`, '/')
 }

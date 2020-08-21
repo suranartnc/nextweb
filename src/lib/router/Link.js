@@ -1,21 +1,20 @@
 import React from 'react'
-import Routes, { Link } from '@lib/router'
+import Link from 'next/link'
 
 const linkOptions = {
   prefetch: false,
 }
 
+function getAsPath({ pathname, query }) {
+  return Object.keys(query).reduce(
+    (prev, cur) => prev.replace(`[${cur}]`, query[cur]),
+    pathname,
+  )
+}
+
 export default function CustomLink(props) {
-  const { route, params = {}, ...restProps } = props
-
-  const routeObject = Routes.findByName(route)
-  const page = routeObject.page
-  const queryString = Object.keys(params)
-    .map(key => `${key}=${params[key]}`)
-    .join('&')
-
-  const href = `${page}?${queryString}`
-  const asPath = decodeURIComponent(routeObject.getAs(params))
-
+  const { pathname, query = {}, ...restProps } = props
+  const href = { pathname, query }
+  const asPath = getAsPath({ pathname, query })
   return <Link {...restProps} {...linkOptions} href={href} as={asPath} />
 }
