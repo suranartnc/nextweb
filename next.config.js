@@ -5,10 +5,8 @@ const compose = require('lodash/flowRight')
 const Dotenv = require('dotenv-webpack')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
-const exportPathMap = require('./exportPathMap')
 
 const nextConfig = {
-  exportPathMap,
   assetPrefix: process.env.ASSET_PREFIX,
   analyzeBrowser: process.env.BUNDLE_ANALYZE === 'browser',
   bundleAnalyzerConfig: {
