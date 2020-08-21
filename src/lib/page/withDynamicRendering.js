@@ -7,7 +7,7 @@ export default function withDynamicRendering(options = {}) {
   return function(Component) {
     const hocs = [
       // withUA,
-      withErrorHandling,
+      // withErrorHandling,
     ]
 
     return compose(...hocs)(Component)

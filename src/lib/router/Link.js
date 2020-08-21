@@ -1,20 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
 
+import { getAsPathByRouteName, getHrefByRouteName } from './utils'
+
 const linkOptions = {
   prefetch: false,
 }
 
-function getAsPath({ pathname, query }) {
-  return Object.keys(query).reduce(
-    (prev, cur) => prev.replace(`[${cur}]`, query[cur]),
-    pathname,
-  )
-}
-
 export default function CustomLink(props) {
-  const { pathname, query = {}, ...restProps } = props
-  const href = { pathname, query }
-  const asPath = getAsPath({ pathname, query })
+  const { route, params = {}, ...restProps } = props
+
+  const href = getHrefByRouteName(route, params)
+  const asPath = getAsPathByRouteName(route, params)
   return <Link {...restProps} {...linkOptions} href={href} as={asPath} />
 }

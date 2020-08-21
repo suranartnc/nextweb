@@ -7,11 +7,11 @@ import { media } from '@lib/styles/helpers'
 const mainMenus = [
   {
     name: 'Home',
-    pathname: '/',
+    route: 'home',
   },
   {
     name: 'About',
-    pathname: '/about',
+    route: 'about',
   },
 ]
 
@@ -38,17 +38,17 @@ export default function Navigation() {
   return (
     <nav css={{ marginBottom: 10, borderBottom: '1px solid #aaa' }}>
       {mainMenus.map(menu => (
-        <Link key={menu.name} pathname={menu.pathname} passHref>
+        <Link key={menu.name} route={menu.route} passHref>
           <LinkItem menu={menu} />
         </Link>
       ))}
 
       {isAuthenticated ? (
-        <Link key="Account" pathname="/account" passHref>
+        <Link key="Account" route="auth-account" passHref>
           <LinkItem menu={{ name: 'Account' }} />
         </Link>
       ) : (
-        <Link key="Login" pathname="/login" passHref>
+        <Link key="Login" route="auth-login" passHref>
           <LinkItem menu={{ name: 'Login' }} />
         </Link>
       )}

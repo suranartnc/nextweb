@@ -28,13 +28,13 @@ function ArticleItem({ data }) {
   return (
     <Box width={1 / 3} px={20}>
       <article>
-        <Link pathname="/article/[id]" query={{ id: data.id }}>
+        <Link route="article-detail" params={{ id: data.id }}>
           <a>
             <img src={data.image.featured} />
           </a>
         </Link>
         <h3>
-          <Link pathname="/article/[id]" query={{ id: data.id }}>
+          <Link route="article-detail" params={{ id: data.id }}>
             <a>{data.title}</a>
           </Link>
         </h3>

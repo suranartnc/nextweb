@@ -2,6 +2,7 @@ import React, { useEffect, Fragment } from 'react'
 import { useRouter } from 'next/router'
 
 import { useMember } from '@lib/auth'
+import { getHrefByRouteName } from '@lib/router/utils'
 import * as layouts from '@components/_layouts'
 
 import Meta from './Meta'
@@ -16,9 +17,7 @@ export function Page({ children, data, metaConfig, options = {} }) {
 
   useEffect(() => {
     if (restricted && isAuthenticated === false) {
-      router.push('/login', {
-        redirect: router.asPath,
-      })
+      router.push(getHrefByRouteName('auth-login', { redirect: router.asPath }))
     }
   }, [restricted, isAuthenticated])
 

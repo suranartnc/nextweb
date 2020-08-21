@@ -1,18 +1,17 @@
-import { get } from 'lodash'
-import Routes from './index'
+import routes from '@modules/_router'
 
-export function getFullUrlByRoute(routeName, params) {
-  return Routes.findByName(routeName).getAs(params)
+export function getAsPathByRouteName(route, params) {
+  const pathname = routes[route]
+  return getAsPathByPathName(pathname, params)
 }
 
-export function getRouteName(asPath) {
-  const hostname = process.env.HOST
-  const path = asPath.replace(hostname, '')
-  const matchedRoute = Routes.match(path)
-  return get(matchedRoute, 'route.name')
+export function getAsPathByPathName(pathname, params) {
+  return Object.keys(params).reduce(
+    (prev, cur) => prev.replace(`[${cur}]`, params[cur]),
+    pathname,
+  )
 }
 
-export function getQueryValue(asPath, key) {
-  const matchedRoute = Routes.match(asPath)
-  return get(matchedRoute, `query.${key}`)
+export function getHrefByRouteName(route, params) {
+  return { pathname: routes[route], query: params }
 }
