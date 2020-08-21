@@ -10,7 +10,9 @@ import Stats from './Stats'
 
 export function Page({ children, data, metaConfig, options = {} }) {
   const router = useRouter()
-  const { isAuthenticated } = useMember()
+  const {
+    userData: { isAuthenticated },
+  } = useMember()
 
   const Layout = layouts[options.layout || 'main']
   const restricted = options.restricted || false

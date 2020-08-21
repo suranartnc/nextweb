@@ -1,18 +1,21 @@
-import React, { useContext } from 'react'
-import useAuth from '@modules/_auth/useAuth'
+import React, { useState, useContext } from 'react'
 
-export const userContext = React.createContext({
-  isAuthenticated: undefined,
-})
+export const userContext = React.createContext({})
 
 export function useMember() {
   return useContext(userContext)
 }
 
 export function AuthProvider({ children }) {
-  const userData = useAuth()
+  const [userData, setUserData] = useState({
+    isAuthenticated: null,
+    profile: null,
+    token: null,
+  })
 
   return (
-    <userContext.Provider value={userData}>{children}</userContext.Provider>
+    <userContext.Provider value={{ userData, setUserData }}>
+      {children}
+    </userContext.Provider>
   )
 }

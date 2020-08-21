@@ -1,6 +1,7 @@
-import trimEnd from 'lodash.trimend'
-import { postAPI } from '@lib/api/helpers'
 import { destroyCookie } from 'nookies'
+import trimEnd from 'lodash.trimend'
+
+import { postAPI } from '@lib/api/helpers'
 
 import { AUTH_COOKIE_NAME } from './constants'
 
@@ -12,18 +13,9 @@ export function signIn({ email, password, redirect }) {
       email,
       password,
     },
+  }).catch(({ response }) => {
+    throw new Error(response.data.message)
   })
-    .then(({ token }) => {
-      if (redirect) {
-        location.href = `${redirect}?token=${token}`
-        return
-      }
-
-      location.href = `/?token=${token}`
-    })
-    .catch(({ response }) => {
-      throw new Error(response.data.message)
-    })
 }
 
 export function signOut() {
