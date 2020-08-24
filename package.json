@@ -51,7 +51,6 @@
     "dotenv-webpack": "^1.7.0",
     "emotion-theming": "^10.0.27",
     "express": "^4.16.4",
-    "express-useragent": "^1.0.12",
     "json-server": "^0.16.1",
     "jwt-decode": "^2.2.0",
     "lodash.trimend": "^4.5.1",

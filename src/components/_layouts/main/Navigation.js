@@ -44,7 +44,7 @@ export default function Navigation() {
       ))}
 
       {userData.isAuthenticated ? (
-        <Link key="Account" route="auth-account" passHref>
+        <Link key="Account" route="auth-dashboard" passHref>
           <LinkItem menu={{ name: 'Account' }} />
         </Link>
       ) : (

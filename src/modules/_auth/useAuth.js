@@ -44,12 +44,6 @@ import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from './constants'
 //   return userData
 // }
 
-// function getAuthDataFromCallbackURL(query) {
-//   return {
-//     token: query?.token || false,
-//   }
-// }
-
 export function getDataFromToken(token) {
   if (token === null || token === false) return ''
 

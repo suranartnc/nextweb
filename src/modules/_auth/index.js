@@ -18,10 +18,10 @@ export function signIn({ email, password, redirect }) {
   })
 }
 
-export function signOut() {
-  destroyCookie(null, AUTH_COOKIE_NAME)
-  location.href = '/'
-}
+// export function signOut() {
+//   destroyCookie(null, AUTH_COOKIE_NAME)
+//   location.href = '/'
+// }
 
 export function resetAuthentication({ redirect = '' }) {
   destroyCookie(null, AUTH_COOKIE_NAME)
