@@ -4,25 +4,18 @@ import { useRouter } from 'next/router'
 import jwtDecode from 'jwt-decode'
 
 import { getAsPathByRouteName } from '@lib/router/utils'
-
-import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from '@modules/_auth/constants'
-
-export const userContext = React.createContext({})
-
-export function useMember() {
-  return useContext(userContext)
-}
-
-function getDataFromToken(token) {
-  if (token === null || token === false) return ''
-
-  return jwtDecode(token)
-}
+import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from '@modules/_auth'
 
 const defaultUserData = {
   isAuthenticated: null,
   profile: null,
   token: null,
+}
+
+const userContext = React.createContext({})
+
+export function useMember() {
+  return useContext(userContext)
 }
 
 export function AuthProvider({ children }) {
@@ -69,7 +62,6 @@ export function AuthProvider({ children }) {
     const { isAuthenticated } = userData
 
     if (isAuthenticated === false) {
-      parseCookies()
       destroyCookie(null, AUTH_COOKIE_NAME, { path: '/' })
       router.push(getAsPathByRouteName('auth-login'))
     }
@@ -92,4 +84,10 @@ export function AuthProvider({ children }) {
       {children}
     </userContext.Provider>
   )
+}
+
+function getDataFromToken(token) {
+  if (token === null || token === false) return ''
+
+  return jwtDecode(token)
 }

@@ -3,7 +3,8 @@ import trimEnd from 'lodash.trimend'
 
 import { postAPI } from '@lib/api/helpers'
 
-import { AUTH_COOKIE_NAME } from './constants'
+export const AUTH_COOKIE_NAME = 'nextweb-token'
+export const AUTH_COOKIE_MAX_AGE = 60 * 60 // 1 hour
 
 export function signIn({ email, password, redirect }) {
   return postAPI({
@@ -17,11 +18,6 @@ export function signIn({ email, password, redirect }) {
     throw new Error(response.data.message)
   })
 }
-
-// export function signOut() {
-//   destroyCookie(null, AUTH_COOKIE_NAME)
-//   location.href = '/'
-// }
 
 export function resetAuthentication({ redirect = '' }) {
   destroyCookie(null, AUTH_COOKIE_NAME)
