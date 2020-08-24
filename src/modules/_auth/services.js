@@ -16,7 +16,7 @@ export function signInWithEmail({ email, password }) {
 export function signOut() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve({ status: 'OK' })
+      resolve({ status: 200 })
     }, 2000)
   })
 }
