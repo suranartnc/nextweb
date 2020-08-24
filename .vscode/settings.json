@@ -1,12 +1,18 @@
 {
   "files.exclude": {
-
+    ".next": true,
+    ".vscode": true,
+    "**/node_modules": true,
+    "api": true,
+    "docusaurus": true,
+    "scripts": true,
+    "README.md": true,
   },
   "search.exclude": {
+    ".next": true,
     ".vscode": true,
     "docusaurus": true,
     "node_modules": true,
-    "src/.next": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
