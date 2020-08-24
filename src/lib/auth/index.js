@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { parseCookies, setCookie, destroyCookie } from 'nookies'
 import { useRouter } from 'next/router'
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 import jwtDecode from 'jwt-decode'
 
 import { getAsPathByRouteName } from '@lib/router/utils'
-import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from '@modules/_auth'
+import * as AuthService from '@modules/_auth/services'
+import { AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from '@modules/_auth/config'
 
 const defaultUserData = {
   isAuthenticated: null,
@@ -57,16 +58,6 @@ export function AuthProvider({ children }) {
     }
   }, [userData.isAuthenticated])
 
-  // Clear auth cookie after sign out
-  useEffect(() => {
-    const { isAuthenticated } = userData
-
-    if (isAuthenticated === false) {
-      destroyCookie(null, AUTH_COOKIE_NAME, { path: '/' })
-      router.push(getAsPathByRouteName('auth-login'))
-    }
-  }, [userData.isAuthenticated])
-
   const signInWithToken = token => {
     setUserData({
       isAuthenticated: token === null ? null : !!token,
@@ -76,7 +67,13 @@ export function AuthProvider({ children }) {
   }
 
   const signOut = () => {
-    setUserData({ ...defaultUserData, isAuthenticated: false })
+    AuthService.signOut().then(response => {
+      if (response.status === 200) {
+        destroyCookie(null, AUTH_COOKIE_NAME, { path: '/' })
+        setUserData({ ...defaultUserData, isAuthenticated: false })
+        router.push(getAsPathByRouteName('auth-login'))
+      }
+    })
   }
 
   return (
