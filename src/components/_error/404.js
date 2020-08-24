@@ -8,7 +8,7 @@ export default function Error400Page() {
   return (
     <Page>
       <p>{errorMessage}</p>
-      <Link key="home" route="home">
+      <Link route="home">
         <a>Back to homepage.</a>
       </Link>
     </Page>

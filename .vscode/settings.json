@@ -1,27 +1,18 @@
 {
   "files.exclude": {
-    ".babelrc": true,
-    ".editorconfig": true,
-    ".eslintrc.json": true,
-    ".gitignore": true,
+    ".next": true,
     ".vscode": true,
     "**/node_modules": true,
     "api": true,
     "docusaurus": true,
     "scripts": true,
-    "jsconfig.json": true,
-    "src/.next": true,
-    "src/lib": true,
-    "src/next.config.js": true,
-    "src/server.js": true,
     "README.md": true,
-    "yarn.lock": true,
   },
   "search.exclude": {
+    ".next": true,
     ".vscode": true,
     "docusaurus": true,
     "node_modules": true,
-    "src/.next": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true

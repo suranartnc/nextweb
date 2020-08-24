@@ -1,5 +1,7 @@
 import React from 'react'
-import Routes, { Link } from '@lib/router'
+import Link from 'next/link'
+
+import { getAsPathByRouteName, getHrefByRouteName } from './utils'
 
 const linkOptions = {
   prefetch: false,
@@ -8,14 +10,7 @@ const linkOptions = {
 export default function CustomLink(props) {
   const { route, params = {}, ...restProps } = props
 
-  const routeObject = Routes.findByName(route)
-  const page = routeObject.page
-  const queryString = Object.keys(params)
-    .map(key => `${key}=${params[key]}`)
-    .join('&')
-
-  const href = `${page}?${queryString}`
-  const asPath = decodeURIComponent(routeObject.getAs(params))
-
+  const href = getHrefByRouteName(route, params)
+  const asPath = getAsPathByRouteName(route, params)
   return <Link {...restProps} {...linkOptions} href={href} as={asPath} />
 }

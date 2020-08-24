@@ -11,7 +11,7 @@ const mainMenus = [
   },
   {
     name: 'About',
-    route: 'static-about',
+    route: 'about',
   },
 ]
 
@@ -33,7 +33,7 @@ const LinkItem = forwardRef(({ menu, ...props }, ref) => (
 
 export default function Navigation() {
   const { variables, themeMode, toggleTheme } = useTheme()
-  const { isAuthenticated } = useMember()
+  const { userData } = useMember()
 
   return (
     <nav css={{ marginBottom: 10, borderBottom: '1px solid #aaa' }}>
@@ -43,8 +43,8 @@ export default function Navigation() {
         </Link>
       ))}
 
-      {isAuthenticated ? (
-        <Link key="Account" route="auth-account" passHref>
+      {userData.isAuthenticated ? (
+        <Link key="Account" route="auth-dashboard" passHref>
           <LinkItem menu={{ name: 'Account' }} />
         </Link>
       ) : (

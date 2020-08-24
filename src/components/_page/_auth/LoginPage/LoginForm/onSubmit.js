@@ -1,7 +1,5 @@
-import { Router } from '@lib/router'
-import { signIn } from '@modules/_auth'
+import * as AuthService from '@modules/_auth/services'
 
 export default function onSubmit(data) {
-  const { redirect } = Router.router.query
-  return signIn({ ...data, redirect })
+  return AuthService.signInWithEmail(data)
 }
