@@ -1,4 +1,3 @@
-import 'mobx-react-lite/batchingForReactDom'
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import App from 'next/app'
