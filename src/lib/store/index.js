@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStores } from '@modules/_store'
-export { Observer } from 'mobx-react'
+export { Observer } from 'mobx-react-lite'
 
 const storesContext = React.createContext(null)
 

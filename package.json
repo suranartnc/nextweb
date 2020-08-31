@@ -56,7 +56,7 @@
     "lodash.trimend": "^4.5.1",
     "lodash.uniqueid": "^4.0.1",
     "mobx": "^5.15.6",
-    "mobx-react": "^6.2.5",
+    "mobx-react-lite": "^2.2.0",
     "next": "^9.5.2",
     "next-routes": "^1.4.2",
     "nookies": "^2.4.0",
