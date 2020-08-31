@@ -1,36 +1,14 @@
-import { flowRight as compose } from 'lodash'
-import { inject as injectStore, observer } from 'mobx-react'
+import React from 'react'
+import { createStores } from '@modules/_store'
+export { Observer } from 'mobx-react'
 
-import RootStore from '@modules/_store'
+const storesContext = React.createContext(null)
 
-let store = null
-
-export function initStore() {
-  if (!process.browser) {
-    return new RootStore()
-  } else {
-    if (store === null) {
-      store = new RootStore()
-    }
-
-    return store
-  }
+export const StoreProvider = ({ children }) => {
+  const stores = createStores()
+  return (
+    <storesContext.Provider value={stores}>{children}</storesContext.Provider>
+  )
 }
 
-export function inject(subStore, { observe = true } = {}) {
-  const hocs = [
-    injectStore(({ RootStore }) => {
-      if (!subStore) {
-        return { RootStore: RootStore }
-      }
-
-      return { [subStore]: RootStore[subStore] }
-    }),
-  ]
-
-  if (observe) {
-    hocs.push(observer)
-  }
-
-  return compose(...hocs)
-}
+export const useStores = () => React.useContext(storesContext)

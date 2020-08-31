@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Flex, Box } from '@grid'
-import { inject } from '@lib/store'
+import { useStores, Observer } from '@lib/store'
 import { Page } from '@lib/page'
 
 import * as metaConfig from './meta'
 
-function AboutPage({ uiStore }) {
-  const { dimensions, orientation } = uiStore
+export default function AboutPage() {
+  const { UIStore } = useStores()
 
   return (
     <Page metaConfig={metaConfig}>
@@ -14,13 +14,17 @@ function AboutPage({ uiStore }) {
         <Box>About Page</Box>
         <Box width={1}>
           <p>Window Dimension</p>
-          <p>width: {dimensions.width}</p>
-          <p>height: {dimensions.height}</p>
-          <p>Orientation: {orientation}</p>
+          <Observer>
+            {() => (
+              <Fragment>
+                <p>width: {UIStore.dimensions.width}</p>
+                <p>height: {UIStore.dimensions.height}</p>
+              </Fragment>
+            )}
+          </Observer>
+          <Observer>{() => <p>Orientation: {UIStore.orientation}</p>}</Observer>
         </Box>
       </Flex>
     </Page>
   )
 }
-
-export default inject('uiStore')(AboutPage)

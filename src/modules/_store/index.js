@@ -1,9 +1,9 @@
-import RootStore from '@lib/store/rootStore'
 import UIStore from '@modules/_ui/store'
+import ErrorStore from '@modules/_error/store'
 
-export default class CustomStore extends RootStore {
-  constructor() {
-    super()
-    this.uiStore = new UIStore(this)
+export function createStores() {
+  return {
+    ErrorStore: new ErrorStore(),
+    UIStore: new UIStore(),
   }
 }

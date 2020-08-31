@@ -1,16 +1,16 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
-import { inject } from '@lib/store'
+import { useStores } from '@lib/store'
 
-function Form({
-  errorStore,
+export default function Form({
   children,
   defaultValues = {},
   schema,
   onSubmit,
   onError = handleError,
 }) {
+  const { ErrorStore } = useStores()
   const { register, handleSubmit, errors } = useForm({
     defaultValues,
     resolver: schema ? yupResolver(schema) : null,
@@ -22,7 +22,7 @@ function Form({
         const response = onSubmit(data)
 
         if (response && typeof response.catch === 'function') {
-          response.catch(onError(errorStore))
+          response.catch(onError(ErrorStore))
         }
       })}>
       {children({ register, errors })}
@@ -31,10 +31,9 @@ function Form({
 }
 
 function handleError(errorStore) {
-  return error =>
+  return error => {
     errorStore.addError({
       title: error.message,
     })
+  }
 }
-
-export default inject('errorStore', { observe: false })(Form)
