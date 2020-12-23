@@ -1,4 +1,6 @@
-import striptags from 'striptags'
+import { BlogJsonLd } from 'next-seo'
+import { getStatic } from '@lib/static'
+import { getAsPathByRouteName } from '@lib/router/utils'
 
 export function getMeta(data) {
   const { title, excerpt, tags, image } = data
@@ -6,13 +8,20 @@ export function getMeta(data) {
   const meta = {
     main: {
       title,
-      meta: {
+      description: excerpt,
+      openGraph: {
+        title,
         description: excerpt,
-        keywords: tags,
-        'og:title': title,
-        'og:description': excerpt,
-        'og:image': image.featured,
+        images: [
+          { url: image.featured || getStatic('og/og-product-default.png') },
+        ],
       },
+      additionalMetaTags: [
+        {
+          name: 'keywords',
+          content: tags,
+        },
+      ],
     },
   }
 
@@ -20,19 +29,20 @@ export function getMeta(data) {
 }
 
 export function getSchema(data) {
-  const { title, image, body, pubDate } = data
+  const { id, title, excerpt, image, author, pubDate } = data
 
   const schema = {
-    main: [
-      {
-        '@context': 'http://schema.org/',
-        '@type': 'Article',
-        datePublished: pubDate,
-        headline: title,
-        image: `${image.featured}`,
-        articleBody: striptags(body),
-      },
-    ],
+    main: () => (
+      <BlogJsonLd
+        url={getAsPathByRouteName('article-detail', { id })}
+        title={title}
+        description={excerpt}
+        images={[image.featured]}
+        authorName={author.name}
+        datePublished={pubDate}
+        dateModified={pubDate}
+      />
+    ),
   }
 
   return schema
