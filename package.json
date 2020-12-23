@@ -46,7 +46,6 @@
     "dotenv": "^7.0.0",
     "dotenv-webpack": "^1.7.0",
     "emotion-theming": "^10.0.27",
-    "express": "^4.16.4",
     "jwt-decode": "^2.2.0",
     "mobx": "^5.15.6",
     "mobx-react-lite": "^2.2.0",
