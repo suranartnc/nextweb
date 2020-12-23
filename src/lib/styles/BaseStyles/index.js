@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { Global, css } from '@emotion/core'
 import { useTheme } from 'emotion-theming'
 import getGlobalStyles from '@modules/_ui/globalStyles'
@@ -19,8 +19,8 @@ export default function BaseStyles() {
   const { variables } = useTheme()
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Global styles={getBaseStyles(variables)} />
-    </React.Fragment>
+    </Fragment>
   )
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import { useRouter } from 'next/router'
 import Form from '@lib/form/Form'
 import { useMember } from '@lib/auth'

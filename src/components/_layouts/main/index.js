@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Notifications from './Notifications'
 import Navigation from './Navigation'
 

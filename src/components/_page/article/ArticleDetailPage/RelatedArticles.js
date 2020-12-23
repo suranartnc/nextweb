@@ -1,4 +1,3 @@
-import React from 'react'
 import { useTheme } from 'emotion-theming'
 import Link from '@link'
 import { Flex, Box } from '@grid'

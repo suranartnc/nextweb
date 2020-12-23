@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from '@link'
 import { Page } from '@lib/page'
 

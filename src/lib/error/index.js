@@ -1,5 +1,5 @@
-import React from 'react'
-import { get } from 'lodash'
+import { Component } from 'react'
+import get from 'lodash/get'
 
 import Error400Page from '@components/_error/400'
 import Error500Page from '@components/_error/500'
@@ -27,7 +27,7 @@ export function withErrorHandling(getServerSideProps) {
   }
 }
 
-export class ErrorProvider extends React.Component {
+export class ErrorProvider extends Component {
   state = {
     hasRuntimeError: false,
     error: {},

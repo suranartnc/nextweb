@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex as ReflexBoxFlex } from 'reflexbox'
 export { Box } from 'reflexbox'
 

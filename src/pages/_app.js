@@ -1,5 +1,3 @@
-import React, { Fragment } from 'react'
-import Helmet from 'react-helmet'
 import App from 'next/app'
 import Router from 'next/router'
 
@@ -22,21 +20,18 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, router } = this.props
+    const { Component, router, pageProps } = this.props
 
     return (
-      <Fragment>
-        <Helmet titleTemplate={`%s - nextweb.js`} />
-        <ThemeProvider>
-          <AuthProvider>
-            <StoreProvider>
-              <ErrorProvider>
-                <Component {...this.props.pageProps} router={router} />
-              </ErrorProvider>
-            </StoreProvider>
-          </AuthProvider>
-        </ThemeProvider>
-      </Fragment>
+      <ThemeProvider>
+        <AuthProvider>
+          <StoreProvider>
+            <ErrorProvider>
+              <Component {...pageProps} router={router} />
+            </ErrorProvider>
+          </StoreProvider>
+        </AuthProvider>
+      </ThemeProvider>
     )
   }
 }

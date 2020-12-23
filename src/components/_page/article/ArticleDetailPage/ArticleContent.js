@@ -1,7 +1,6 @@
-import React from 'react'
 import { useTheme } from 'emotion-theming'
 
-function ArticleDetail({ data }) {
+export default function ArticleDetail({ data }) {
   const { variables } = useTheme()
 
   return (
@@ -17,5 +16,3 @@ function ArticleDetail({ data }) {
     </article>
   )
 }
-
-export default ArticleDetail
