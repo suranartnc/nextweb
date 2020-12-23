@@ -1,1 +1,1 @@
-export { default } from '@components/_error/404'
+export { default } from '@components/_pages/_error/404'

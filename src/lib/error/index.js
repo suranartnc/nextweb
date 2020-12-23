@@ -1,8 +1,8 @@
 import React from 'react'
-import { get } from 'lodash'
+import get from 'lodash/get'
 
-import Error400Page from '@components/_error/400'
-import Error500Page from '@components/_error/500'
+import Error404Page from '@components/_pages/_error/404'
+import Error500Page from '@components/_pages/_error/500'
 
 export function withErrorHandling(getServerSideProps) {
   return async context => {
@@ -56,13 +56,13 @@ export class ErrorProvider extends React.Component {
 
     // If any error
     if (statusCode >= 500) {
-      return <Error500Page statusCode={statusCode} />
+      return <Error500Page />
     }
 
-    // If no resource
+    // If api path not found
     if (statusCode >= 400) {
-      const errorCode = get(this.props.children, 'props.errorCode', '')
-      return <Error400Page statusCode={statusCode} errorCode={errorCode} />
+      const errorCode = get(this.props, 'errorCode', '')
+      return <Error404Page errorCode={errorCode} />
     }
 
     return this.props.children

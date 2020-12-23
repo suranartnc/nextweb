@@ -1,5 +1,4 @@
-import { flowRight as compose } from 'lodash'
-
+import compose from 'lodash/flowRight'
 import { withErrorHandling } from '@lib/error'
 
 export default function withDynamicRendering(options = {}) {

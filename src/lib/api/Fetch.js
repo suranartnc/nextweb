@@ -1,6 +1,6 @@
 import React from 'react'
 import useSWR from 'swr'
-import { isEmpty } from 'lodash'
+import isEmpty from 'lodash/isEmpty'
 
 function fetcher(callService) {
   return callService()

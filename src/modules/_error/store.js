@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx'
-import uniqueId from 'lodash.uniqueid'
+import uniqueId from 'lodash/uniqueId'
 
 export default class ErrorStore {
   @observable

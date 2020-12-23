@@ -1,1 +1,1 @@
-export { default } from '@components/_page/_auth/LoginPage'
+export { default } from '@components/_pages/_auth/LoginPage'

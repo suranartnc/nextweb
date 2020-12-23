@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { useTheme } from 'emotion-theming'
 import Link from '@link'
 import { useMember } from '@lib/auth'

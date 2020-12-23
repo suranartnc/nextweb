@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import BaseStyles from '@lib/styles/BaseStyles'
 import { breakpoints, variables } from '@modules/_ui/config'
