@@ -1,1 +1,1 @@
-export { default } from '@components/_page/_static/AboutPage'
+export { default } from '@components/_pages/_static/AboutPage'

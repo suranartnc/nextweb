@@ -1,6 +1,6 @@
 import withDynamicRendering from '@lib/page/withDynamicRendering'
 import * as ArticleService from '@modules/article/services'
-export { default } from '@components/_page/article/ArticleDetailPage'
+export { default } from '@components/_pages/article/ArticleDetailPage'
 
 export async function getServerSideProps(context) {
   const enhancedFetchData = await withDynamicRendering()(fetchData)

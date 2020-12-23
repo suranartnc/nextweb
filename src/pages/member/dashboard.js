@@ -1,1 +1,1 @@
-export { default } from '@components/_page/_auth/DashboardPage'
+export { default } from '@components/_pages/_auth/DashboardPage'

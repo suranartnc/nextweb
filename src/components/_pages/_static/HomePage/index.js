@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 import { useTheme } from 'emotion-theming'
 import { Flex, Box } from '@grid'
 
@@ -6,7 +6,7 @@ import { Page } from '@lib/page'
 import { Fetch, FetchMore } from '@lib/api'
 import * as ArticleService from '@modules/article/services'
 
-import PopularArticles from '@components/_page/article/ArticleDetailPage/PopularArticles'
+import PopularArticles from '@components/_pages/article/ArticleDetailPage/PopularArticles'
 import ArticleLatest, { ArticleList } from './ArticleLatest'
 import * as metaConfig from './meta'
 

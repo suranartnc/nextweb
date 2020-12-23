@@ -2,11 +2,11 @@ import Link from '@link'
 import { Page } from '@lib/page'
 
 export default function Error500Page() {
-  let errorMessage = 'Something went wrong.'
+  let message = 'Something went wrong.'
 
   return (
     <Page>
-      <p>{errorMessage}</p>
+      <p>{message}</p>
       <Link route="home">
         <a>Back to homepage.</a>
       </Link>
