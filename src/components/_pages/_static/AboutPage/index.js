@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 import { Flex, Box } from '@grid'
 import { useStores, Observer } from '@lib/store'
 import { Page } from '@lib/page'

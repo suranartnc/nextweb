@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react'
+import { useEffect, Fragment } from 'react'
 import { useRouter } from 'next/router'
 
 import { useMember } from '@lib/auth'
