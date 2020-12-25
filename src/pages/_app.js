@@ -3,6 +3,7 @@ import Router from 'next/router'
 
 import { StoreProvider } from '@lib/store'
 import ThemeProvider from '@lib/styles/ThemeProvider'
+import { FelaProvider } from '@lib/styles/fela'
 import { AuthProvider } from '@lib/auth'
 import { ErrorProvider } from '@lib/error'
 import { font as fontConfig } from '@modules/_ui/config'
@@ -20,18 +21,20 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, router, pageProps } = this.props
+    const { Component, router, pageProps, renderer } = this.props
 
     return (
-      <ThemeProvider>
-        <AuthProvider>
-          <StoreProvider>
-            <ErrorProvider>
-              <Component {...pageProps} router={router} />
-            </ErrorProvider>
-          </StoreProvider>
-        </AuthProvider>
-      </ThemeProvider>
+      <FelaProvider renderer={renderer}>
+        <ThemeProvider>
+          <AuthProvider>
+            <StoreProvider>
+              <ErrorProvider>
+                <Component {...pageProps} router={router} />
+              </ErrorProvider>
+            </StoreProvider>
+          </AuthProvider>
+        </ThemeProvider>
+      </FelaProvider>
     )
   }
 }
