@@ -1,7 +1,6 @@
-import { observable, action, computed } from 'mobx'
+import { makeObservable, observable, action, computed } from 'mobx'
 
 export default class UIStore {
-  @observable.struct
   dimensions = {
     width: '',
     height: '',
@@ -11,6 +10,12 @@ export default class UIStore {
     if (!process.browser) return
 
     // this.rootStore = rootStore
+
+    makeObservable(this, {
+      dimensions: observable.struct,
+      setDimensions: action,
+      orientation: computed,
+    })
 
     const listener = () => {
       this.setDimensions({
@@ -23,12 +28,10 @@ export default class UIStore {
     window.addEventListener('resize', listener)
   }
 
-  @action
   setDimensions(dimensions) {
     this.dimensions = dimensions
   }
 
-  @computed
   get orientation() {
     const { width, height } = this.dimensions
     return width > height ? 'landscape' : 'portrait'
