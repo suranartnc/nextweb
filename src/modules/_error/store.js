@@ -1,13 +1,20 @@
-import { observable, action } from 'mobx'
+import { makeObservable, observable, action } from 'mobx'
 import uniqueId from 'lodash/uniqueId'
 
 export default class ErrorStore {
-  @observable
+  expired = 5000
   errors = []
 
-  expired = 5000
+  constructor(rootStore) {
+    // this.rootStore = rootStore
 
-  @action
+    makeObservable(this, {
+      errors: observable,
+      addError: action,
+      removeError: action,
+    })
+  }
+
   addError(error) {
     const id = uniqueId()
 
@@ -21,7 +28,6 @@ export default class ErrorStore {
     }, this.expired)
   }
 
-  @action
   removeError(id) {
     this.errors = this.errors.filter(error => error.id !== id)
   }
