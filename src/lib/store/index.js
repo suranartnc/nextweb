@@ -1,10 +1,10 @@
 import React from 'react'
 import { createStores } from '@modules/_store'
-import { useStaticRendering } from 'mobx-react-lite'
+import { enableStaticRendering } from 'mobx-react-lite'
 export { Observer } from 'mobx-react-lite'
 
 if (!process.browser) {
-  useStaticRendering(true)
+  enableStaticRendering(true)
 }
 
 const storesContext = React.createContext(null)
