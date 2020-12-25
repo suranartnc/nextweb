@@ -1,6 +1,6 @@
-import { useTheme } from 'emotion-theming'
 import Link from '@link'
 import { Flex, Box } from '@grid'
+import { useCSS } from '@lib/styles/fela'
 
 export default function ArticleLatest({ data }) {
   return (
@@ -21,10 +21,10 @@ export function ArticleList({ data }) {
 }
 
 function ArticleItem({ data }) {
-  const { variables } = useTheme()
+  const css = useCSS()
 
   return (
-    <article css={{ padding: '20px 0' }}>
+    <article className={css({ padding: '20px 0' })}>
       <Flex>
         <Box width={6.5 / 10}>
           <h3>
@@ -33,7 +33,9 @@ function ArticleItem({ data }) {
             </Link>
           </h3>
           <div
-            css={{ color: variables.colors.text.secondary }}
+            className={css(({ colors }) => ({
+              color: colors.text.secondary,
+            }))}
             dangerouslySetInnerHTML={{ __html: data.excerpt }}
           />
         </Box>
