@@ -38,7 +38,7 @@
     "@emotion/react": "^11.1.4",
     "@hookform/resolvers": "^0.1.0",
     "@zeit/next-bundle-analyzer": "^0.1.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-module-resolver": "^3.2.0",
     "core-js": "3.3.6",
     "dotenv": "^7.0.0",
