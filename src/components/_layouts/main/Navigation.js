@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 import Link from '@link'
 import { useMember } from '@lib/auth'
 import { media } from '@lib/styles/helpers'

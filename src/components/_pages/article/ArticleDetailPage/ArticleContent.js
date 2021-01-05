@@ -1,4 +1,4 @@
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 export default function ArticleDetail({ data }) {
   const { variables } = useTheme()

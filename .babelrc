@@ -3,10 +3,13 @@
     [
       "next/babel",
       {
+        "preset-react": {
+          "runtime": "automatic",
+          "importSource": "@emotion/react"
+        },
         "class-properties": { "loose": true }
       }
-    ],
-    "@emotion/babel-preset-css-prop"
+    ]
   ],
   "plugins": [
     "@babel/plugin-proposal-export-default-from",
