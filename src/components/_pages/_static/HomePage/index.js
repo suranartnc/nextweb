@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 import { Flex, Box } from '@grid'
 
 import { Page } from '@lib/page'

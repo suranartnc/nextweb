@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Global, css } from '@emotion/core'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 import getGlobalStyles from '@modules/_ui/globalStyles'
 
 import normalize from './_normalize'

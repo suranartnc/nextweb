@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
 import BaseStyles from '@lib/styles/BaseStyles'
 import { breakpoints, variables } from '@modules/_ui/config'
 
