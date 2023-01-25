@@ -7,7 +7,7 @@
           "runtime": "automatic",
           "importSource": "@emotion/react"
         },
-        "class-properties": { "loose": true }
+        "class-properties": { "loose": false }
       }
     ]
   ],
